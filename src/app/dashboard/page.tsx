@@ -1,7 +1,8 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
@@ -27,12 +28,20 @@ export default function DashboardPage() {
                 <p>📧 Email: <strong>{session?.user?.email}</strong></p>
                 <p>🆔 ID: <strong>{session?.user?.id}</strong></p>
 
-                <button
-                    onClick={() => signOut({ callbackUrl: "/login" })}
-                    className="mt-6 bg-[#FCB02D] text-black font-semibold px-6 py-3 rounded-xl hover:bg-yellow-500 transition"
-                >
-                    Sair
-                </button>
+                <div className="flex flex-col gap-4 mt-6">
+                    <Link href="/create-character">
+                        <button className="bg-[#FCB02D] text-black font-semibold px-6 py-3 rounded-xl hover:bg-yellow-500 transition">
+                            Criar Personagem
+                        </button>
+                    </Link>
+
+                    <button
+                        onClick={() => signOut({ callbackUrl: "/login" })}
+                        className="bg-[#FCB02D] text-black font-semibold px-6 py-3 rounded-xl hover:bg-yellow-500 transition"
+                    >
+                        Sair
+                    </button>
+                </div>
             </div>
         </div>
     );
