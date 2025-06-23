@@ -1,6 +1,7 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -81,6 +82,13 @@ export default function LoginPage() {
                             Entrar com Email e Senha
                         </button>
                     </form>
+
+                    <Link
+                        href="/register"
+                        className="bg-[#FCB02D] text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-500 transition"
+                    >
+                        Crie sua Conta
+                    </Link>
                 </div>
             </div>
         </div>

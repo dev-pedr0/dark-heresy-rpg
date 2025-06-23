@@ -51,6 +51,7 @@ providers: [
         },
     }),
 ],
+debug: true,
 session: {
     strategy: "jwt",
 },
