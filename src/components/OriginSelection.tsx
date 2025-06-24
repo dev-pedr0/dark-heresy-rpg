@@ -1,4 +1,5 @@
 import { PlanetaDeOrigem, planetasDeOrigem } from "@/data/planetas";
+import { rolarExpressaoDeVida } from "@/utils/rolarDados";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -22,6 +23,14 @@ export default function OriginSelection({
     continuar,
 }: Props) {
     const [selected, setSelected] = useState<string | null>(null);
+    const [vidaRolada, setVidaRolada] = useState<number | null>(null);
+
+    const rolarVida = () => {
+        if (originSelecionada) {
+        const resultado = rolarExpressaoDeVida(originSelecionada.vida);
+        setVidaRolada(resultado);
+        }
+    };
 
     return (
         <div className="flex flex-col items-center">
@@ -52,24 +61,26 @@ export default function OriginSelection({
                                 <div className="mt-2 space-y-2 text-sm">
                                     <p>{origin.descricao}</p>
                                     <p className="italic text-yellow-300">{origin.bonus}</p>
+                                    <p>Aptidão: {origin.aptidoes}.</p>
+                                    <p>Pontos de Vida: {origin.vida}.</p>
 
                                     <div className="mt-2 bg-[#2F1B0F] p-3 rounded-lg text-sm space-y-1">
-                                    <p>
-                                        <span className="font-semibold text-green-400">🎯 Limite de Pontos de Destino:</span>{" "}
-                                        {origin.limiteDestino}
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-yellow-300">🙏 Benção do Imperador:</span>{" "}
-                                        {origin.bencao}+
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-blue-400">🔺 Modificadores Positivos:</span>{" "}
-                                        {origin.modificadores.positivo.join(", ")}
-                                    </p>
-                                    <p>
-                                        <span className="font-semibold text-red-400">🔻 Modificadores Negativos:</span>{" "}
-                                        {origin.modificadores.negativo.join(", ")}
-                                    </p>
+                                        <p>
+                                            <span className="font-semibold text-green-400">🎯 Limite de Pontos de Destino:</span>{" "}
+                                            {origin.limiteDestino}
+                                        </p>
+                                        <p>
+                                            <span className="font-semibold text-yellow-300">🙏 Benção do Imperador:</span>{" "}
+                                            {origin.bencao}+
+                                        </p>
+                                        <p>
+                                            <span className="font-semibold text-blue-400">🔺 Modificadores Positivos:</span>{" "}
+                                            {origin.modificadores.positivo.join(", ")}
+                                        </p>
+                                        <p>
+                                            <span className="font-semibold text-red-400">🔻 Modificadores Negativos:</span>{" "}
+                                            {origin.modificadores.negativo.join(", ")}
+                                        </p>
                                     </div>
                                 </div>
                             )}
@@ -99,6 +110,18 @@ export default function OriginSelection({
                             </p>
                         </div>
                     )}
+
+                    <div className="mt-6">
+                        <button
+                        onClick={rolarVida}
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400"
+                        >
+                            Rolar Pontos de Vida ({originSelecionada.vida})
+                        </button>
+                        {vidaRolada !== null && (
+                        <p className="mt-2 text-red-300">❤️ Pontos de Vida iniciais: <strong>{vidaRolada}</strong></p>
+                        )}
+                    </div>
 
                     <button
                         onClick={continuar}

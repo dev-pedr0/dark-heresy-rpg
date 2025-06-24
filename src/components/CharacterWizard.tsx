@@ -10,6 +10,7 @@ export default function CharacterWizard() {
     const [pontosDestino, setPontosDestino] = useState<number | null>(null);
     const [bencaoResultado, setBencaoResultado] = useState<number | null>(null);
     const [bencaoTentada, setBencaoTentada] = useState(false);
+    const [pontosDeVida, setPontosDeVida] = useState<number | null>(null);
 
     const handlerOriginSelect = (originData: any) => {
         setOrigin(originData);
