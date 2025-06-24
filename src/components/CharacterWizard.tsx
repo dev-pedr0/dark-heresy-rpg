@@ -5,12 +5,29 @@ import OriginSelection from "./OriginSelection";
 import AtributoSelector from "./AtributoSelector";
 
 export default function CharacterWizard() {
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(1);
     const [origin, setOrigin] = useState<any>(null);
+    const [pontosDestino, setPontosDestino] = useState<number | null>(null);
+    const [bencaoResultado, setBencaoResultado] = useState<number | null>(null);
+    const [bencaoTentada, setBencaoTentada] = useState(false);
 
     const handlerOriginSelect = (originData: any) => {
         setOrigin(originData);
         setStep(1);
+    };
+
+    const tentarBencao = () => {
+        if (!origin) return;
+
+        const resultado = Math.floor(Math.random() * 10) + 1;
+        setBencaoResultado(resultado);
+        setBencaoTentada(true);
+
+        if (resultado >= origin.bencao) {
+            setPontosDestino(origin.limiteDestino + 1);
+        } else {
+            setPontosDestino(origin.limiteDestino);
+        }
     };
 
     const avancarPara = (novoStep: number) => {
@@ -23,29 +40,16 @@ export default function CharacterWizard() {
 
     return (
         <div className="p-4 max-w-5xl mx-auto space-y-6 text-white">
-            {step === 0 && <OriginSelection onSelect={handlerOriginSelect} />}
-
-            {step === 1 && origin && (
-                <>
-                    <div>
-                        <h2 className="text-2xl font-semibold">Você Escolheu: {origin.nome}</h2>
-                        <p className="mb-4">{origin.descricao}</p>
-
-                        <button
-                            onClick={() => avancarPara(2)}
-                            className="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition"
-                        >
-                            Continuar para Atributos
-                        </button>
-                    </div>
-
-                    <button
-                        onClick={voltar}
-                        className="text-sm text-[#FCB02D] underline hover:text-yellow-400"
-                    >
-                        ← Voltar à seleção de origem
-                    </button>
-                </>
+            {step === 1 && (
+                <OriginSelection
+                    onSelect={handlerOriginSelect}
+                    originSelecionada={origin}
+                    bencaoTentada={bencaoTentada}
+                    bencaoResultado={bencaoResultado}
+                    pontosDestino={pontosDestino}
+                    tentarBencao={tentarBencao}
+                    continuar={() => avancarPara(2)}
+                />
             )}
 
             {step === 2 && origin && (

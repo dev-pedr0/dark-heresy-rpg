@@ -4,9 +4,23 @@ import { useState } from "react";
 
 interface Props {
     onSelect: (origin: PlanetaDeOrigem) => void;
+    originSelecionada: PlanetaDeOrigem | null;
+    bencaoTentada: boolean;
+    bencaoResultado: number | null;
+    pontosDestino: number | null;
+    tentarBencao: () => void;
+    continuar: () => void;
 }
 
-export default function OriginSelection({ onSelect }: Props) {
+export default function OriginSelection({
+    onSelect,
+    originSelecionada,
+    bencaoTentada,
+    bencaoResultado,
+    pontosDestino,
+    tentarBencao,
+    continuar,
+}: Props) {
     const [selected, setSelected] = useState<string | null>(null);
 
     return (
@@ -35,12 +49,65 @@ export default function OriginSelection({ onSelect }: Props) {
                         <div className="bg-[#835214] p-3 text-center text-white">
                             <h3 className="text-xl font-bold">{origin.nome}</h3>
                             {selected === origin.id && (
-                                <p className="mt-2 text-sm">{origin.descricao}</p>
+                                <div className="mt-2 space-y-2 text-sm">
+                                    <p>{origin.descricao}</p>
+                                    <p className="italic text-yellow-300">{origin.bonus}</p>
+
+                                    <div className="mt-2 bg-[#2F1B0F] p-3 rounded-lg text-sm space-y-1">
+                                    <p>
+                                        <span className="font-semibold text-green-400">🎯 Limite de Pontos de Destino:</span>{" "}
+                                        {origin.limiteDestino}
+                                    </p>
+                                    <p>
+                                        <span className="font-semibold text-yellow-300">🙏 Benção do Imperador:</span>{" "}
+                                        {origin.bencao}+
+                                    </p>
+                                    <p>
+                                        <span className="font-semibold text-blue-400">🔺 Modificadores Positivos:</span>{" "}
+                                        {origin.modificadores.positivo.join(", ")}
+                                    </p>
+                                    <p>
+                                        <span className="font-semibold text-red-400">🔻 Modificadores Negativos:</span>{" "}
+                                        {origin.modificadores.negativo.join(", ")}
+                                    </p>
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </div>
                 ))}
             </div>
+            {selected && originSelecionada && selected === originSelecionada.id && (
+                <div className="mt-6 bg-[#2F1B0F] p-4 rounded-lg text-white w-full max-w-xl">
+                    <h3 className="text-lg font-bold mb-2">Informações do Planeta Escolhido</h3>
+                    <p>🎯 Limite base de Pontos de Destino: <strong>{originSelecionada.limiteDestino}</strong></p>
+                    <p>🙏 Benção do Imperador: <strong>{originSelecionada.bencao}+</strong></p>
+
+                    {!bencaoTentada ? (
+                        <button
+                            onClick={tentarBencao}
+                            className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400"
+                        >
+                            Tentar Benção do Imperador (1d10)
+                        </button>
+                    ) : (
+                        <div className="mt-4 space-y-1">
+                            <p>🎲 Resultado: <strong>{bencaoResultado}</strong></p>
+                            <p>
+                                ✅ Novo limite de pontos de destino:{" "}
+                                <strong className="text-green-400">{pontosDestino}</strong>
+                            </p>
+                        </div>
+                    )}
+
+                    <button
+                        onClick={continuar}
+                        className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400"
+                    >
+                        Continuar para Atributos
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
