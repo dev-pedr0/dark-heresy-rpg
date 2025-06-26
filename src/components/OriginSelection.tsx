@@ -9,6 +9,7 @@ interface Props {
     bencaoTentada: boolean;
     bencaoResultado: number | null;
     pontosDestino: number | null;
+    setPontosDeVida: (valor: number) => void;
     tentarBencao: () => void;
     continuar: () => void;
 }
@@ -19,6 +20,7 @@ export default function OriginSelection({
     bencaoTentada,
     bencaoResultado,
     pontosDestino,
+    setPontosDeVida,
     tentarBencao,
     continuar,
 }: Props) {
@@ -29,6 +31,7 @@ export default function OriginSelection({
         if (originSelecionada) {
         const resultado = rolarExpressaoDeVida(originSelecionada.vida);
         setVidaRolada(resultado);
+        setPontosDeVida(resultado);
         }
     };
 

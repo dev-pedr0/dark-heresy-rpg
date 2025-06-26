@@ -7,9 +7,10 @@ type Props = {
     negativos: Caracteristica[];
     todas: readonly Caracteristica[];
     onVoltar: () => void;
+    onConfirmar: (atributos: Record<Caracteristica, number>) => void;
 };
 
-export default function MetodoRolagem ({ positivos, negativos, todas, onVoltar }: Props) {
+export default function MetodoRolagem ({ positivos, negativos, todas, onVoltar, onConfirmar }: Props) {
     const [atributos, setAtributos] = useState<Record<Caracteristica, number> | null>(null);
 
     const rolar = () => {
@@ -29,13 +30,21 @@ export default function MetodoRolagem ({ positivos, negativos, todas, onVoltar }
             </div>
 
             {atributos && (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {todas.map((caracteristica) => (
-                        <div key={caracteristica} className="border rounded p-2">
-                            <strong>{caracteristica}</strong>: {atributos[caracteristica]}
-                        </div>
-                    ))}
-                </div>
+                <>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {todas.map((caracteristica) => (
+                            <div key={caracteristica} className="border rounded p-2">
+                                <strong>{caracteristica}</strong>: {atributos[caracteristica]}
+                            </div>
+                        ))}
+                    </div>
+                    <button
+                        onClick={() => onConfirmar(atributos)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-xl shadow"
+                    >
+                        Confirmar
+                    </button>
+                </>
             )}
         </div>
     );

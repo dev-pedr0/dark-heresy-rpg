@@ -7,9 +7,10 @@ type Props = {
     negativos: Caracteristica[];
     todas: readonly Caracteristica[];
     onVoltar: () => void;
+    onConfirmar: (atributos: Record<Caracteristica, number>) => void;
 };
 
-export default function MetodoPontos({ positivos, negativos, todas, onVoltar }: Props) {
+export default function MetodoPontos({ positivos, negativos, todas, onVoltar, onConfirmar }: Props) {
     const { valoresBase, pontosDisponiveis, limiteMaximo } = gerarAtributosPorPonto(
         positivos,
         negativos,
@@ -76,6 +77,14 @@ export default function MetodoPontos({ positivos, negativos, todas, onVoltar }: 
                     </div>
                 </div>
                 ))}
+                {pontosRestantes === 0 && (
+                    <button
+                        onClick={() => onConfirmar(atributos)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-xl shadow"
+                    >
+                        Confirmar
+                    </button>
+                )}
             </div>
         </div>
     );
