@@ -3,6 +3,7 @@
 import { useState } from "react";
 import OriginSelection from "./OriginSelection";
 import AtributoSelector from "./AtributoSelector";
+import BackgroundSelector from "./BackgroundSelector";
 
 export default function CharacterWizard() {
     const [step, setStep] = useState(1);
@@ -12,6 +13,7 @@ export default function CharacterWizard() {
     const [bencaoTentada, setBencaoTentada] = useState(false);
     const [pontosDeVida, setPontosDeVida] = useState<number | null>(null);
     const [atributos, setAtributos] = useState<{ [atributo: string]: number } | null>(null);
+    const [backgroundSelecionado, setBackgroundSelecionado] = useState<any>(null);
 
     const [ficha, setFicha] = useState({
         origem: null as null | {
@@ -26,7 +28,8 @@ export default function CharacterWizard() {
         },
         atributos: null as null | {
             [atributo: string]: number;
-        }
+        },
+        background: null as any,
     });
 
     const handlerOriginSelect = (originData: any) => {
@@ -71,6 +74,14 @@ export default function CharacterWizard() {
         setFicha((prev) => ({
             ...prev,
             atributos: atributosSelecionados,
+        }));
+    };
+
+    const salvarBackgroundFicha = (backgroundData: any) => {
+        setBackgroundSelecionado(backgroundData);
+        setFicha((prev) => ({
+            ...prev,
+            background: backgroundData,
         }));
     };
 
@@ -121,6 +132,24 @@ export default function CharacterWizard() {
 
             {step === 3 && atributos && (
                 <>
+                    <BackgroundSelector
+                        onSelect={(background) => {
+                            salvarBackgroundFicha(background);
+                        }}
+                        backgroundSelecionado={backgroundSelecionado}
+                        continuar={() => avancarPara(4)}
+                    />
+                    <button
+                        onClick={voltar}
+                        className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                    >
+                        ← Voltar para atributos
+                    </button>
+                </>
+            )}
+
+            {step === 4 && backgroundSelecionado && (
+                <>
                    <div className="space-y-4">
                         <h2 className="text-2xl font-bold">Resumo da Ficha</h2>
 
@@ -162,7 +191,7 @@ export default function CharacterWizard() {
                                 onClick={voltar}
                                 className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
                             >
-                                ← Voltar para atributos
+                                ← Voltar para background
                             </button>
                         </div>
                     </div>  

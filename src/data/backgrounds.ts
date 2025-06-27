@@ -6,20 +6,24 @@ export type Background = {
     pericias: {
         fixas?: string[];
         escolhas?: string[][];
+        escolhasSelecionadas?: string[];
     };
     talentos: {
         fixos?: string[];
         escolhas?: string[][];
+        escolhasSelecionadas?: string[];
     };
     equipamentos: {
         fixos?: string[];
         escolhas?: string[][]; 
+        escolhasSelecionadas?: string[];
     };
     bonus: string;
     aptidoes: {
         fixas?: string[];
         escolhas?: string[][];
-    }
+        escolhasSelecionadas?: string[];
+    };
 }
 
 export const backgrounds: Background[] = [
@@ -137,5 +141,94 @@ export const backgrounds: Background[] = [
             ],
         }
     },
-    
+    {
+        id: "adeptus_ministorum",
+        nome: "Adeptus Ministorum",
+        imagem: "/public/backgrounds/Adeptus_Ministorum.jpg",
+        descricao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        pericias: {
+            fixas: ["Charme, Comando, Conhecimento Comum (Adeptus Ministorum)", "Linguística (Alto Gótico)"],
+            escolhas: [
+                ["Investigação", "Intuição"],
+            ],
+        },
+        talentos: {
+            fixos: ["Treinamento com Armas (Arcaica)"],
+            escolhas: [
+                ["Treinamento com Armas (Incendiária)", "Treinamento com Armas (Projétil Sólido)"],
+            ],
+        },
+        equipamentos: {
+            fixos: ["Mochila", "Globo de Luz", "Servo Caveira Unitário (Megafone)"],
+            escolhas: [
+                ["Lança Chamas de Mão", "Martelo de Guerra, Revolver"],
+                ["Robes Imperiais", "Colete Flak"],
+            ],
+        },
+        bonus: "Fé é Tudo – ao gastar pontos de destino para receber um bônus em um teste ele recebe +20 ao invés de +10.",
+        aptidoes: {
+            escolhas:[
+                ["Liderança", "Social"],
+            ],
+        }
+    },
+    {
+        id: "astra_militarum",
+        nome: "Astra Militarum",
+        imagem: "/public/backgrounds/Astra_Militarum.jpg",
+        descricao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        pericias: {
+            fixas: ["Atletismo, Comando, Conhecimento Comum (Astra Militarum)", "Navegação (Superfície)"],
+            escolhas: [
+                ["Medicina", "Operação (Superfície)"],
+            ],
+        },
+        talentos: {
+            fixos: ["Treinamento com Armas (Las)", "Treinamento com Armas (Arcaico)"],
+        },
+        equipamentos: {
+            fixos: ["Colete Utilitário", "Armadura Flak da Guarda Imperial", "Arpão e Linha", "Cigarro x12", "Magnóculo"],
+            escolhas: [
+                ["Rifle Las", "Pistola Las, Espada"],
+            ],
+        },
+        bonus: "Martelo do Imperador – quando atacar um alvo que foi atacado por um aliado desde o final do seu último turno o personagem pode re-rolar valores 1 e 2 de dano.",
+        aptidoes: {
+            escolhas:[
+                ["Sobrevivência", "Liderança"],
+            ],
+        }
+    },
+    {
+        id: "desgarrado",
+        nome: "Desgarrado",
+        imagem: "/public/backgrounds/Desgarrado.jpg",
+        descricao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        pericias: {
+            fixas: ["Conhecimento Comum (Submundo)", "Enganação", "Esquiva", "Furtividade"],
+            escolhas: [
+                ["Acrobacia", "Prestidigitação"],
+            ],
+        },
+        talentos: {
+            fixos: ["Treinamento com Armas (Corrente)"],
+            escolhas:[
+                ["Treinamento com Armas (Las)", "Treinamento com Armas (Projetil Sólido)"],
+            ],
+        },
+        equipamentos: {
+            fixos: ["Espada Corrente", "Injetor"],
+            escolhas: [
+                ["Pistola Automática", "Pistola Las"],
+                ["Colete Corporal", "Colete Flak"],
+                ["Obscura x2", "Estilhaço x2"]
+            ],
+        },
+        bonus: "Nunca Desistir – o personagem utiliza seu bônus de Resistência + 2 para determinar fadiga.",
+        aptidoes: {
+            escolhas:[
+                ["Sobrevivência", "Social"],
+            ],
+        }
+    },
 ]
