@@ -20,7 +20,6 @@ export default function BackgroundSelector({
 
   const bgSelecionado = backgrounds.find((bg) => bg.id === selected);
 
-  // Update choices for a specific category and index
   function setEscolhasParaGrupo(categoria: string, indice: number, opcoesSelecionadas: string[]) {
     const key = `${categoria}-${indice}`;
     setEscolhas((prev) => ({
@@ -29,7 +28,6 @@ export default function BackgroundSelector({
     }));
   }
 
-  // Check if all required choices are made
   const isEscolhaCompleta = (bg: Background) => {
     const total =
       (bg.pericias.escolhas?.length || 0) +
@@ -45,7 +43,6 @@ export default function BackgroundSelector({
     return selecionadosCount >= total;
   };
 
-  // Render checkboxes for choices
   const renderEscolhasSelect = (
     label: string,
     categoria: "pericias" | "talentos" | "equipamentos" | "aptidoes",
@@ -89,7 +86,6 @@ export default function BackgroundSelector({
     );
   };
 
-  // Confirm selections and pass to parent
   const confirmarEscolhas = () => {
     if (!bgSelecionado) return;
 
@@ -137,7 +133,6 @@ export default function BackgroundSelector({
             onClick={() => {
               if (selected !== bg.id) {
                 setSelected(bg.id);
-                // Only reset escolhas for this background
                 setEscolhas((prev) =>
                   Object.fromEntries(
                     Object.entries(prev).filter(

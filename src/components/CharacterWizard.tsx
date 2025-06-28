@@ -4,6 +4,8 @@ import { useState } from "react";
 import OriginSelection from "./OriginSelection";
 import AtributoSelector from "./AtributoSelector";
 import BackgroundSelector from "./BackgroundSelector";
+import FuncaoSelector from './FuncaoSelector';
+import { funcoes } from "@/data/funcoes";
 
 export default function CharacterWizard() {
     const [step, setStep] = useState(1);
@@ -14,22 +16,35 @@ export default function CharacterWizard() {
     const [pontosDeVida, setPontosDeVida] = useState<number | null>(null);
     const [atributos, setAtributos] = useState<{ [atributo: string]: number } | null>(null);
     const [backgroundSelecionado, setBackgroundSelecionado] = useState<any>(null);
+    const [funcaoSelecionada, setFuncaoSelecionada] = useState<any>(null);
 
     const [ficha, setFicha] = useState({
         origem: null as null | {
-            planetaNome: string;
-            planetaBonus: string;
-            talentosEscolhiveis?: string[];
-            talentoFixo?: string;
+            nome: string;
+            bonus: string;
+            talentos: string[];
             efeitoNaArma?: string;
-            planetaAptidao: string;
-            planetaVida: number;
+            aptidoes: string;
+            vida: number;
             limiteDestino: number;            
         },
         atributos: null as null | {
             [atributo: string]: number;
         },
-        background: null as any,
+        background: null as null | {
+            nome: string;
+            bonus: string;
+            pericias: string[];
+            talentos: string[];
+            equipamentos: string[];
+            aptidoes: string[];
+            },
+        funcao: null as null | {
+            nome: string;
+            bonus: string;
+            talentos: string[];
+            aptidoes: string[];
+        }
     });
 
     const handlerOriginSelect = (originData: any) => {
@@ -57,13 +72,15 @@ export default function CharacterWizard() {
         setFicha((prev) => ({
             ...prev,
             origem: {
-                planetaNome: origin.nome,
-                planetaBonus: origin.bonus,
-                talentosEscolhiveis: origin.talentosEscolhiveis,
-                talentoFixo: origin.talentoFixo,
+                nome: origin.nome,
+                bonus: origin.bonus,
+                talentos: [
+                    ...(origin.talentoFixo ? [origin.talentoFixo] : []),
+                    ...(origin.talentosEscolhiveis ?? [])
+                ],
                 efeitoNaArma: origin.efeitoNaArma,
-                planetaAptidao: origin.aptidoes,
-                planetaVida: pontosDeVida,
+                aptidoes: origin.aptidoes,
+                vida: pontosDeVida,
                 limiteDestino: pontosDestino,
             }
         }));
@@ -78,10 +95,65 @@ export default function CharacterWizard() {
     };
 
     const salvarBackgroundFicha = (backgroundData: any) => {
+        const nome = backgroundData.nome;
+        const bonus = backgroundData.bonus;
+
+        const pericias = [
+            ...(backgroundData.pericias.fixas || []),
+            ...(backgroundData.pericias.escolhasSelecionadas || []),
+        ];
+
+        const talentos = [
+            ...(backgroundData.talentos.fixos || []),
+            ...(backgroundData.talentos.escolhasSelecionadas || []),
+        ];
+
+        const equipamentos = [
+            ...(backgroundData.equipamentos.fixos || []),
+            ...(backgroundData.equipamentos.escolhasSelecionadas || []),
+        ];
+
+        const aptidoes = [
+            ...(backgroundData.aptidoes.fixas || []),
+            ...(backgroundData.aptidoes.escolhasSelecionadas || []),
+        ];
+
         setBackgroundSelecionado(backgroundData);
+
         setFicha((prev) => ({
             ...prev,
-            background: backgroundData,
+            background: {
+                nome,
+                bonus,
+                pericias,
+                talentos,
+                equipamentos,
+                aptidoes,
+            },
+        }));
+    };
+
+    const salvarFuncaoFicha = (funcaoData: any) => {
+        const nome = funcaoData.nome;
+        const bonus = funcaoData.bonus;
+
+        const talentos = funcaoData.talentosEscolhiveis;
+
+        const aptidoes = [
+            ...(funcaoData.aptidoes.fixas || []),
+            ...(funcaoData.aptidoes.escolhasSelecionadas || []),
+        ];
+
+        setFuncaoSelecionada(funcaoData);
+
+        setFicha((prev) => ({
+            ...prev,
+            funcao: {
+                nome,
+                bonus,
+                talentos,
+                aptidoes,
+            },
         }));
     };
 
@@ -150,6 +222,23 @@ export default function CharacterWizard() {
 
             {step === 4 && backgroundSelecionado && (
                 <>
+                    <FuncaoSelector
+                        onNext={(funcao) => {
+                            salvarFuncaoFicha(funcao);
+                            avancarPara(5);
+                        }}
+                    />
+                    <button
+                        onClick={voltar}
+                        className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                    >
+                        ← Voltar para background
+                    </button>
+                </>
+            )}
+
+            {step === 5 && funcaoSelecionada && (
+                <>
                    <div className="space-y-4">
                         <h2 className="text-2xl font-bold">Resumo da Ficha</h2>
 
@@ -157,14 +246,13 @@ export default function CharacterWizard() {
                             <h3 className="text-xl font-semibold">Origem</h3>
                             {ficha.origem ? (
                             <ul className="list-disc list-inside">
-                                <li><strong>Planeta:</strong> {ficha.origem.planetaNome}</li>
-                                <li><strong>Bônus:</strong> {ficha.origem.planetaBonus}</li>
-                                <li><strong>Aptidão:</strong> {ficha.origem.planetaAptidao}</li>
-                                <li><strong>Vida:</strong> {ficha.origem.planetaVida}</li>
+                                <li><strong>Planeta:</strong> {ficha.origem.nome}</li>
+                                <li><strong>Bônus:</strong> {ficha.origem.bonus}</li>
+                                <li><strong>Aptidão:</strong> {ficha.origem.aptidoes}</li>
+                                <li><strong>Vida:</strong> {ficha.origem.vida}</li>
                                 <li><strong>Destino:</strong> {ficha.origem.limiteDestino}</li>
-                                {ficha.origem.talentoFixo && <li><strong>Talento Fixo:</strong> {ficha.origem.talentoFixo}</li>}
-                                {ficha.origem.talentosEscolhiveis && ficha.origem.talentosEscolhiveis.length > 0 && (
-                                <li><strong>Talentos Escolhíveis:</strong> {ficha.origem.talentosEscolhiveis.join(", ")}</li>
+                                {ficha.origem.talentos.length > 0 && (
+                                    <li><strong>Talentos:</strong> {ficha.origem.talentos.join(", ")}</li>
                                 )}
                                 {ficha.origem.efeitoNaArma && <li><strong>Efeito na Arma:</strong> {ficha.origem.efeitoNaArma}</li>}
                             </ul>
@@ -183,6 +271,48 @@ export default function CharacterWizard() {
                             </ul>
                             ) : (
                             <p className="text-red-600">Atributos não definidos.</p>
+                            )}
+                        </div>
+
+                        <div className="border rounded p-4 space-y-2">
+                            <h3 className="text-xl font-semibold">Background</h3>
+                            {ficha.background ? (
+                                <ul className="list-disc list-inside space-y-1">
+                                    <li><strong>Nome:</strong> {ficha.background.nome}</li>
+                                    <li><strong>Bônus:</strong> {ficha.background.bonus}</li>
+                                    <li>
+                                        <strong>Perícias:</strong> {ficha.background.pericias.length > 0 ? ficha.background.pericias.join(", ") : "Nenhuma"}
+                                    </li>
+                                    <li>
+                                        <strong>Talentos:</strong> {ficha.background.talentos.length > 0 ? ficha.background.talentos.join(", ") : "Nenhum"}
+                                    </li>
+                                    <li>
+                                        <strong>Equipamentos Iniciais:</strong> {ficha.background.equipamentos.length > 0 ? ficha.background.equipamentos.join(", ") : "Nenhum"}
+                                    </li>
+                                    <li>
+                                        <strong>Aptidões:</strong> {ficha.background.aptidoes.length > 0 ? ficha.background.aptidoes.join(", ") : "Nenhuma"}
+                                    </li>
+                                </ul>
+                            ) : (
+                                <p className="text-red-600">Background não definido.</p>
+                            )}
+                        </div>
+
+                        <div className="border rounded p-4 space-y-2">
+                            <h3 className="text-xl font-semibold">Função</h3>
+                            {ficha.funcao ? (
+                                <ul className="list-disc list-inside space-y-1">
+                                    <li><strong>Nome:</strong> {ficha.funcao.nome}</li>
+                                    <li><strong>Bônus:</strong> {ficha.funcao.bonus}</li>
+                                    <li>
+                                        <strong>Talentos:</strong> {ficha.funcao.talentos.length > 0 ? ficha.funcao.talentos.join(", ") : "Nenhum"}
+                                    </li>
+                                    <li>
+                                        <strong>Aptidões:</strong> {ficha.funcao.aptidoes.length > 0 ? ficha.funcao.aptidoes.join(", ") : "Nenhuma"}
+                                    </li>
+                                </ul>
+                            ) : (
+                                <p className="text-red-600">Background não definido.</p>
                             )}
                         </div>
 
