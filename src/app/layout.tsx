@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Uncial_Antiqua, Cinzel } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/providers/SessionProvider";
 
@@ -10,6 +10,18 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const uncial = Uncial_Antiqua({
+  weight: "400", 
+  variable: "--font-uncial",
+  subsets: ["latin"],
+});
+
+const cinzel = Cinzel({
+  weight: ["400", "700", "900"],
+  variable: "--font-cinzel",
   subsets: ["latin"],
 });
 
@@ -26,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${uncial.variable} ${cinzel.variable} antialiased font-cinzel`}
       >
         <AuthProvider>
           {children}

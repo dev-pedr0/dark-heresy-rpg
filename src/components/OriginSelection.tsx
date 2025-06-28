@@ -26,6 +26,7 @@ export default function OriginSelection({
 }: Props) {
     const [selected, setSelected] = useState<string | null>(null);
     const [vidaRolada, setVidaRolada] = useState<number | null>(null);
+    const [descricaoAberta, setDescricaoAberta] = useState<PlanetaDeOrigem | null>(null);
 
     const rolarVida = () => {
         if (originSelecionada) {
@@ -35,8 +36,36 @@ export default function OriginSelection({
         }
     };
 
+
     return (
         <div className="flex flex-col items-center">
+
+            {descricaoAberta && (
+                <div 
+                    style={{ backgroundColor: "var(--color-darkblack)", color: "var(--color-text)" }}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-70"
+                >
+                    <div className="p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto"
+                        style={{ backgroundColor: "var(--color-mediumbrown)" }}
+                    >
+                        <h3 className="text-xl font-bold mb-4 text-center"
+                            style={{ color: "var(--color-mustard)" }}
+                        >
+                            {descricaoAberta.nome}
+                        </h3>
+                        <p className="text-sm whitespace-pre-line text-justify">
+                        {descricaoAberta.descricao} 
+                        </p>
+                        <button
+                            onClick={() => setDescricaoAberta(null)}
+                            className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400 cursor-pointer"
+                        >
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            )};
+
             <h2 className="text-2xl mb-4 font-bold">Escolha seu Planeta de Origem</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                 {planetasDeOrigem.map((origin) => (
@@ -72,7 +101,16 @@ export default function OriginSelection({
                                         selected === origin.id ? "opacity-100" : "opacity-0 pointer-events-none"
                                     }`}
                                 >
-                                    <p>{origin.descricao}</p>
+                                    <div>
+                                        <p className="m-0 p-0">{origin.descricao.slice(0, 300)}...</p>
+                                        <button
+                                            onClick={() => setDescricaoAberta(origin)}
+                                            className="text-sm hover:underline font-extrabold cursor-pointer"
+                                        >
+                                            Ler mais
+                                        </button>
+                                    </div>
+
                                     <p style={{ color: "var(--color-mustard)" }} className="italic">
                                         {origin.bonus}
                                     </p>

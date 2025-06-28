@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 :root {
   --background: #171717;
@@ -13,12 +11,17 @@
   --color-text: #FFFFFF;
 }
 
+@theme {
+  --font-uncial: "Uncial Antiqua", serif;
+  --font-cinzel: "Cinzel", serif;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Lora';
+  font-family: var(--font-cinzel, "Cinzel", serif);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "a";
+  font-family: var(--font-uncial, "Uncial Antiqua", serif);
 }
