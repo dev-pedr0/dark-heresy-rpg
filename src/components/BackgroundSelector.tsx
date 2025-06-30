@@ -16,17 +16,21 @@ export default function BackgroundSelector({
   continuar,
 }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
-  const [escolhas, setEscolhas] = useState<{ [key: string]: string[] }>({});
+  const [escolhas, setEscolhas] = useState<{ [key: string]: string }>({});
 
   const bgSelecionado = backgrounds.find((bg) => bg.id === selected);
 
-  function setEscolhasParaGrupo(categoria: string, indice: number, opcoesSelecionadas: string[]) {
+  const setEscolhasParaGrupo = (
+    categoria: string,
+    indice: number,
+    opcaoSelecionada: string
+  ) => {
     const key = `${categoria}-${indice}`;
     setEscolhas((prev) => ({
       ...prev,
-      [key]: opcoesSelecionadas,
+      [key]: opcaoSelecionada,
     }));
-  }
+  };
 
   const isEscolhaCompleta = (bg: Background) => {
     const total =
@@ -52,13 +56,12 @@ export default function BackgroundSelector({
 
     return (
       <div className="mt-3">
-        <p className="font-semibold text-sm"
-        style={{ color: "var(--color-mustard)" }}>
+        <p className="font-semibold text-sm" style={{ color: "var(--color-mustard)" }}>
           {label}
         </p>
         {gruposDeEscolha.map((grupo, i) => {
           const key = `${categoria}-${i}`;
-          const selecionados = escolhas[key] || [];
+          const selecionado = escolhas[key] || ""; // Store single selection as string
 
           return (
             <div key={i} className="ml-2 mt-2">
@@ -67,14 +70,12 @@ export default function BackgroundSelector({
                 {grupo.map((opcao) => (
                   <label key={opcao} className="flex items-center space-x-2">
                     <input
-                      type="checkbox"
+                      type="radio"
+                      name={key}
                       value={opcao}
-                      checked={selecionados.includes(opcao)}
+                      checked={selecionado === opcao}
                       onChange={(e) => {
-                        const newSelecionados = e.target.checked
-                          ? [...selecionados, opcao]
-                          : selecionados.filter((item) => item !== opcao);
-                        setEscolhasParaGrupo(categoria, i, newSelecionados);
+                        setEscolhasParaGrupo(categoria, i, e.target.value); // Store single value
                       }}
                       className="h-4 w-4 text-yellow-500 border-gray-700 bg-[#2F1B0F] rounded"
                     />
@@ -156,6 +157,11 @@ export default function BackgroundSelector({
               width={300}
               height={180}
               className="w-100 h-80 object-fill rounded-t-xl mx-auto"
+              onClick={() => {
+                if (selected === bg.id) {
+                  setSelected(null);
+                }
+              }}
             />
             <div 
               className="p-3 text-center"
@@ -230,8 +236,11 @@ export default function BackgroundSelector({
       </div>
 
       {selected && bgSelecionado && isEscolhaCompleta(bgSelecionado) && (
-        <div className="mt-6 bg-[#2F1B0F] p-4 rounded-lg text-white w-full max-w-xl">
-          <h3 className="text-lg font-bold mb-2">
+        <div 
+          style={{ backgroundColor: "var(--color-mediumbrown)", color: "var(--color-text)" }}
+          className="mt-6 p-4 rounded-lg w-full max-w-xl flex flex-col justify-center items-center"
+        >
+          <h3 className="text-lg font-bold mb-2 text-center">
             Background Selecionado: {bgSelecionado.nome}
           </h3>
           <button
@@ -239,7 +248,8 @@ export default function BackgroundSelector({
               confirmarEscolhas();
               continuar();
             }}
-            className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400"
+            className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+            style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)"}}
           >
             Continuar para Função
           </button>

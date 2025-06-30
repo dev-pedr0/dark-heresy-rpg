@@ -37,6 +37,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     Exemplo de Planeta Selvagem – Gregorn
                     Gregorn é um mundo marcado pela violência. Tribos primitivas lutam entre si, contra a geografia instável e contra a megafauna predadora que os ameaça constantemente. Os nativos vestem peles espessas e usam capacetes feitos de ossos. Seus costumes são erráticos e difíceis de compreender, o que resultou na aniquilação de mais de uma expedição imperial.
                     Curiosamente, todo o povo do planeta demonstra um temor instintivo por armamentos de plasma, apesar de não haver registros históricos de tal tecnologia em Gregorn. A principal teoria é que associam essas armas às frequentes erupções vulcânicas que assolam os continentes — eventos tão destrutivos quanto uma rajada de plasma.
+                    
+                    Background Recomendado:
+                    Adeptus Arbites, Adeptus Astra Telepathica, Astra Militarum, Desgarrado.
                     `,
         modificadores: {
             positivo: ["Força", "Resistência"],
@@ -68,6 +71,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     Exemplo de Planeta Forja – Rhodin IV
                     Rhodin IV foi cedido aos Adeptus Mechanicus como recompensa por sua atuação decisiva durante uma invasão Ork no setor. Rico em prometium e diversos minérios valiosos, o planeta se mostrou ideal para a construção de forjas.
                     Antigamente coberto por florestas densas, Rhodin IV hoje é uma paisagem de metal, plastil e poluentes. Suas fábricas se estendem por centenas de quilômetros em largura e dezenas em altura, consumindo todos os recursos que a mineração intensiva consegue extrair. Os túneis escavados pelo Mechanicus são tão profundos e intricados que muitos habitantes passam a vida inteira sem jamais ver a superfície. Para esses trabalhadores das profundezas, o céu é apenas uma lenda, e o único deus é aquele que canta com voz metálica por entre os motores.
+                    
+                    Background Recomendado:
+                    Adeptus Administratum, Adeptus Arbites, Adeptus Mechanicus, Astra Militarum.
                     `,
         modificadores: {
             positivo: ["Inteligência", "Resistência"],
@@ -97,6 +103,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     Exemplo de Nobreza – O Palácio de Platina de Snope
                     No topo da principal metrópole do planeta Snope, ergue-se o Palácio de Platina — uma estrutura monumental feita de metais iridescentes, refletindo uma infinidade de cores e formas a depender do ângulo e da luz. É a morada das casas nobres do planeta, isoladas do restante do mundo por quilômetros de atmosfera tóxica e pântanos poluídos.
                     Lá, famílias aristocráticas vivem em esplendor absoluto, ignorando deliberadamente a miséria que assola o mundo abaixo. Cada casa dedica-se não à administração do planeta, mas à intriga, tramando a queda das rivais com rumores cuidadosamente plantados, chantagens veladas e alianças frágeis. Conflitos diretos são evitados, não por nobreza ou honra, mas pelo temor de que uma intervenção imperial possa lhes custar seus títulos. No alto do Palácio de Platina, a guerra é silenciosa, mas constante.
+                    
+                    Background Recomendado:
+                    Adeptus Administratum, Adeptus Arbites, Adeptus Astra Telepathica, Adeptus Ministorum.
                     `,
         modificadores: {
             positivo: ["Socialização", "Influência"],
@@ -123,6 +132,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     Exemplo de Mundo Colmeia – Hulee V
                     Hulee V é um planeta coberto por diversas cidades colmeia, sendo Krakex a maior e mais notória. No horizonte, ela mais se assemelha a uma montanha artificial do que a uma construção feita por mãos humanas. Seus níveis foram continuamente ampliados por gerações, alargando-se em todas as direções e consumindo vorazmente a paisagem ao redor. Bilhões de habitantes vivem ali, dedicando suas existências à transformação incessante de metais em blindagens para tanques, couraças e fortificações de guerra.
                     Para a maioria, a realidade se resume a alguns poucos quilômetros entre seu cubículo de descanso e o posto de trabalho — um ciclo ininterrupto entre máquina e multidão. Muitos jamais viram o céu, e alguns sequer conseguem imaginar um mundo fora dos túneis abafados, da luz artificial constante e do ar saturado que respiram. Ainda assim, para o Império, Hulee V é uma joia valiosa: um mundo que não para de produzir, com sua população servindo como o combustível humano da guerra eterna.
+                    
+                    Background Recomendado:
+                    Adeptus Arbites, Adeptus Mechanicus, Astra Militarum, Desgarrado.
                     `,
         modificadores: {
             positivo: ["Agilidade", "Percepção"],
@@ -151,6 +163,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     Exemplo de Planeta Religioso – Ossuar
                     Ossuar está localizado no sistema Pollom e é governado diretamente pelo Credo de Remembrança, uma seita do Ministorum dedicada à preservação das memórias e restos dos santos imperiais. O continente principal é quase inteiramente ocupado por uma estrutura monumental: um vasto mausoléu que abriga os corpos criogenicamente preservados de dezenas de santos que ajudaram a fundar o Setor Askellon.
                     A manutenção dessas câmaras é uma tarefa sagrada e incessante. Multidões trabalham sem parar, limpando, lubrificando, recitando cânticos e realizando rituais para manter a integridade dos sarcófagos. A mera ideia de que esses corpos possam se deteriorar é considerada uma heresia intolerável. A peregrinação até Ossuar é longa e árdua. Muitos fiéis gastam suas vidas inteiras tentando chegar ao planeta e, ao alcançá-lo, enfrentam as últimas provações: labirintos de catacumbas, atmosferas hostis e filas de semanas para poder simplesmente tocar uma lápide sagrada. Muitos morrem nessa travessia final, mas sua morte é celebrada como um sacrifício de fé — uma oferenda direta ao Imperador.
+                    
+                    Background Recomendado:
+                    Adeptus Administratum, Adeptus Arbites, Adeptus Ministorum, Astra Militarum.
                     `,
         modificadores: {
             positivo: ["Socialização", "Vontade"],
@@ -176,6 +191,9 @@ import type { Caracteristica } from "@/utils/caracteristicas";
                     
                     Estação Espacial de Exemplo – Echonis Augurio
                     Isolada das principais rotas estelares, Echonis Augurio foi outrora uma estação de pesquisa dos Adeptus Mechanicus. Centenas de tech-padres e servitors trabalharam por séculos em projetos obscuros — até o dia em que uma nave de suprimentos a encontrou completamente deserta. Nenhum sinal de combate, contaminação ou falha estrutural foi registrado. Desde então, a estação foi reutilizada como ponto de reabastecimento e comércio para mercadores e tripulações errantes. Milhares vivem hoje em seus corredores, mantendo-a operante, adaptando antigas seções e se perguntando — ainda que em sussurros — o que aconteceu com seus ocupantes originais.
+                    
+                    Background Recomendado:
+                    Adeptus Astra Telepathica, Adeptus Mechanicus, Adeptus Ministorum, Desgarrado.
                     `,
         modificadores: {
             positivo: ["Inteligência", "Vontade"],
