@@ -52,14 +52,17 @@ export default function BackgroundSelector({
 
     return (
       <div className="mt-3">
-        <p className="font-semibold text-sm text-yellow-300">{label}</p>
+        <p className="font-semibold text-sm"
+        style={{ color: "var(--color-mustard)" }}>
+          {label}
+        </p>
         {gruposDeEscolha.map((grupo, i) => {
           const key = `${categoria}-${i}`;
           const selecionados = escolhas[key] || [];
 
           return (
             <div key={i} className="ml-2 mt-2">
-              <p className="text-sm mb-1">Escolha um ou mais:</p>
+              <p className="text-sm mb-1">Escolha um:</p>
               <div className="flex flex-col space-y-1">
                 {grupo.map((opcao) => (
                   <label key={opcao} className="flex items-center space-x-2">
@@ -127,8 +130,8 @@ export default function BackgroundSelector({
         {backgrounds.map((bg) => (
           <div
             key={bg.id}
-            className={`rounded-xl overflow-hidden border-4 cursor-pointer transition duration-300 ${
-              selected === bg.id ? "border-yellow-500 scale-105" : "border-transparent"
+            className={`mt-4 rounded-xl overflow-hidden border-4 cursor-pointer transition duration-300 ${
+                selected === bg.id ? "border-yellow-500 scale-105" : "border-transparent"
             }`}
             onClick={() => {
               if (selected !== bg.id) {
@@ -152,51 +155,72 @@ export default function BackgroundSelector({
               alt={bg.nome}
               width={300}
               height={180}
-              className="w-40 h-40 object-cover rounded-xl mx-auto"
+              className="w-100 h-80 object-fill rounded-t-xl mx-auto"
             />
-            <div className="bg-[#835214] p-3 text-center text-white">
+            <div 
+              className="p-3 text-center"
+              style={{ backgroundColor: "var(--color-mediumbrown)" }}
+            >
               <h3 className="text-xl font-bold">{bg.nome}</h3>
               {selected === bg.id && (
                 <div className="mt-2 text-sm text-left space-y-2">
-                  <p>{bg.descricao}</p>
+                  <p className="text-center">{bg.descricao}</p>
+                  <p className="mt-2 text-yellow-400 italic text-center">
+                    {bg.bonus}
+                  </p>
+                  <div className="flex justify-end">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelected(null);
+                        setEscolhas({});
+                      }}
+                      className="text-sm hover:underline font-extrabold cursor-pointer"
+                    >
+                      Fechar
+                    </button>
+                  </div>
                   <div className="bg-[#2F1B0F] p-3 rounded-lg">
                     {bg.pericias.fixas && (
                       <p>
-                        <span className="font-semibold text-green-300">Perícias fixas:</span>{" "}
+                        <span className="font-semibold text-purple-500">Perícias:</span>{" "}
                         {bg.pericias.fixas.join(", ")}
                       </p>
                     )}
-                    {renderEscolhasSelect("Perícias de escolha", "pericias", bg.pericias.escolhas)}
 
                     {bg.talentos.fixos && (
                       <p className="mt-2">
-                        <span className="font-semibold text-blue-300">Talentos fixos:</span>{" "}
+                        <span className="font-semibold text-blue-500">Talentos:</span>{" "}
                         {bg.talentos.fixos.join(", ")}
                       </p>
                     )}
-                    {renderEscolhasSelect("Talentos de escolha", "talentos", bg.talentos.escolhas)}
 
                     {bg.equipamentos.fixos && (
                       <p className="mt-2">
-                        <span className="font-semibold text-orange-300">Equipamentos fixos:</span>{" "}
+                        <span className="font-semibold text-green-500">Equipamentos:</span>{" "}
                         {bg.equipamentos.fixos.join(", ")}
                       </p>
                     )}
+
+                    {bg.aptidoes.fixas && (
+                      <p className="mt-2">
+                        <span className="font-semibold text-orange-500">Aptidões:</span>{" "}
+                        {bg.aptidoes.fixas.join(", ")}
+                      </p>
+                    )}
+
+                    {renderEscolhasSelect("Perícias de escolha", "pericias", bg.pericias.escolhas)}
+
+                    {renderEscolhasSelect("Talentos de escolha", "talentos", bg.talentos.escolhas)}
+                    
                     {renderEscolhasSelect(
                       "Equipamentos de escolha",
                       "equipamentos",
                       bg.equipamentos.escolhas
                     )}
 
-                    {bg.aptidoes.fixas && (
-                      <p className="mt-2">
-                        <span className="font-semibold text-purple-300">Aptidões fixas:</span>{" "}
-                        {bg.aptidoes.fixas.join(", ")}
-                      </p>
-                    )}
                     {renderEscolhasSelect("Aptidões de escolha", "aptidoes", bg.aptidoes.escolhas)}
 
-                    <p className="mt-2 text-yellow-400 font-semibold">🎁 Bônus: {bg.bonus}</p>
                   </div>
                 </div>
               )}

@@ -179,6 +179,7 @@ export default function CharacterWizard() {
                     continuar={() => {
                         salvarOrigemFicha();
                         avancarPara(2);
+                        console.log("ORIGIN AT STEP 2:", origin);
                     }}
                 />
             )}
@@ -186,8 +187,8 @@ export default function CharacterWizard() {
             {step === 2 && origin && (
                 <>
                     <AtributoSelector
-                        positivos={origin.atributos_positivos || []}
-                        negativos={origin.atributos_negativos || []}
+                        positivos={origin.modificadores?.positivo || []}
+                        negativos={origin.modificadores?.negativo || []}
                         continuar={(atributosSelecionados) => {
                             salvarAtributosFicha(atributosSelecionados);
                             avancarPara(3);

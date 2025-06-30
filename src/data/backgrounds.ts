@@ -49,7 +49,7 @@ export const backgrounds: Background[] = [
                 ["Pistola-Las", "Metralhadora Automática"],
             ],
         },
-        bonus: "Mestre de Burocracia – o personagem considera a disponibilidade dos itens um nível mais disponível ou um menos mais difícil.",
+        bonus: "Mestre da Burocracia – o personagem considera a disponibilidade dos itens um nível mais disponível ou um menos mais difícil.",
         aptidoes: {
             fixas: ["Conhecimento", "Social"],
         }
@@ -77,7 +77,7 @@ export const backgrounds: Background[] = [
                 ["Carapaça Leve de Milicano", "Peitoral de Carapaça"],
             ],
         },
-        bonus: "A Face da Lei – o personagem pode re-rolar qualquer teste de Intimidar ou Interrogar e pode substituir o bônus de Vontade pelos graus de sucesso nesses testes caso seja aplicável.",
+        bonus: "A Face da Lei – o personagem pode re-rolar qualquer teste de Intimidação ou Interrogatório e pode substituir o bônus de Vontade pelos graus de sucesso nesses testes caso seja aplicável.",
         aptidoes: {
             fixas: ["Ofensiva", "Defensiva"],
         }

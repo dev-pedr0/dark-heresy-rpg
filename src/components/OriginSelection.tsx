@@ -58,13 +58,14 @@ export default function OriginSelection({
                         </p>
                         <button
                             onClick={() => setDescricaoAberta(null)}
-                            className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400 cursor-pointer"
+                            className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                            style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)" }}
                         >
                             Fechar
                         </button>
                     </div>
                 </div>
-            )};
+            )}
 
             <h2 className="text-2xl mb-4 font-bold">Escolha seu Planeta de Origem</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -120,31 +121,32 @@ export default function OriginSelection({
                                         className="mt-2 p-3 rounded-lg text-sm space-y-1"
                                     >
                                         <p>
-                                            <span className="font-semibold text-purple-400">
+                                            <span className="font-semibold text-purple-500">
                                                 Aptidão:
                                             </span>{" "}
                                             {origin.aptidoes}
                                         </p>
                                         <p>
-                                            <span className="font-semibold text-blue-400">
+                                            <span className="font-semibold text-blue-500">
                                                 Limite de Pontos de Destino:
                                             </span>{" "}
                                             {origin.limiteDestino}
                                         </p>
                                         <p>
-                                            <span className="font-semibold text-yellow-300">
+                                            <span className="font-semibold"
+                                            style={{ color: "var(--color-mustard)" }}>
                                                 Benção do Imperador:
                                             </span>{" "}
                                             {origin.bencao}+
                                         </p>
                                         <p>
-                                            <span className="font-semibold text-red-400">
+                                            <span className="font-semibold text-red-500">
                                                 Pontos de Vida:
                                             </span>{" "}
                                             {origin.vida}
                                         </p>
                                         <p>
-                                            <span className="font-semibold text-green-400">
+                                            <span className="font-semibold text-green-500">
                                                 🔺 Modificadores Positivos:
                                             </span>{" "}
                                             {origin.modificadores.positivo.join(", ")}
@@ -178,7 +180,8 @@ export default function OriginSelection({
                     {!bencaoTentada ? (
                         <button
                             onClick={tentarBencao}
-                            className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400"
+                            className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                            style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)"}}
                         >
                             Tentar Benção do Imperador (1d10)
                         </button>
@@ -197,12 +200,13 @@ export default function OriginSelection({
                     <div className="mt-6">
                         <button
                             onClick={rolarVida}
-                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-400"
+                            className="px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                            style={{ backgroundColor: "var(--color-darkred)", color: "var(--color-text)"}}
                         >
                             Rolar Pontos de Vida ({originSelecionada.vida})
                         </button>
                         {vidaRolada !== null && (
-                            <p className="mt-2 text-red-300 text-center">
+                            <p className="mt-2 text-red-400 text-center">
                                 ❤️ Pontos de Vida iniciais: <strong>{vidaRolada}</strong>
                             </p>
                         )}
@@ -210,7 +214,8 @@ export default function OriginSelection({
 
                     <button
                         onClick={continuar}
-                        className="mt-4 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400"
+                        className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                        style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)"}}
                     >
                         Continuar para Atributos
                     </button>
