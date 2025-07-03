@@ -17,6 +17,7 @@ export default function BackgroundSelector({
 }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [escolhas, setEscolhas] = useState<{ [key: string]: string }>({});
+  const [descricaoAberta, setDescricaoAberta] = useState<Background | null>(null);
 
   const bgSelecionado = backgrounds.find((bg) => bg.id === selected);
 
@@ -61,7 +62,7 @@ export default function BackgroundSelector({
         </p>
         {gruposDeEscolha.map((grupo, i) => {
           const key = `${categoria}-${i}`;
-          const selecionado = escolhas[key] || ""; // Store single selection as string
+          const selecionado = escolhas[key] || "";
 
           return (
             <div key={i} className="ml-2 mt-2">
@@ -75,7 +76,7 @@ export default function BackgroundSelector({
                       value={opcao}
                       checked={selecionado === opcao}
                       onChange={(e) => {
-                        setEscolhasParaGrupo(categoria, i, e.target.value); // Store single value
+                        setEscolhasParaGrupo(categoria, i, e.target.value);
                       }}
                       className="h-4 w-4 text-yellow-500 border-gray-700 bg-[#2F1B0F] rounded"
                     />
@@ -126,6 +127,34 @@ export default function BackgroundSelector({
 
   return (
     <div className="flex flex-col items-center">
+
+      {descricaoAberta && (
+        <div 
+            style={{ backgroundColor: "var(--color-darkblack)", color: "var(--color-text)" }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-70"
+        >
+            <div className="p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto"
+                style={{ backgroundColor: "var(--color-mediumbrown)" }}
+            >
+                <h3 className="text-xl font-bold mb-4 text-center"
+                    style={{ color: "var(--color-mustard)" }}
+                >
+                    {descricaoAberta.nome}
+                </h3>
+                <p className="text-sm whitespace-pre-line text-justify">
+                {descricaoAberta.descricao} 
+                </p>
+                <button
+                    onClick={() => setDescricaoAberta(null)}
+                    className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                    style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)" }}
+                >
+                    Fechar
+                </button>
+            </div>
+        </div>
+      )}
+
       <h2 className="text-2xl mb-4 font-bold">Escolha seu Background</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {backgrounds.map((bg) => (
@@ -170,7 +199,17 @@ export default function BackgroundSelector({
               <h3 className="text-xl font-bold">{bg.nome}</h3>
               {selected === bg.id && (
                 <div className="mt-2 text-sm text-left space-y-2">
-                  <p className="text-center">{bg.descricao}</p>
+                  <div className="flex flex-col">
+                      <p className="m-0 p-0 !text-center">
+                        {bg.descricao.slice(0, 300)}...
+                      </p>
+                      <button
+                          onClick={() => setDescricaoAberta(bg)}
+                          className="text-sm hover:underline font-extrabold cursor-pointer"
+                      >
+                          Ler mais
+                      </button>
+                  </div>
                   <p className="mt-2 text-yellow-400 italic text-center">
                     {bg.bonus}
                   </p>
