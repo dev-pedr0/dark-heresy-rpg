@@ -196,7 +196,8 @@ export default function CharacterWizard() {
                     />
                     <button
                         onClick={voltar}
-                        className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                        className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
+                        style={{ color: "var(--color-mustard)"}}
                     >
                         ← Voltar para origem
                     </button>
@@ -214,7 +215,8 @@ export default function CharacterWizard() {
                     />
                     <button
                         onClick={voltar}
-                        className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                        className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
+                        style={{ color: "var(--color-mustard)"}}
                     >
                         ← Voltar para atributos
                     </button>
@@ -231,7 +233,8 @@ export default function CharacterWizard() {
                     />
                     <button
                         onClick={voltar}
-                        className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                        className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
+                        style={{ color: "var(--color-mustard)"}}
                     >
                         ← Voltar para background
                     </button>
@@ -320,9 +323,10 @@ export default function CharacterWizard() {
                         <div className="flex justify-between pt-4">
                             <button
                                 onClick={voltar}
-                                className="mt-4 text-sm text-[#FCB02D] underline hover:text-yellow-400"
+                                className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
+                        style={{ color: "var(--color-mustard)"}}
                             >
-                                ← Voltar para background
+                                ← Voltar
                             </button>
                         </div>
                     </div>  

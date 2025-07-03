@@ -1,4 +1,4 @@
-import CharacterWizard from "@/components/CharacterWizard";
+import CharacterWizard from "@/components/character-creation/CharacterWizard";
 
 export default function CreateCharacterPage() {
     return (

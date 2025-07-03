@@ -65,8 +65,7 @@ export default function BackgroundSelector({
           const selecionado = escolhas[key] || "";
 
           return (
-            <div key={i} className="ml-2 mt-2">
-              <p className="text-sm mb-1">Escolha um:</p>
+            <div key={i} className="mt-3">
               <div className="flex flex-col space-y-1">
                 {grupo.map((opcao) => (
                   <label key={opcao} className="flex items-center space-x-2">
