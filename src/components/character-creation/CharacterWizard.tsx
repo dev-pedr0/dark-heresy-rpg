@@ -6,6 +6,7 @@ import AtributoSelector from "./AtributoSelector";
 import BackgroundSelector from "./BackgroundSelector";
 import FuncaoSelector from './FuncaoSelector';
 import { funcoes } from "@/data/funcoes";
+import FinalElements from "./FinalElements";
 
 export default function CharacterWizard() {
     const [step, setStep] = useState(1);
@@ -38,12 +39,24 @@ export default function CharacterWizard() {
             talentos: string[];
             equipamentos: string[];
             aptidoes: string[];
-            },
+        },
         funcao: null as null | {
             nome: string;
             bonus: string;
             talentos: string[];
             aptidoes: string[];
+        },
+        dadosFinais: {
+            aptidoes: [] as string[],
+            nomePersonagem: '',
+            nomeJogador: '',
+            aparencia: '',
+            historia: '',
+            genero: "masculino" as "masculino" | "feminino",
+            divinacao: null as null | {
+                texto: string;
+                efeito: string;
+            }
         }
     });
 
@@ -243,94 +256,28 @@ export default function CharacterWizard() {
 
             {step === 5 && funcaoSelecionada && (
                 <>
-                   <div className="space-y-4">
-                        <h2 className="text-2xl font-bold">Resumo da Ficha</h2>
-
-                        <div className="border rounded p-4 space-y-2">
-                            <h3 className="text-xl font-semibold">Origem</h3>
-                            {ficha.origem ? (
-                            <ul className="list-disc list-inside">
-                                <li><strong>Planeta:</strong> {ficha.origem.nome}</li>
-                                <li><strong>Bônus:</strong> {ficha.origem.bonus}</li>
-                                <li><strong>Aptidão:</strong> {ficha.origem.aptidoes}</li>
-                                <li><strong>Vida:</strong> {ficha.origem.vida}</li>
-                                <li><strong>Destino:</strong> {ficha.origem.limiteDestino}</li>
-                                {ficha.origem.talentos.length > 0 && (
-                                    <li><strong>Talentos:</strong> {ficha.origem.talentos.join(", ")}</li>
-                                )}
-                                {ficha.origem.efeitoNaArma && <li><strong>Efeito na Arma:</strong> {ficha.origem.efeitoNaArma}</li>}
-                            </ul>
-                            ) : (
-                            <p className="text-red-600">Origem não definida.</p>
-                            )}
-                        </div>
-
-                        <div className="border rounded p-4 space-y-2">
-                            <h3 className="text-xl font-semibold">Atributos</h3>
-                            {ficha.atributos ? (
-                            <ul className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                                {Object.entries(ficha.atributos).map(([key, value]) => (
-                                <li key={key}><strong>{key}:</strong> {value}</li>
-                                ))}
-                            </ul>
-                            ) : (
-                            <p className="text-red-600">Atributos não definidos.</p>
-                            )}
-                        </div>
-
-                        <div className="border rounded p-4 space-y-2">
-                            <h3 className="text-xl font-semibold">Background</h3>
-                            {ficha.background ? (
-                                <ul className="list-disc list-inside space-y-1">
-                                    <li><strong>Nome:</strong> {ficha.background.nome}</li>
-                                    <li><strong>Bônus:</strong> {ficha.background.bonus}</li>
-                                    <li>
-                                        <strong>Perícias:</strong> {ficha.background.pericias.length > 0 ? ficha.background.pericias.join(", ") : "Nenhuma"}
-                                    </li>
-                                    <li>
-                                        <strong>Talentos:</strong> {ficha.background.talentos.length > 0 ? ficha.background.talentos.join(", ") : "Nenhum"}
-                                    </li>
-                                    <li>
-                                        <strong>Equipamentos Iniciais:</strong> {ficha.background.equipamentos.length > 0 ? ficha.background.equipamentos.join(", ") : "Nenhum"}
-                                    </li>
-                                    <li>
-                                        <strong>Aptidões:</strong> {ficha.background.aptidoes.length > 0 ? ficha.background.aptidoes.join(", ") : "Nenhuma"}
-                                    </li>
-                                </ul>
-                            ) : (
-                                <p className="text-red-600">Background não definido.</p>
-                            )}
-                        </div>
-
-                        <div className="border rounded p-4 space-y-2">
-                            <h3 className="text-xl font-semibold">Função</h3>
-                            {ficha.funcao ? (
-                                <ul className="list-disc list-inside space-y-1">
-                                    <li><strong>Nome:</strong> {ficha.funcao.nome}</li>
-                                    <li><strong>Bônus:</strong> {ficha.funcao.bonus}</li>
-                                    <li>
-                                        <strong>Talentos:</strong> {ficha.funcao.talentos.length > 0 ? ficha.funcao.talentos.join(", ") : "Nenhum"}
-                                    </li>
-                                    <li>
-                                        <strong>Aptidões:</strong> {ficha.funcao.aptidoes.length > 0 ? ficha.funcao.aptidoes.join(", ") : "Nenhuma"}
-                                    </li>
-                                </ul>
-                            ) : (
-                                <p className="text-red-600">Background não definido.</p>
-                            )}
-                        </div>
-
-                        <div className="flex justify-between pt-4">
-                            <button
-                                onClick={voltar}
-                                className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
+                    <FinalElements
+                        aptidoesOrigem={ficha.origem?.aptidoes ?? ""}
+                        aptidoesBackground={ficha.background?.aptidoes ?? []}
+                        aptidoesFuncao={ficha.funcao?.aptidoes ?? []}
+                        onFinalizar={(dadosFinais) => {
+                            setFicha((prev) => ({
+                                ...prev,
+                                dadosFinais
+                            }));
+                            avancarPara(6);
+                        }}
+                    />
+                    <button
+                        onClick={voltar}
+                        className="mt-4 text-sm underline hover:opacity-80 cursor-pointer"
                         style={{ color: "var(--color-mustard)"}}
-                            >
-                                ← Voltar
-                            </button>
-                        </div>
-                    </div>  
+                    >
+                        ← Voltar para funções
+                    </button>
                 </>
+
+                    
             )}
         </div>
     );

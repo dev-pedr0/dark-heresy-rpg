@@ -81,7 +81,7 @@ export const backgrounds: Background[] = [
                     Um dos vários precintos do Adeptus Arbites dentro desta imensa cidade-colmeia, Delta é cuidadosamente escondido e ainda mais fortificado que o normal. Em seu interior encontram-se as armas mais poderosas, como canhões las móveis e bombas de plasma, além de um pequeno estoque de granadas arqueo-tech inestimáveis — normalmente desnecessárias, a menos que a colmeia enfrente uma insurreição ou algo pior. Como nenhum dos árbitros ali designados é nativo do planeta, muito menos dessa colmeia, alguns levam tempo para se acostumar às condições superlotadas. Nenhum deles, porém, ousa baixar a guarda por um instante, sabendo das armas e outros segredos armazenados atrás das pesadas portas de plastil de seu precinto. Essa fortaleza-precinto, assim como outra cuidadosamente oculta dentro da colmeia que abriga seu coro astropático, representa a última linha de defesa caso Desoleum comece a cair.
                     
                     Funções Recomendadas:
-                    Assassino, Rufião, Buscador, Guerreiro.
+                    Assassino, Mercenário, Buscador, Guerreiro.
                     `,
         pericias: {
             fixas: ["Atenção", "Conhecimento Comum (Adeptus Arbites)", "Conhecimento Comum (Submundo)", "Intimidação", "Intuição"],
@@ -245,7 +245,7 @@ export const backgrounds: Background[] = [
                     Parte do batalhão das Facas de Sangue de hrax, esta unidade se especializa em infiltração e destruição, tendo rompido fortificações consideradas intransponíveis e paralisado formações blindadas. Como em todas as forças hraxianas, os rifles las da unidade são equipados com serras elétricas para combate corpo a corpo. Acompanhados por tecnh-padres enginseers, os esquadrões de demolição se aventuram profundamente atrás das linhas inimigas para plantar explosivos e minas, e o 33º é bem conhecido por sempre encontrar unidades inimigas para utilizar suas serras elétricas silenciadas.
                     
                     Funções Recomendadas:
-                    Assassino, Rufião, Hierofante, Guerreiro.
+                    Assassino, Mercenário, Hierofante, Guerreiro.
                     `,
         pericias: {
             fixas: ["Atletismo, Comando, Conhecimento Comum (Astra Militarum)", "Navegação (Superfície)"],
@@ -283,7 +283,7 @@ export const backgrounds: Background[] = [
                     Enquanto o grande consórcio comercial de Askellon mantém um controle sufocante sobre o comércio nos asteroides que compõem o porto, a liga pálida atua pelo cinturão como uma das principais operações de contrabando da região. Formada por comerciantes fracassados e, às vezes, até por mercadores nobres que perderam sua fortuna em expedições catastróficas ou ataques piratas, é uma organização relativamente recente, mas em rápido crescimento. À medida que a Liga começa a traficar relíquias xenos e outros tesouros proibidos, ela fez inimigos entre outros grupos ilegítimos, como o comércio negro de Desoleum.
                     
                     Funções Recomendadas:
-                    Assassino, Rufião, Buscador.
+                    Assassino, Mercenário, Buscador.
                     `,
         pericias: {
             fixas: ["Conhecimento Comum (Submundo)", "Enganação", "Esquiva", "Furtividade"],

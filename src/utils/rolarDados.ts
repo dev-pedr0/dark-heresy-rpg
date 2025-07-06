@@ -1,3 +1,5 @@
+import { DIVINACOES } from "./tabelas";
+
 export function rolarD10(): number {
   return Math.floor(Math.random() * 10) + 1;
 }
@@ -21,4 +23,22 @@ export function rolarExpressaoDeVida(expressao: string): number {
   const rolagem = Math.floor(Math.random() * dadoMax) + 1;
 
   return base + rolagem;
+}
+
+export function rolarD100(): number {
+  return Math.floor(Math.random() * 100) + 1;
+}
+
+export function sortearDivinacaoAleatoria() {
+  const roll = rolarD100();
+  const resultado = DIVINACOES.find((d) => d.roll.includes(roll));
+
+  if (!resultado) {
+    throw new Error(`Nenhuma divinação encontrada para o roll ${roll}`);
+  }
+
+  return {
+    ...resultado,
+    roll: [roll],
+  };
 }

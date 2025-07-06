@@ -11,6 +11,7 @@ export default function FuncaoSelector({ onNext }: Props) {
   const [talentoSelecionado, setTalentoSelecionado] = useState<string[]>([]);
   const [aptidoesSelecionadas, setAptidoesSelecionadas] = useState<string[]>([]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [descricaoAberta, setDescricaoAberta] = useState<Funcao | null>(null);
 
   const handleCardClick = (funcao: Funcao) => {
     if (selecionada?.id !== funcao.id) {
@@ -92,6 +93,34 @@ export default function FuncaoSelector({ onNext }: Props) {
 
   return (
     <div className="flex flex-col items-center">
+
+      {descricaoAberta && (
+        <div 
+            style={{ backgroundColor: "var(--color-darkblack)", color: "var(--color-text)" }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-70"
+        >
+            <div className="p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto"
+                style={{ backgroundColor: "var(--color-mediumbrown)" }}
+            >
+                <h3 className="text-xl font-bold mb-4 text-center"
+                    style={{ color: "var(--color-mustard)" }}
+                >
+                    {descricaoAberta.nome}
+                </h3>
+                <p className="text-sm whitespace-pre-line text-justify">
+                {descricaoAberta.descricao} 
+                </p>
+                <button
+                    onClick={() => setDescricaoAberta(null)}
+                    className="mt-4 px-4 py-2 rounded hover:opacity-80 cursor-pointer"
+                    style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)" }}
+                >
+                    Fechar
+                </button>
+            </div>
+        </div>
+      )}
+
       <h2 className="text-2xl mb-6 font-bold">Escolha sua Função</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {funcoes.map((funcao) => {
@@ -118,8 +147,18 @@ export default function FuncaoSelector({ onNext }: Props) {
                 className="p-3 text-center">
                 <h3 className="text-xl font-bold">{funcao.nome}</h3>
                 {isExpanded && (
-                  <div className="mt-2 space-y-2 text-sm transition-opacity duration-300">
-                    <p>{funcao.descricao}</p>
+                    <div className="mt-2 space-y-2 text-sm transition-opacity duration-300">
+                      <div className="flex flex-col">
+                        <p className="m-0 p-0 !text-center">
+                          {funcao.descricao.slice(0, 300)}...
+                        </p>
+                        <button
+                            onClick={() => setDescricaoAberta(funcao)}
+                            className="text-sm hover:underline font-extrabold cursor-pointer"
+                        >
+                            Ler mais
+                        </button>
+                    </div>
                     <p className="mt-2 text-yellow-400 italic text-center">{funcao.bonus}</p>
                     <div className="bg-[#2F1B0F] p-3 rounded-lg text-left">
                       {funcao.aptidoes?.fixas && funcao.aptidoes.fixas.length > 0 && (

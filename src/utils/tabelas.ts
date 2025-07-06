@@ -1,0 +1,173 @@
+export const NOMES_MASCULINOS = [
+  ["Arz", "Aaz", "Azararch", "Alaric", "Able"],
+  ["Barik", "Canto", "Baranoth", "Barbosa", "Bones"],
+  ["Carm", "Darrial", "Castess", "Caradoc", "Cutter"],
+  ["Farn", "Enoch", "Davrus", "Draco", "Dakka"],
+  ["Garak", "Festus", "Erioch", "Eizen", "Dokk"],
+  ["Horst", "Gaius", "Galliach", "Ferris", "Ergs"],
+  ["Imk", "Harlon", "Harthos", "Grendal", "Fanz"],
+  ["Jart", "Irlven", "Icharus", "Harlocke", "Flair"],
+  ["Kulem", "Jaspar", "Karpath", "Jenquin", "Garrit"],
+  ["Larl", "Killian", "Lothos", "Karlos", "Hons"],
+  ["Mok", "Lazarus", "Marius", "Lemant", "Ills"],
+  ["Narl", "Mordicai", "Noctine", "Magnus", "Jaq"],
+  ["Oort", "Nicodemus", "Octavius", "Naveen", "Lax"],
+  ["Pak", "Quinten", "Partheos", "Oscarl", "Meng"],
+  ["Ragaa", "Rhaban", "Quellus", "Perrin", "Nast"],
+  ["Salc", "Silvanto", "Ramalies", "Romulus", "Reddin"],
+  ["Tarl", "Titus", "Severan", "Sabanth", "Scab"],
+  ["Volc", "Uriah", "Tyruss", "Urial", "Shiv"],
+  ["Yarl", "Xerxes", "Ventium", "Wolfe", "Tranq"],
+  ["Zel", "Zariel", "Zarath", "Zarkov", "Wurm"],
+];
+
+export const NOMES_FEMININOS = [
+  ["Arda", "Acadi", "Araleen", "Aennisse", "Alta"],
+  ["Cil", "Balida", "Castella", "Bianca", "Blue"],
+  ["Dara", "Cassa", "Elleantra", "Drusilla", "Echo"],
+  ["Elphet", "Darial", "Fausta", "Eos", "Fatal"],
+  ["Frakka", "Frennine", "Flavia", "Florenza", "Flame"],
+  ["Garma", "Galatia", "Heras", "Genevieve", "Gamma"],
+  ["Halli", "Hannette", "Irissa", "Hannette", "Grace"],
+  ["Ing", "Jinzia", "Jucinda", "Jocasta", "Jaine"],
+  ["Julla", "Karroleen", "Lucindia", "Katarina", "Lho"],
+  ["Kelle", "Liri", "Mycandra", "Lethe", "Mini"],
+  ["Merra", "Magdala", "Novianna", "Miranda", "Nerva"],
+  ["Nimm", "Narcia", "Nuella", "Pollonia", "Newt"],
+  ["Nulla", "Pennette", "Palanza", "Rosalind", "Pris"],
+  ["Paz", "Quineel", "Praenta", "Severine", "Red"],
+  ["Russa", "Rhia", "Regia", "Tessera", "Steel"],
+  ["Sulle", "Sesselie", "Scythia", "Tzarelle", "Starr"],
+  ["Thima", "Thesse", "Temetria", "Urania", "Tanda"],
+  ["Vas", "Uri", "Thallia", "Verity", "Trix"],
+  ["Yanne", "Xandra", "Venria", "Wynnif", "Xina"],
+  ["Zanna", "Zadori", "Yemmise", "Yasta", "Zedda"],
+];
+
+export const DIVINACOES = [
+    {
+        roll: [1],
+        texto: "Pureza por fora, corrupção por dentro.",
+        efeito: "Role uma vez na tabela de Malignancias e aplique o resultado",
+    },
+    {
+        roll: [2, 3, 4, 5],
+        texto: "Confie em seus medos.",
+        efeito: "Aumente sua percepção em 5, e ganhe uma Fobia.",
+    },
+    {
+        roll: [6, 7, 8, 9],
+        texto: "Pessoas precisam morrer para a humanidade prosperar.",
+        efeito: "Ganha o talento Saturado. Se já tiver ganha +2 em Vontade.",
+    },
+    {
+        roll: [10, 11, 12, 13],
+        texto: "A dor dos tiros é extase comparada a condenação eterna",
+        efeito: "Ganha o talento Saturado. Se já tiver ganha +2 em Vontade.",
+    },
+    {
+        roll: [14, 15, 16, 17],
+        texto: "Seja a benção de aliados e maldição de inimigos",
+        efeito: "Ganha o talento Ódio (Escolha Um). Se já tiver ganha +2 em Força.",
+    },
+    {
+        roll: [18, 19, 20, 21],
+        texto: "O sábio aprende com a morte dos outros.",
+        efeito: "Ganha +3 em Agilidade e Inteligência. Reduz -3 de Habilidade de Combte e Habilidade Balística.",
+    },
+    {
+        roll: [22, 23, 24, 25],
+        texto: "Mate o alien antes que fale mentiras.",
+        efeito: "Ganha o talento Reação Rápida. Se já tiver ganha +2 em Agilidade.",
+    },
+    {
+        roll: [26, 27, 28, 29],
+        texto: "A verdade é subjetiva.",
+        efeito: "Ganha +3 em Percepção. A cada sessão, a primeira vez que ganhar corrupção ele ganha o valor +1.",
+    },
+    {
+        roll: [30, 31, 32, 33],
+        texto: "Pensamentos levam a heresia.",
+        efeito: "Reduz em -3 sua Inteligência. A cada sessão, a primeira vez que ganhar corrupção, ele ganha o valor -1.",
+    },
+    {
+        roll: [34, 35, 36, 37, 38],
+        texto: "Toda heresia possui retaliação.",
+        efeito: "Ganha +3 em Socialização ou Força e reduz em -3 sua Resistência ou Vontade",
+    },
+    {
+        roll: [39, 40, 41, 42, 43],
+        texto: "Uma mente sem propósito encontra lugares sombrios.",
+        efeito: "Ao ganhar uma Desordem Mental, pode escolher ganhar uma nova oao invés de aumentar a severidade de uma já existente.",
+    },
+    {
+        roll: [44, 45, 46, 47, 48, 49],
+        texto: "Se vale a pena trabalhar por algo, vale a pena morrer por isso.",
+        efeito: "Ganha +3 em Resistência ou Vontade. Reduz em -3 Socialização ou Força.",
+    },
+    {
+        roll: [50, 51, 52, 53, 54],
+        texto: "Visões sombrias se escondem no coração.",
+        efeito: "Quando precisar rolar na tabela de Malignancias o personagem pode escolher qualquer resultado ao invés de rolar.",
+    },
+    {
+        roll: [55, 56, 57, 58, 59],
+        texto: "Violência resolve tudo.",
+        efeito: "Ganha +3 em Habilidade de Combate ou Habilidade Balística. Reduz em -3 Agilidade ou Inteligência.",
+    },
+    {
+        roll: [60, 61, 62, 63],
+        texto: "Ignorancia é uma forma de sabedoria.",
+        efeito: "Reduz em -3 sua Inteligência. Na primeira vez que ganhar insanidade por sessão, ganha o valor -1.",
+    },
+    {
+        roll: [64, 65, 66, 67],
+        texto: "Apenas os insanos são fortes para prosperar.",
+        efeito: "Ganha +3 em Vontade. Na primeira vez que ganhar insanidade por sessão, ganha o valor +1.",
+    },
+    {
+        roll: [68, 69, 70, 71],
+        texto: "Uma mente desconfiada é uma mente saudável.",
+        efeito: "Ganha +2 em Percepção. Pode sem re-rolar 1 vez um teste de Atenção para não ser surpreendido.",
+    },
+    {
+        roll: [72, 73, 74, 75],
+        texto: "Sofrimento é um instrutor incansável.",
+        efeito: "Reduz em -3 o valor de resistência. Durante cada sessão, a primeira vez que sofrer dano, o personagem ganha +20 no primeiro teste que fizer até o final do próximo turno dele.",
+    },
+    {
+        roll: [76, 77, 78, 79],
+        texto: "O único medo verdadeiro é morrer sem ter cumprido seu dever.",
+        efeito: "Ganha o talento Resistente (Frio, Fogo ou Medo). Caso já possua o talento ganha +2 em Resistência.",
+    },
+    {
+        roll: [80, 81, 82, 83],
+        texto: "Apenas na morte é que o dever termina.",
+        efeito: "Durante cada sessão, a primeira vez que o personagem ganhar  Fadiga, ele ganha o valor de fadiga -1.",
+    },
+    {
+        roll: [84, 85, 86, 87],
+        texto: "Inocencia é uma ilusão.",
+        efeito: "Ganha o talento Intuição Precisa. Se já tiver o talento ganha +2 em Inteligência.",
+    },
+    {
+        roll: [88, 89, 90, 91],
+        texto: "Guerrear é humano.",
+        efeito: "Ganha a perícia Esquiva. Se já tiver a perícia ganha +2 em Agilidade.",
+    },
+    {
+        roll: [92, 93, 94, 95],
+        texto: "Não há substituto para zelo.",
+        efeito: "Ganha o talento Pistas das Multidões. Se já tiver a perícia ganha +2 em Socialização.",
+    },
+    {
+        roll: [96, 97, 98, 99],
+        texto: "Até aquele sem nada pode oferecer sua vida.",
+        efeito: "Ao usar Pontos de Destino para não morrer, role 1d10. Em um valor 10 ele não perde os pontos gastos.",
+    },
+    {
+        roll: [100],
+        texto: "Não me pergunte proque eu sirvo. Apenas pergunte como.",
+        efeito: "Aumenta o Limite de Pontos de Destino em +1.",
+    },
+];
