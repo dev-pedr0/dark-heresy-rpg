@@ -16,7 +16,7 @@
 
 body {
   background: var(--color-darkblack);
-  color: var(--color-tex);
+  color: var(--color-text);
   font-family: var(--font-cinzel, "Cinzel", serif);
 }
 

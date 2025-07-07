@@ -1,6 +1,7 @@
 import { sortearDivinacaoAleatoria } from "@/utils/rolarDados";
-import { NOMES_FEMININOS, NOMES_MASCULINOS } from "@/utils/tabelas";
-import { useMemo, useState } from "react";
+import { NOMES_FEMININOS, NOMES_MASCULINOS, TABELA_DIVINACOES } from "@/utils/tabelas";
+import { useSession } from "next-auth/react";
+import { useEffect, useMemo, useState } from "react";
 
 type Props = {
   aptidoesOrigem: string;
@@ -90,6 +91,8 @@ export default function FinalElements({
         efeito: string;
         roll: number[];
     } | null>(null);
+
+    const [mostrarTabelaDivinacao, setMostrarTabelaDivinacao] = useState(true);
     
     const sortearDivinacao = () => {
         try {
@@ -100,7 +103,20 @@ export default function FinalElements({
         }
     };
 
-    const [nomeJogador, setNomeJogador] = useState("Jogador Exemplo");
+    function formatRoll(roll: number[] | number): string {
+        if (typeof roll === "number") return roll.toString();
+        if (roll.length === 0) return "";
+
+        const sorted = [...roll].sort((a, b) => a - b);
+        const start = sorted[0];
+        const end = sorted[sorted.length - 1];
+
+        const isRange = sorted.every((n, i) => i === 0 || n === sorted[i - 1] + 1);
+
+        return isRange ? `${start}–${end}` : sorted.join(", ");
+    }
+
+    const [nomeJogador, setNomeJogador] = useState("");
     const [nomePersonagem, setNomePersonagem] = useState("");
     const [genero, setGenero] = useState<"masculino" | "feminino">("masculino");
     const [aparencia, setAparencia] = useState("");
@@ -112,11 +128,19 @@ export default function FinalElements({
         setNomePersonagem(aleatorio);
     };
 
+    const { data: session } = useSession();
+
+    useEffect(() => {
+        if (session?.user?.name) {
+            setNomeJogador(session.user.name);
+        }
+    }, [session]);
+
     return (
-        <div className="max-w-xl mx-auto p-6 rounded-lg"
+        <div className="max-w-3xl mx-auto p-6 rounded-lg"
             style={{ backgroundColor: "var(--color-mediumbrown)" }}
         >
-            <h2 className="text-2xl font-bold mb-4 text-center">Ultimas Etapas</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">Apitidões Repetidas</h2>
 
             {apitidoesRepetidas.length > 0 ? (
                 <>
@@ -174,16 +198,48 @@ export default function FinalElements({
                 </p>
             )}
 
-            <div className="my-6 p-4 rounded-lg flex flex-col" style={{ backgroundColor: "var(--color-darkbrown)" }}>
+            <div className="my-6 p-4 rounded-lg flex flex-col items-center" style={{ backgroundColor: "var(--color-darkbrown)" }}>
                 <h3 className="text-2xl font-bold mb-2 text-center">Divinação</h3>
 
+                <button
+                    onClick={() => setMostrarTabelaDivinacao(!mostrarTabelaDivinacao)}
+                    className="mb-1 mt-4 px-1 py-1 rounded hover:opacity-80 cursor-pointer"
+                    style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)"}}
+                    >
+                    {mostrarTabelaDivinacao ? "Ocultar Tabela de Divinação" : "Mostrar Tabela de Divinação"}
+                </button>
+
+                {mostrarTabelaDivinacao && (
+                    <table className="w-full text-sm text-white border"
+                        style={{ borderColor: "var(--color-darkred)"}}>
+                        <thead className="bg-yellow-900" style={{ color: "var(--color-mustard)"}}>
+                            <tr>
+                                <th className="px-4 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>d100</th>
+                                <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Profecia</th>
+                                <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Efeito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {TABELA_DIVINACOES.map((item, i) => (
+                            <tr key={i} className="odd:bg-[#2a1a14] even:bg-[#3a251d]">
+                                <td className="px-2 py-1 border text-center" style={{ borderColor: "var(--color-darkred)"}}>
+                                    {formatRoll(item.roll)}
+                                </td>
+                                <td className="px-2 py-1 border italic" style={{ borderColor: "var(--color-darkred)"}}>{item.texto}</td>
+                                <td className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>{item.efeito}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+                
                 {!divinacao ? (
                     <button
                         onClick={sortearDivinacao}
-                        className="px-3 py-3 rounded hover:opacity-80 cursor-pointer"
+                        className="px-3 py-3 mt-3 max-w-100 rounded hover:opacity-80 cursor-pointer"
                         style={{ backgroundColor: "var(--color-mustard)", color: "var(--color-text)"}}
                     >
-                    Sortear Divinação
+                        Sortear Divinação
                     </button>
                 ) : (
                     <div className="text-white text-sm space-y-2">
@@ -200,6 +256,7 @@ export default function FinalElements({
             </div>
 
             <div className="space-y-4 mb-6">
+                <h3 className="text-2xl font-bold mb-2 text-center">Dados Finais</h3>
                 <div>
                     <label className="block text-white font-semibold">Nome do Jogador</label>
                     <input
@@ -240,6 +297,35 @@ export default function FinalElements({
                     {genero === "masculino" ? "Masculino" : "Feminino"}
                     </button>
                 </div>
+
+                {genero && (
+                    <table className="w-full text-sm text-white border mt-6" style={{ borderColor: "var(--color-darkred)"}}>
+                        <thead className="bg-yellow-900" style={{ color: "var(--color-mustard)"}}>
+                        <tr>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>d100</th>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Primitivo</th>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Baixo Gótico</th>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Alto Gótico</th>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Arcaico</th>
+                            <th className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>Informal</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {(genero === "masculino" ? NOMES_MASCULINOS : NOMES_FEMININOS).map((linha, i) => (
+                            <tr key={i} className="odd:bg-[#2a1a14] even:bg-[#3a251d]">
+                            <td className="px-2 py-1 border text-center" style={{ borderColor: "var(--color-darkred)"}}>{String(i * 5 + 1).padStart(2, '0')}-{(i + 1) * 5}</td>
+                            {linha.map((nome, j) => (
+                                <td
+                                key={j}
+                                className="px-2 py-1 border" style={{ borderColor: "var(--color-darkred)"}}>
+                                {nome}
+                                </td>
+                            ))}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                )}
 
                 <div>
                     <label className="block text-white font-semibold mb-1">Aparência</label>

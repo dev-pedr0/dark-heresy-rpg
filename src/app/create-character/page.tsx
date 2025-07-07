@@ -2,8 +2,8 @@ import CharacterWizard from "@/components/character-creation/CharacterWizard";
 
 export default function CreateCharacterPage() {
     return (
-        <main className="min-h-screen bg-[#140D0B] text-white py-10">
-            <h1 className="text-4xl font-bold text-center text-[#FCB02D] mb-8">
+        <main className="min-h-screen py-10" style={{ backgroundColor: "var(--color-darkblack)", color: "var(--color-text)"}}>
+            <h1 className="text-4xl font-bold text-center mb-8" style={{ color: "var(--color-mustard)"}}>
                 Criação de Personagem
             </h1>
             <CharacterWizard />

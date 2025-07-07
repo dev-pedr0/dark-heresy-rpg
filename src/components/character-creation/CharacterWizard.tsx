@@ -5,8 +5,8 @@ import OriginSelection from "./OriginSelection";
 import AtributoSelector from "./AtributoSelector";
 import BackgroundSelector from "./BackgroundSelector";
 import FuncaoSelector from './FuncaoSelector';
-import { funcoes } from "@/data/funcoes";
 import FinalElements from "./FinalElements";
+import { useRouter } from "next/navigation";
 
 export default function CharacterWizard() {
     const [step, setStep] = useState(1);
@@ -18,6 +18,7 @@ export default function CharacterWizard() {
     const [atributos, setAtributos] = useState<{ [atributo: string]: number } | null>(null);
     const [backgroundSelecionado, setBackgroundSelecionado] = useState<any>(null);
     const [funcaoSelecionada, setFuncaoSelecionada] = useState<any>(null);
+    const router = useRouter();
 
     const [ficha, setFicha] = useState({
         origem: null as null | {
@@ -261,11 +262,15 @@ export default function CharacterWizard() {
                         aptidoesBackground={ficha.background?.aptidoes ?? []}
                         aptidoesFuncao={ficha.funcao?.aptidoes ?? []}
                         onFinalizar={(dadosFinais) => {
-                            setFicha((prev) => ({
-                                ...prev,
+                            const fichaAtualizada = {
+                                ...ficha,
                                 dadosFinais
-                            }));
-                            avancarPara(6);
+                            };
+
+                            setFicha(fichaAtualizada);
+
+                            localStorage.setItem("ficha-personagem-temp", JSON.stringify(fichaAtualizada));
+                            router.push("/ficha");
                         }}
                     />
                     <button

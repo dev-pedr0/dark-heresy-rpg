@@ -1,4 +1,5 @@
-import { DIVINACOES } from "./tabelas";
+import { TABELA_DIVINACOES } from "./tabelas";
+
 
 export function rolarD10(): number {
   return Math.floor(Math.random() * 10) + 1;
@@ -31,7 +32,7 @@ export function rolarD100(): number {
 
 export function sortearDivinacaoAleatoria() {
   const roll = rolarD100();
-  const resultado = DIVINACOES.find((d) => d.roll.includes(roll));
+  const resultado = TABELA_DIVINACOES.find((d) => d.roll.includes(roll));
 
   if (!resultado) {
     throw new Error(`Nenhuma divinação encontrada para o roll ${roll}`);

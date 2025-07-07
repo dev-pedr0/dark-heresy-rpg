@@ -44,7 +44,7 @@ export const NOMES_FEMININOS = [
   ["Zanna", "Zadori", "Yemmise", "Yasta", "Zedda"],
 ];
 
-export const DIVINACOES = [
+export const TABELA_DIVINACOES = [
     {
         roll: [1],
         texto: "Pureza por fora, corrupção por dentro.",
