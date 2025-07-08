@@ -234,3 +234,127 @@ export const PERICIAS: Pericia[] = [
         Especialista: true,
     },
 ];
+
+export const PERICIAS_COM_ESPECIALIZACOES: Record<string, string[]> = {
+    "Conhecimento Comum": [
+        "Adepta Sororitas", "Adeptus Arbites", "Adeptus Astartes", "Adeptus Astra Telepathica", "Adeptus Mechanicus",
+        "Administratum", "Setor Askellon", "Navios Mercantes", "Collegia Titanicus", "Clero", "Credo Imperial",
+        "Guarda Imperial", "Marinha Imperial", "Império", "Navegadores", "Forças de Defesa Planetárias",
+        "Mercadores Nobres", "Schola Progenium", "Tecnologia", "Submundo", "Guerra"
+    ],
+
+    "Conhecimento Proibido": [
+        "Adepta Sororitas", "Adeptus Arbites", "Adeptus Astartes", "Adeptus Astra Telepathica", "Adeptus Mechanicus",
+        "Administratum", "Setor Askellon", "Navios Mercantes", "Collegia Titanicus", "Clero", "Credo Imperial",
+        "Guarda Imperial", "Marinha Imperial", "Império", "Navegadores", "Forças de Defesa Planetárias",
+        "Mercadores Nobres", "Schola Progenium", "Tecnologia", "Submundo", "Guerra",
+        "Arqueotech", "Marinha Espacial do Caos", "Cartels Criminosos e Contrabandistas", "Demonologia", "Heresia",
+        "Heresia de Horus e a Longa Guerra", "Inquisição", "Mutantes", "Officio Assassinorum", "Piratas", "Psíquicos",
+        "Imaterium", "Xenos", "Astromancia", "Animais", "Burocracia", "Química", "Criptologia", "Nobreza",
+        "Autorizações Imperiais", "Leis", "História", "Numerologia", "Ocultismo", "Filosofia", "Táticas de Guerra"
+    ],
+
+    "Conhecimento Escolástico": [
+        "Adepta Sororitas", "Adeptus Arbites", "Adeptus Astartes", "Adeptus Astra Telepathica", "Adeptus Mechanicus",
+        "Administratum", "Setor Askellon", "Navios Mercantes", "Collegia Titanicus", "Clero", "Credo Imperial",
+        "Guarda Imperial", "Marinha Imperial", "Império", "Navegadores", "Forças de Defesa Planetárias",
+        "Mercadores Nobres", "Schola Progenium", "Tecnologia", "Submundo", "Guerra",
+        "Astromancia", "Animais", "Burocracia", "Química", "Criptologia", "Nobreza",
+        "Autorizações Imperiais", "Leis", "História", "Numerologia", "Ocultismo", "Filosofia", "Táticas de Guerra"
+    ],
+
+    "Linguística": [
+        "Runas das Legiões", "Marcas do Caos", "Eldar", "Gótico Alto", "Códigos Imperiais", "Gótico Baixo",
+        "Cântico Mercenário", "Necrontyr", "Ork", "Techna-Lingua", "Tau", "Submundo", "Marcas Alienígenas"
+    ],
+
+    "Navegação": [
+        "Superfície", "Estelar", "Imaterium"
+    ],
+
+    "Operação": [
+        "Superfície", "Aeronáutica", "Naves Espaciais"
+    ],
+
+    "Negócio": [
+        "Agricultura", "Arqueologia", "Armas", "Astrógrafia", "Química", "Criptografia", "Cozinha", "Exploração",
+        "Linguística", "História", "Morticador", "Performance", "Prospecção", "Entalhe", "Escultura", "Construção Naval",
+        "Vidência", "Tecnologia", "Manutenção Naval"
+    ]
+};
+
+export interface PericiaComNivel {
+    nome: string;
+    nivel: NivelPericia;
+    especializacoes?: Especializacao[];
+}
+
+export interface Especializacao {
+    nome: string;
+    nivel: NivelPericia;
+}
+
+export const ORDEM_NIVEIS: NivelPericia[] = [
+    "+30",
+    "+20",
+    "+10",
+    "conhecida",
+    "desconhecida",
+];
+
+export function compararNiveis(a: NivelPericia, b: NivelPericia): number {
+    return ORDEM_NIVEIS.indexOf(a) - ORDEM_NIVEIS.indexOf(b);
+}
+
+export function montarPericiasComNiveis(periciasDaFicha: string[]): PericiaComNivel[] {
+  const mapeadas: Record<string, PericiaComNivel> = {};
+
+  // Inicializa todas as perícias como desconhecida
+  for (const pericia of PERICIAS) {
+    mapeadas[pericia.nome] = {
+      nome: pericia.nome,
+      nivel: "desconhecida",
+      especializacoes: pericia.Especialista ? [] : undefined,
+    };
+  }
+
+  // Processa as perícias da ficha
+  for (const entrada of periciasDaFicha) {
+    const match = entrada.match(/^(.+?)\s*\((.+)\)$/); // Ex: "Negócio (Agricultura)"
+
+    if (match) {
+      const [_, nome, especializacao] = match;
+      const pericia = mapeadas[nome];
+      if (pericia?.especializacoes) {
+        const existente = pericia.especializacoes.find((e) => e.nome === especializacao);
+        if (existente) {
+          existente.nivel = "conhecida";
+        } else {
+          pericia.especializacoes.push({ nome: especializacao, nivel: "conhecida" });
+        }
+
+        // Atualiza o nível da perícia mãe para o maior entre atual e conhecida
+        if (compararNiveis("conhecida", pericia.nivel) < 0) {
+          pericia.nivel = "conhecida";
+        }
+      }
+    } else {
+      // Perícia sem especialização
+      const pericia = mapeadas[entrada];
+      if (pericia) {
+        pericia.nivel = "conhecida";
+      }
+    }
+  }
+
+  // Ordena especializações por nível (se existirem) e ajusta nível da perícia mãe
+  for (const pericia of Object.values(mapeadas)) {
+    if (pericia.especializacoes && pericia.especializacoes.length > 0) {
+      pericia.especializacoes.sort((a, b) => compararNiveis(b.nivel, a.nivel));
+      const maiorNivel = pericia.especializacoes[0]?.nivel ?? "desconhecida";
+      pericia.nivel = maiorNivel;
+    }
+  }
+
+  return Object.values(mapeadas);
+}

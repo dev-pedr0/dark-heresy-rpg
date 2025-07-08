@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import OriginSelection from "./OriginSelection";
-import AtributoSelector from "./AtributoSelector";
-import BackgroundSelector from "./BackgroundSelector";
-import FuncaoSelector from './FuncaoSelector';
-import FinalElements from "./FinalElements";
+
 import { useRouter } from "next/navigation";
+import OriginSelection from "@/components/character-creation/OriginSelection";
+import AtributoSelector from "@/components/character-creation/AtributoSelector";
+import BackgroundSelector from "@/components/character-creation/BackgroundSelector";
+import FuncaoSelector from "@/components/character-creation/FuncaoSelector";
+import FinalElements from "@/components/character-creation/FinalElements";
 
 export default function CharacterWizard() {
     const [step, setStep] = useState(1);
@@ -270,7 +271,7 @@ export default function CharacterWizard() {
                             setFicha(fichaAtualizada);
 
                             localStorage.setItem("ficha-personagem-temp", JSON.stringify(fichaAtualizada));
-                            router.push("/ficha");
+                            router.push("/character-sheet");
                         }}
                     />
                     <button
