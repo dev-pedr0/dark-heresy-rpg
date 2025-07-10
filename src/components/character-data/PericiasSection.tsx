@@ -13,9 +13,13 @@ export default function PericiasSection({ ficha, onChange }: Props) {
   const [mostrarEspecializacoes, setMostrarEspecializacoes] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    const lista = montarPericiasComNiveis(ficha.background?.pericias || []);
-    setPericias(lista);
-  }, [ficha]);
+        const lista =
+            ficha.dadosFinais?.pericias?.length > 0
+                ? ficha.dadosFinais.pericias
+                : montarPericiasComNiveis(ficha.background?.pericias || []);
+        setPericias(lista);
+        onChange(lista);
+    }, [ficha.dadosFinais?.pericias, ficha.background?.pericias]);
 
   function atualizarNivel(periciaNome: string, nivel: NivelPericia) {
     const novas = pericias.map((p) =>
