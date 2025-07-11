@@ -123,7 +123,6 @@ export const PERICIAS: Pericia[] = [
     },
     {
         nome: "Lógica",
-
         descrição: "Lorem Ipsum",
         caracteristicaRelacionada: "Inteligência",
         apitidao1: "Inteligência",

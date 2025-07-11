@@ -6,6 +6,7 @@ import CharacteristicSection from "@/components/character-data/CharacteristicSec
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
+import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
 import XpFateSection from "@/components/character-data/XpFateSection";
 import { montarPericiasComNiveis, PericiaComNivel } from "@/data/pericias";
 import { useEffect, useState } from "react";
@@ -65,6 +66,11 @@ type Ficha = {
         corrupcao: number;
         malignancias: string;
         mutacoes: string[];
+        talentos: {
+            nome: string;
+            especializacao?: string;
+            descricao: string;
+        }[];
     };
 };
 
@@ -246,6 +252,15 @@ export default function FichaPage() {
                             novaFicha.dadosFinais.mutacoes = novasMarcacoes;
                             setFicha(novaFicha);
                         }} 
+                    />
+
+                    <TalentosETracosSection
+                        ficha={ficha}
+                        onChange={(novosTalentos) => {
+                        const novaFicha = { ...ficha };
+                        novaFicha.dadosFinais.talentos = novosTalentos;
+                        setFicha(novaFicha);
+                        }}
                     />
                 </div>
             </div>
