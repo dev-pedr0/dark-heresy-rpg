@@ -643,29 +643,6 @@ export const Talentos: Talento[] =[
         requisitos: { type: "caracteristica", nome: "Habilidade de Combate", valorMinimo: 40 },
         nivel: 2
     },
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
     {
         nome: "Fé de Adamante",
         descricao: "O personagem pode reduzir seus graus de falhas em testes de Medo ou Preso pelo seu bônus de Vontade. Se reduzir para zero ou menos conta como se tivesse sido bem-sucedido com 1 grau de sucesso.",
@@ -1128,4 +1105,200 @@ export const Talentos: Talento[] =[
         aptidoes: { type: "e", aptidoes: ["Geral", "Geral"] },
         nivel: 0
     },
+];
+
+export type Traco = {
+    nome: string;
+    nivel?: number;
+    descricao: string;
+    outroTracoFornecido?: string;
+};
+
+export const Tracos: Traco[] = [
+    {
+        nome: "Amorfo",
+        descricao: "O personagem pode aumentar ou diminuir seu traço de Tamanho em 1 como uma Ação Livre. O personagem também ganha o traço Rastejador.",
+        outroTracoFornecido: "Rastejador"
+    },
+    {
+        nome: "Anfíbio",
+        descricao: "O personagem pode respirar ar e líquidos."
+    },
+    {
+        nome: "Auto Estabilização",
+        descricao: "O personagem sempre conta como realizando a Ação Empunhadura."
+    },
+    {
+        nome: "Presença Macabra",
+        nivel: undefined,
+        descricao: `Todos em até (X) metros do personagem sofrem -10 em testes de Vontade.`
+    },
+    {
+        nome: "Bestial",
+        descricao: "O personagem não precisa fazer um teste de Sobrevivência enquanto estiver no seu habitat natural. A criatura deve fazer um teste de Vontade (+0) caso esteja com medo, ou ferido. Se falhar foge."
+    },
+    {
+        nome: "Cego",
+        descricao: "O personagem falha todos os testes baseados em visão e de Habilidade Balística. Recebe -30 em testes de habilidade de Combate. O talento Luta às Cegas reduz a penalidade para -15."
+    },
+    {
+        nome: "Disparada Brutal",
+        nivel: undefined,
+        descricao: "Ao fazer disparada o personagem causa (X) dano adicional em cada acerto."
+    },
+    {
+        nome: "Escavador",
+        nivel: undefined,
+        descricao: "A criatura possui deslocamento em sólidos que possam ser escavados igual a (X) metros. Criaturas com tamanho menor podem entrar no túnel gerado. A cada rodada 1d10 é rolado, com 5 ou menor o túnel colapsa."
+    },
+    {
+        nome: "Rastejador",
+        descricao: "O movimento do personagem é metade do seu valor normal, arredondado para cima, mas ele não recebe penalidade ao se deslocar por terreno difícil."
+    },
+    {
+        nome: "Demoníaco",
+        nivel: undefined,
+        descricao: "Aumenta sua Resistência para reduzir dano em um valor igual a (X). Esse valor é negado caso o dano for causado por uma Arma de Energia, Poderes Psíquicos, Ataques Divinos ou de outras criaturas com esse traço. O personagem também ganha o traço Imortal.",
+        outroTracoFornecido: "Imortal"
+    },
+    {
+        nome: "Visão no Escuro",
+        descricao: "O personagem vê em áreas sem luz e não é penalizado por falta de luz."
+    },
+    {
+        nome: "Armas Naturais Mortais",
+        descricao: "A criatura ganha todos os benefícios do traço Armas Naturais, e essas armas perdem a qualidade primitiva.",
+        outroTracoFornecido: "Armas Naturais"
+    },
+    {
+        nome: "Medo",
+        nivel: undefined,
+        descricao: "Ao encontrar o personagem todos devem fazer um teste de Vontade com penalidade de ((X * 10) – 10 ). Se falhar deve rolar na tabela Choque, somando +10 para cada grau de falha."
+    },
+    {
+        nome: "Voador",
+        nivel: undefined,
+        descricao: "A criatura se move pelo ar (X) metros."
+    },
+    {
+        nome: "Do Além",
+        descricao: "O personagem é imune a Medo, Alvejado, Pontos de Insanidade e Poderes Psíquicos que afetam a mente."
+    },
+    {
+        nome: "Pairar",
+        nivel: undefined,
+        descricao: "A criatura pode pairar por no máximo 2 metros do solo e se mover (X) metros."
+    },
+    {
+        nome: "Incorpóreo",
+        descricao: "A criatura ganha o traço Pairar 6 e +30 em testes de Furtividade. É imune a armas normais, sendo ferido apenas por demônios, criaturas do Imaterium, Poderes Psíquicos e outras criaturas incorpóreas. A criatura não pode afetar o mundo material normalmente e não pode ultrapassar Escudos Vazios e Campos Gellar.",
+        outroTracoFornecido: "Pairar"
+    },
+    {
+        nome: "Máquina",
+        nivel: undefined,
+        descricao: "Maquinas não precisam respirar, são imunes ao vácuo, frio e Poderes Psíquicos que afetam a mente. Possui (X) pontos de armadura que podem ser danificados por fogo."
+    },
+    {
+        nome: "Trava Mental",
+        descricao: "A criatura não pode realizar atividades fora de suas ordens. Caso não possua ordens a criatura tem de fazer um teste de Inteligência +20 para realizar outra atividade ou ficar atordoada por 1 rodada."
+    },
+    {
+        nome: "Braços Múltiplos",
+        nivel: undefined,
+        descricao: "A criatura possui (X) braços. Ganha +10 em testes de Atletismo para escalar e nadar. Para cada par de braços a criatura pode fazer 1 ataque a mais usando o talento Combater com Duas Armas."
+    },
+    {
+        nome: "Armadura Natural",
+        nivel: undefined,
+        descricao: "A criatura ganha armadura extra em todas as partes do corpo igual a (X)."
+    },
+    {
+        nome: "Armas Naturais",
+        descricao: "A criatura conta como sempre estando armada, ataques desarmados causando 1d10 + bônus de Força com a qualidade Primitiva 7. A criatura ataca com o atributo Habilidade de Combate, mas não pode bloquear ataques. Os ataques são imunes aos efeitos de Campos de Energia."
+    },
+    {
+        nome: "Faseamento",
+        descricao: "Como Ação Simples a criatura pode ganhar ou retirar o traço Incorpóreo.",
+        outroTracoFornecido: "Incorpóreo"
+    },
+    {
+        nome: "Psíquico",
+        descricao: "Permite comprar a perícia Senso Psíquico e Poderes Psíquicos."
+    },
+    {
+        nome: "Quadrupede",
+        descricao: "O movimento da criatura é dobrado."
+    },
+    {
+        nome: "Regeneração",
+        nivel: undefined,
+        descricao: "No início de cada um dos turnos a criatura pode fazer um teste de Resistência e recuperar (X) pontos de vida."
+    },
+    {
+        nome: "Sancionado",
+        descricao: "Se a possuir o Avanço de Elite Psíquico o personagem não ganha a corrupção indicada e começa com um Psi-nível de 2."
+    },
+    {
+        nome: "Tamanho",
+        nivel: undefined,
+        descricao: "Seu tamanho é de (X). Cheque a tabela de tamanho para verificar bônus ou penalidades."
+    },
+    {
+        nome: "Sonar",
+        descricao: "Pode localizar qualquer objeto sólido dentro de um raio de 30 metros. Criaturas dentro dos 30 metros podem fazer um teste de Atenção (-10) para notar o som e direção do sonar."
+    },
+    {
+        nome: "Conexão de Alma",
+        descricao: "A criatura rola um dado a mais ao rolar na tabela Perigos do Imaterium e pode substituir qualquer um dos dados pelo dado extra. Ao ganhar o traço a criatura deve escolher: ganhar 3d10 pontos de Insanidade, ganhar o traço Cego, perder 1d10 pontos em uma característica a escolha ou uma mutação aleatória.",
+    },
+    {
+        nome: "Estampido",
+        descricao: "Toda vez que uma criatura com esse traço falha em um teste de Vontade ela anda em linha reta passando por cima de qualquer um no caminho. Todos no caminho sofrem 1d5 + bônus de Força de dano de Impacto. Uma criatura com esse traço aciona o estampido de qualquer outra. O estampido dura 1d10 minutos ou até a ameaça ser eliminada."
+    },
+    {
+        nome: "Ser de Pesadelos",
+        descricao: "A criatura ganha o traço Eterno e é imune a qualquer perigo natural, perda de sangue, e ser atordoada. Ignora dano crítico (a menos que o dano cause morte imediata) a menos que causado por Poderes Psíquicos, Armas de Energia ou Ataque Divino.",
+        outroTracoFornecido: "Eterno"
+    },
+    {
+        nome: "Implantes Mechanicus",
+        descricao: "A criatura com esse traço ganha os seguintes implantes: Circuito Craniano, Ciber Manto, Enxerto Elétrico, Indutores Elétricos, Bobina de Potência.",
+    },
+    {
+        nome: "Pesado",
+        descricao: "Ganha +20 em testes de Agarrar e Derrubar e em usos do talento Derrubada."
+    },
+    {
+        nome: "Tocado pelo Destino",
+        nivel: undefined,
+        descricao: "A criatura possui (X) Pontos de Destino e pode usa-los normalmente. Também ganha os benefícios de Fúria Justiceira.",
+    },
+    {
+        nome: "Tóxico",
+        nivel: undefined,
+        descricao: "Ao ser atingindo por um ataque corpo a corpo o atacante deve fazer um teste de Resistência com penalidade igual a (-10*(X)) para não sofrer 1d10 pontos de dano de energia que não é reduzido por Armadura ou Resistência."
+    },
+    {
+        nome: "Eterno",
+        descricao: "A criatura é imune a doenças, venenos, toxinas e não precisa respirar."
+    },
+    {
+        nome: "Característica Sobrenatural",
+        nivel: undefined,
+        descricao: "A criatura ganha um bônus extra a uma característica igual a (X). Ao fazer um teste que usa essa característica a criatura ganha um número de graus de sucesso igual a ((X)/2)."
+    },
+    {
+        nome: "Sentidos Sobrenaturais",
+        nivel: undefined,
+        descricao: "A criatura pode perceber qualquer coisa dentro de (X) metros."
+    },
+    {
+        nome: "Instabilidade do Imaterium",
+        descricao: "Se uma criatura com esse traço sofrer dano, e não causar dano ou pontos de insanidade até o fim da rodada ela deve fazer um teste de Vontade. Se falhar sofre 1 ponto de dano + 1 ponto para cada grau de falha. Se isso reduzir a vida da criatura a zero ou menos ela retornar ao Imaterium."
+    },
+    {
+        nome: "Armas do Imaterium",
+        descricao: "Ataques da criatura ignoram armadura a não ser que ela tenha sido feita com elementos Psicoativos ou abençoada contra as forças do Imaterium. Campos de Força funcionam normalmente contra esses ataques."
+    }
 ];
