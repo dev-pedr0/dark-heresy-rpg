@@ -1173,7 +1173,7 @@ export const Tracos: Traco[] = [
     {
         nome: "Medo",
         nivel: undefined,
-        descricao: "Ao encontrar o personagem todos devem fazer um teste de Vontade com penalidade de ((X * 10) – 10 ). Se falhar deve rolar na tabela Choque, somando +10 para cada grau de falha."
+        descricao: "Ao encontrar o personagem todos devem fazer um teste de Vontade com penalidade de ((X * 10) - 10). Se falhar deve rolar na tabela Choque, somando +10 para cada grau de falha."
     },
     {
         nome: "Voador",

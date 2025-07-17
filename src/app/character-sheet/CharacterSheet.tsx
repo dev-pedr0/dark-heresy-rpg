@@ -71,6 +71,11 @@ type Ficha = {
             especializacao?: string;
             descricao: string;
         }[];
+        tracos?: { 
+            nome: string; 
+            nivel?: number; 
+            descricao: string 
+        }[];
     };
 };
 
@@ -256,10 +261,11 @@ export default function FichaPage() {
 
                     <TalentosETracosSection
                         ficha={ficha}
-                        onChange={(novosTalentos) => {
-                        const novaFicha = { ...ficha };
-                        novaFicha.dadosFinais.talentos = novosTalentos;
-                        setFicha(novaFicha);
+                        onChange={(novosTalentos, novosTracos) => {
+                            const novaFicha = { ...ficha };
+                            novaFicha.dadosFinais.talentos = novosTalentos;
+                            novaFicha.dadosFinais.tracos = novosTracos;
+                            setFicha(novaFicha);
                         }}
                     />
                 </div>

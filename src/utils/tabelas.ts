@@ -98,7 +98,7 @@ export const TABELA_DIVINACOES = [
     {
         roll: [39, 40, 41, 42, 43],
         texto: "Uma mente sem propósito encontra lugares sombrios.",
-        efeito: "Ao ganhar uma Desordem Mental, pode escolher ganhar uma nova oao invés de aumentar a severidade de uma já existente.",
+        efeito: "Ao ganhar uma Desordem Mental, pode escolher ganhar uma nova ao invés de aumentar a severidade de uma já existente.",
     },
     {
         roll: [44, 45, 46, 47, 48, 49],
