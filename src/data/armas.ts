@@ -1,20 +1,20 @@
 type Arma = {
     nome: string;
     tipo: string;
-    classe: string;
-    alcance: string;
-    taxaDeTiro: string;
+    classe?: string;
+    alcance?: string;
+    taxaDeTiro?: string;
     dano: string;
     tipoDeDano: string;
     penetracao: number;
-    municao: number;
-    recarga: string;
+    municao?: number;
+    recarga?: string;
     tracosEspeciais: string[];
     peso: string;
     disponibilidade: string;
 };
 
-const ARMAS: Arma[] = [
+export const ARMAS: Arma[] = [
     {
         nome: "Pistola Bolter",
         tipo: "Bolter",
@@ -583,6 +583,470 @@ const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Explosiva (5)", "Armadilha (1)"],
         peso: "8kg",
+        disponibilidade: "RA"
+    },
+    {
+        nome: "Granada Cegante",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Fumaça (2)"],
+        peso: "0.5kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Granada de Asfixia",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "Especial",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (3)"],
+        peso: "0.5kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Granada de Fragmento",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "2d10",
+        tipoDeDano: "Explosivo",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (3)"],
+        peso: "0.5kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Granada Alucinógenica",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (6)", "Alucinógena (2)"],
+        peso: "0.5kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Granada de Pulso Elétrico",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Pulso Elétrico (2)"],
+        peso: "0.5kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Granada Krak",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "2d10+4",
+        tipoDeDano: "Explosivo",
+        penetracao: 6,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Concussiva (0)"],
+        peso: "0.5kg",
+        disponibilidade: "RA"
+    },
+    {
+        nome: "Granada de Flash de Fóton",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (6)"],
+        peso: "0.5kg",
+        disponibilidade: "RA"
+    },
+    {
+        nome: "Granada de Fumaça",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Fumaça (4)"],
+        peso: "0.5kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Granada de Atordoamento",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (3)", "Concussiva (2)"],
+        peso: "0.5kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Granada de Teia",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "-",
+        tipoDeDano: "-",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (3)", "Armadilha (2)"],
+        peso: "0.5kg",
+        disponibilidade: "RA"
+    },
+    {
+        nome: "Míssil de Fragmento",
+        tipo: "Explosivo",
+        dano: "2d10+2",
+        tipoDeDano: "Explosivo",
+        penetracao: 2,
+        tracosEspeciais: ["Explosiva (5)"],
+        peso: "1kg",
+        disponibilidade: "CM"
+    },
+    {
+        nome: "Míssil Krak",
+        tipo: "Explosivo",
+        dano: "3d10+8",
+        tipoDeDano: "Explosivo",
+        penetracao: 8,
+        tracosEspeciais: ["Concussiva (3)", "Efetiva (2)"],
+        peso: "1kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Bomba de Fogo",
+        tipo: "Explosivo",
+        classe: "Lançar",
+        alcance: "BFx3",
+        taxaDeTiro: "S/-/-",
+        dano: "1d10+2",
+        tipoDeDano: "Energia",
+        penetracao: 0,
+        municao: 1,
+        recarga: "-",
+        tracosEspeciais: ["Explosiva (2)", "Chama"],
+        peso: "0.5kg",
+        disponibilidade: "FR"
+    },
+    {
+        nome: "Bomba Melta",
+        tipo: "Explosivo",
+        dano: "6d10",
+        tipoDeDano: "Energia",
+        penetracao: 12,
+        municao: 1,
+        tracosEspeciais: ["Explosiva (2)", "Chama", "Melta"],
+        peso: "12kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Machado Corrente",
+        tipo: "Corrente",
+        classe: "Corpo",
+        dano: "1d10+4",
+        tipoDeDano: "Lacerante",
+        penetracao: 2,
+        tracosEspeciais: ["Dilacerante"],
+        peso: "13kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Faca Corrente",
+        tipo: "Corrente",
+        classe: "Corpo",
+        dano: "1d10+1",
+        tipoDeDano: "Lacerante",
+        penetracao: 1,
+        tracosEspeciais: ["Dilacerante"],
+        peso: "2kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Espada Corrente",
+        tipo: "Corrente",
+        classe: "Corpo",
+        dano: "1d10+2",
+        tipoDeDano: "Lacerante",
+        penetracao: 2,
+        tracosEspeciais: ["Dilacerante", "Balanceada"],
+        peso: "6kg",
+        disponibilidade: "CM"
+    },
+    {
+        nome: "Esvicerador",
+        tipo: "Corrente",
+        classe: "Corpo",
+        dano: "2d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 9,
+        tracosEspeciais: ["Dilacerante", "Pesada", "Afiada"],
+        peso: "15kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Espada de Força",
+        tipo: "Força",
+        classe: "Corpo",
+        dano: "1d10+1",
+        tipoDeDano: "Lacerante",
+        penetracao: 2,
+        tracosEspeciais: ["Balanceada", "Energia"],
+        peso: "5kg",
+        disponibilidade: "QU"
+    },
+    {
+        nome: "Bastão de Força",
+        tipo: "Força",
+        classe: "Corpo",
+        dano: "1d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 2,
+        tracosEspeciais: ["Energia"],
+        peso: "2kg",
+        disponibilidade: "ER"
+    },
+    {
+        nome: "Arma Grande",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "2d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 0,
+        tracosEspeciais: ["Desbalanceada"],
+        peso: "7kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Lança Explosiva",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "2d10+3",
+        tipoDeDano: "Explosivo",
+        penetracao: 7,
+        tracosEspeciais: ["Concussiva (3)"],
+        peso: "4kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Arma Improvisada",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d10-2",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Primitiva (7)", "Desbalanceada"],
+        peso: "-",
+        disponibilidade: "-"
+    },
+    {
+        nome: "Faca",
+        tipo: "Arcaica",
+        classe: "Corpo/Lançar",
+        alcance: "5m",
+        dano: "1d5",
+        tipoDeDano: "Lacerante",
+        penetracao: 0,
+        tracosEspeciais: [],
+        peso: "1kg",
+        disponibilidade: "FR"
+    },
+    {
+        nome: "Escudo",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d5",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Defensiva"],
+        peso: "3kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Lança",
+        tipo: "Arcaica",
+        classe: "Corpo/Lançar",
+        alcance: "5m",
+        dano: "1d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 0,
+        tracosEspeciais: ["Primitiva (8)"],
+        peso: "3kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Bastão",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d10",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Primitiva (7)", "Balanceada"],
+        peso: "3kg",
+        disponibilidade: "FR"
+    },
+    {
+        nome: "Espada",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 0,
+        tracosEspeciais: ["Balanceada"],
+        peso: "3kg",
+        disponibilidade: "PD"
+    },
+    {
+        nome: "Cassetete",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d10",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Primitiva (7)"],
+        peso: "2kg",
+        disponibilidade: "FR"
+    },
+    {
+        nome: "Martelo de Guerra",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        dano: "1d10+3",
+        tipoDeDano: "Impacto",
+        penetracao: 1,
+        tracosEspeciais: ["Concussiva (1)", "Primitiva (8)"],
+        peso: "4.5kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Chicote",
+        tipo: "Arcaica",
+        classe: "Corpo",
+        alcance: "3m",
+        dano: "1d10",
+        tipoDeDano: "Lacerante",
+        penetracao: 0,
+        tracosEspeciais: ["Primitiva (6)", "Flexível"],
+        peso: "2kg",
+        disponibilidade: "CM"
+    },
+    {
+        nome: "Machado do Omnissian",
+        tipo: "Energia",
+        classe: "Corpo",
+        dano: "2d10+4",
+        tipoDeDano: "Energia",
+        penetracao: 6,
+        tracosEspeciais: ["Campo de Força", "Desbalanceada"],
+        peso: "8kg",
+        disponibilidade: "ER"
+    },
+    {
+        nome: "Punho de Energia",
+        tipo: "Energia",
+        classe: "Corpo",
+        dano: "2d10+BF*2",
+        tipoDeDano: "Energia",
+        penetracao: 9,
+        tracosEspeciais: ["Campo de Força", "Pesada"],
+        peso: "13kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Espada de Energia",
+        tipo: "Energia",
+        classe: "Corpo",
+        dano: "1d10+5",
+        tipoDeDano: "Energia",
+        penetracao: 5,
+        tracosEspeciais: ["Campo de Força", "Balanceada"],
+        peso: "3kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Machado de Energia",
+        tipo: "Energia",
+        classe: "Corpo",
+        dano: "1d10+7",
+        tipoDeDano: "Energia",
+        penetracao: 7,
+        tracosEspeciais: ["Campo de Força", "Desbalanceada"],
+        peso: "6kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Maça de Energia (Forte)",
+        tipo: "Energia",
+        classe: "Corpo",
+        dano: "1d10+5",
+        tipoDeDano: "Energia",
+        penetracao: 4,
+        tracosEspeciais: ["Campo de Força", "Chocante"],
+        peso: "3.5kg",
+        disponibilidade: "MR"
+    },
+    {
+        nome: "Maça de Choque",
+        tipo: "Choque",
+        classe: "Corpo",
+        dano: "1d10+3",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Chocante"],
+        peso: "2.5kg",
+        disponibilidade: "ES"
+    },
+    {
+        nome: "Chicote de Choque",
+        tipo: "Choque",
+        classe: "Corpo",
+        alcance: "3m",
+        dano: "1d10+3",
+        tipoDeDano: "Impacto",
+        penetracao: 0,
+        tracosEspeciais: ["Chocante", "Flexível"],
+        peso: "3kg",
         disponibilidade: "RA"
     },
 ];
