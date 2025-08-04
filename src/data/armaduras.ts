@@ -6,6 +6,7 @@ type Armadura = {
     agilidadeMaxima: number;
     peso: string;
     disponibilidade: string;
+    descricao?: string;
 };
 
 export const ARMADURAS: Armadura[] = [
@@ -16,7 +17,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 1,
         agilidadeMaxima: 100,
         peso: "5kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Robes Imperiais",
@@ -25,7 +27,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 1,
         agilidadeMaxima: 100,
         peso: "4kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Colete Corporal",
@@ -34,7 +37,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 2,
         agilidadeMaxima: 100,
         peso: "5kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Cota de Malha",
@@ -43,7 +47,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 3,
         agilidadeMaxima: 35,
         peso: "15kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Armadura Feudal",
@@ -52,7 +57,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 5,
         agilidadeMaxima: 25,
         peso: "30kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Colete de Pele Xenos",
@@ -61,7 +67,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 6,
         agilidadeMaxima: 50,
         peso: "20kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Embora não necessariamente possuam menor capacidade defensiva, esse tipo de armadura geralmente é de natureza simples. Casacos grossos de couro, luvas corporais protetoras, peles xenos, robes pesados, coletes acolchoados e cota de malha são comuns em todo o Império. Em muitos planetas remotos, assim como em locais isolados dentro de mundos civilizados, esse tipo de vestimenta é padrão. Raramente oferecem proteção adequada contra tiros de armas las ou outras armas avançadas, mas costumam ser econômicas e geralmente suficientes para enfrentar a maioria das ameaças.",
     },
     {
         nome: "Capacete Flak",
@@ -70,7 +77,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 2,
         agilidadeMaxima: 100,
         peso: "2kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Manoplas Flak",
@@ -79,7 +87,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 2,
         agilidadeMaxima: 100,
         peso: "1kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Manto de Flak Leve",
@@ -88,7 +97,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 2,
         agilidadeMaxima: 55,
         peso: "4kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Colete Flak",
@@ -97,7 +107,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 3,
         agilidadeMaxima: 60,
         peso: "5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Manto de Flak",
@@ -106,7 +117,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 3,
         agilidadeMaxima: 55,
         peso: "8kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Casaco Flak",
@@ -115,7 +127,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 3,
         agilidadeMaxima: 60,
         peso: "5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Armadura Flak da Guarda Imperial",
@@ -124,7 +137,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 4,
         agilidadeMaxima: 50,
         peso: "11kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Assim como o rifle las é o tipo mais comum de arma na galáxia, a armadura de flak é o tipo mais comum de proteção, devido ao seu uso padronizado pela Guarda Imperial. A armadura de flak é composta por múltiplas camadas de materiais ablativos e absorventes de impacto, projetada para lidar com ataques de armas leves e explosões próximas. Embora não seja capaz de deter disparos de armas pesadas, é relativamente leve, simples e barata de fabricar, além de confiável em combate. Enquanto o usuário não estiver no ponto central da explosão, a armadura de flak conta como tendo +1 de PA contra dano de armas com a qualidade Explosão.",
     },
     {
         nome: "Colete Mesh",
@@ -133,7 +147,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 4,
         agilidadeMaxima: 100,
         peso: "2kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "A armadura de mesh é feita de milhares de minúsculos anéis de termoplasto entrelaçados para formar um tecido semelhante a pano. Esse material torna-se momentaneamente rígido no impacto, dissipando a força do ataque. As versões mais refinadas têm origem evidentemente xenos, embora até mesmo os modelos humanos mais rústicos ofereçam excelente proteção.",
     },
     {
         nome: "Manto Mesh",
@@ -142,7 +157,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 4,
         agilidadeMaxima: 60,
         peso: "3kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "A armadura de mesh é feita de milhares de minúsculos anéis de termoplasto entrelaçados para formar um tecido semelhante a pano. Esse material torna-se momentaneamente rígido no impacto, dissipando a força do ataque. As versões mais refinadas têm origem evidentemente xenos, embora até mesmo os modelos humanos mais rústicos ofereçam excelente proteção.",
     },
     {
         nome: "Capacete de Carapaça",
@@ -151,7 +167,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 4,
         agilidadeMaxima: 100,
         peso: "2kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Feita a partir de placas moldadas de plasteel ou ceramita, a armadura de carapaça é frequentemente um símbolo de status entre oficiais imperiais e acólitos. Guerreiros de elite do Militarum Tempestus e do Adeptus Arbites utilizam trajes completos desse material, embora seja mais comum seu uso como proteção peitoral ou incorporada a trajes de flak como placas modulares, que podem ser removidas e substituídas quando danificadas. A carapaça possui diferentes níveis de proteção, com a correspondente troca entre eficácia e peso.",
     },
     {
         nome: "Manoplas de Carapaça",
@@ -160,7 +177,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 5,
         agilidadeMaxima: 100,
         peso: "2kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Feita a partir de placas moldadas de plasteel ou ceramita, a armadura de carapaça é frequentemente um símbolo de status entre oficiais imperiais e acólitos. Guerreiros de elite do Militarum Tempestus e do Adeptus Arbites utilizam trajes completos desse material, embora seja mais comum seu uso como proteção peitoral ou incorporada a trajes de flak como placas modulares, que podem ser removidas e substituídas quando danificadas. A carapaça possui diferentes níveis de proteção, com a correspondente troca entre eficácia e peso.",
     },
     {
         nome: "Grevas de Carapaça",
@@ -169,7 +187,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 5,
         agilidadeMaxima: 100,
         peso: "3kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Feita a partir de placas moldadas de plasteel ou ceramita, a armadura de carapaça é frequentemente um símbolo de status entre oficiais imperiais e acólitos. Guerreiros de elite do Militarum Tempestus e do Adeptus Arbites utilizam trajes completos desse material, embora seja mais comum seu uso como proteção peitoral ou incorporada a trajes de flak como placas modulares, que podem ser removidas e substituídas quando danificadas. A carapaça possui diferentes níveis de proteção, com a correspondente troca entre eficácia e peso.",
     },
     {
         nome: "Carapaça Leve de Milicano",
@@ -178,7 +197,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 5,
         agilidadeMaxima: 45,
         peso: "15kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Uma versão inferior da armadura de carapaça, a armadura de miliciano faz parte do uniforme das forças policiais locais em planetas por todo o Imperium. Embora não possua o acabamento refinado das placas usadas pelos soldados de elite do Militarum Tempestus ou pelos Árbitros, ainda é eficaz o suficiente para lidar com a maioria dos gangsters das colmeias ou com escória herética.",
     },
     {
         nome: "Peitoral de Carapaça",
@@ -187,7 +207,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 6,
         agilidadeMaxima: 55,
         peso: "7kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Feita a partir de placas moldadas de plasteel ou ceramita, a armadura de carapaça é frequentemente um símbolo de status entre oficiais imperiais e acólitos. Guerreiros de elite do Militarum Tempestus e do Adeptus Arbites utilizam trajes completos desse material, embora seja mais comum seu uso como proteção peitoral ou incorporada a trajes de flak como placas modulares, que podem ser removidas e substituídas quando danificadas. A carapaça possui diferentes níveis de proteção, com a correspondente troca entre eficácia e peso.",
     },
     {
         nome: "Carapaça do Militarum Tempestus",
@@ -196,7 +217,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 6,
         agilidadeMaxima: 45,
         peso: "15kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Feita a partir de placas moldadas de plasteel ou ceramita, a armadura de carapaça é frequentemente um símbolo de status entre oficiais imperiais e acólitos. Guerreiros de elite do Militarum Tempestus e do Adeptus Arbites utilizam trajes completos desse material, embora seja mais comum seu uso como proteção peitoral ou incorporada a trajes de flak como placas modulares, que podem ser removidas e substituídas quando danificadas. A carapaça possui diferentes níveis de proteção, com a correspondente troca entre eficácia e peso.",
     },
     {
         nome: "Armadura de Energia Leve",
@@ -205,7 +227,8 @@ export const ARMADURAS: Armadura[] = [
         defesa: 7,
         agilidadeMaxima: 40,
         peso: "40kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Essa armadura avançada é composta por espessas placas de ceramita e utiliza uma fonte de energia integrada para aumentar a força e mobilidade do usuário. Muitos trajes são relíquias com centenas — ou até milhares — de anos de idade. Existem em uma variedade de estilos, desde versões mais leves, adequadas para acólitos de elite, até modelos pesados projetados para combates intensos. As enormes e antigas armaduras do Adeptus Astartes pertencem a uma classe à parte, exigindo implantes especiais para se conectarem ao usuário de uma forma que um humano comum jamais poderia operar ou vestir. A armadura de poder leve requer um fornecimento constante de energia, normalmente integrado ao traje, o que compensa seu peso para que este não conte contra o limite de carga normal do usuário. Ela concede ao usuário o traço Força Sobrenatural (1) e aumenta o valor do seu traço Tamanho em 1 nível. A menos que especificado de outra forma, a fonte de energia funciona por 1d5 horas antes de precisar ser recarregada ou reabastecida. A maioria dos trajes possui um capacete destacável; quando equipado, o usuário se beneficia de um suprimento interno de oxigênio e sistemas padrão de vox.",
     }
 ];
 
@@ -216,6 +239,7 @@ type CampoDeForca = {
     taxaProtecao: number;
     peso: string;
     disponibilidade: string;
+    descricao?: string;
 };
 
 export const CAMPOSFORCA: CampoDeForca[] = [
@@ -226,6 +250,7 @@ export const CAMPOSFORCA: CampoDeForca[] = [
         taxaProtecao: 30,
         peso: "2kg",
         disponibilidade: "MR",
+        descricao: "Campos refratores são pequenos o bastante para serem disfarçados como joias ou outros ornamentos. Quando ativados, eles dispersam os impactos por toda a superfície do campo, anulando o dano recebido. No entanto, suas energias interagem com o ar ao redor, envolvendo constantemente o usuário em uma suave aura de luz. Esse brilho torna o portador mais visível em ambientes escuros ou com pouca iluminação, impondo uma penalidade de –20 em todos os testes de Furtividade realizados enquanto o campo estiver ativo. A menos que especificado de outra forma, campos de força oferecem proteção para o corpo inteiro. Ativar ou desativar um campo de força é uma ação simples. Um personagem só pode se beneficiar de um campo por vez, independentemente de quantos ele possua. Quando um personagem com um campo ativo é atacado, mas antes de realizar testes de Evasão, deve-se rolar 1d100. Se o resultado for menor ou igual ao índice de proteção do campo, o ataque é anulado e não tem efeito sobre o personagem protegido (embora ainda possa afetar o ambiente ou outros personagens próximos, como no caso de armas com a qualidade Explosão).",
     },
     {
         nome: "Campo Conversor",
@@ -234,6 +259,7 @@ export const CAMPOSFORCA: CampoDeForca[] = [
         taxaProtecao: 50,
         peso: "1kg",
         disponibilidade: "ER",
+        descricao: "Também conhecidos como campos de luz, esses dispositivos convertem a energia de um ataque em luz irradiada, frequentemente intensa o bastante para causar um clarão ofuscante que cega inimigos próximos. Uma versão mais poderosa, chamada Rosarius, é frequentemente concedida a membros da Eclesiarquia como proteção contra hereges e forças profanas. Se o campo de conversão bloquear mais de 12 pontos de dano de um único ataque, a liberação de luz é forte o suficiente para funcionar como a explosão de uma granada de flash de fóton, centrada no usuário. O personagem que estiver usando o campo de conversão não é afetado por essa explosão. A menos que especificado de outra forma, campos de força oferecem proteção para o corpo inteiro. Ativar ou desativar um campo de força é uma ação simples. Um personagem só pode se beneficiar de um campo por vez, independentemente de quantos ele possua. Quando um personagem com um campo ativo é atacado, mas antes de realizar testes de Evasão, deve-se rolar 1d100. Se o resultado for menor ou igual ao índice de proteção do campo, o ataque é anulado e não tem efeito sobre o personagem protegido (embora ainda possa afetar o ambiente ou outros personagens próximos, como no caso de armas com a qualidade Explosão).",
     },
     {
         nome: "Campo Dispersor",
@@ -242,6 +268,7 @@ export const CAMPOSFORCA: CampoDeForca[] = [
         taxaProtecao: 55,
         peso: "2kg",
         disponibilidade: "QU",
+        descricao: "Campos dispersor são poderosos, mas às vezes tão perigosos quanto o próprio ataque que deveriam deter. Eles não funcionam absorvendo ou desviando a energia do impacto; em vez disso, transportam o usuário para longe usando tecnologias de microteleporte pelo Warp. Esse salto é normalmente ativado por sensores embutidos no dispositivo, embora também possa ser acionado manualmente. Cada ativação carrega o risco supremo de uma viagem desprotegida pelo imaterium — mesmo com o corpo sendo levado para a segurança, a alma corre o risco da maldição. Quando o campo anula com sucesso um ataque, o usuário é teleportado em uma direção aleatória, usando o diagrama de dispersão. Role 3d10 para determinar o número de metros percorridos — o usuário sempre emerge sobre terreno firme e em um espaço desocupado. Se todos os três dados mostrarem o mesmo número (por exemplo, três resultados de 7), o usuário não reaparece por 1d5 rodadas e ganha 1 ponto de Corrupção devido à exposição às energias antinaturais do Warp. Se a ativação for inesperada, o usuário fica desorientado e não pode agir por uma rodada enquanto recupera sua noção de localização. A menos que especificado de outra forma, campos de força oferecem proteção para o corpo inteiro. Ativar ou desativar um campo de força é uma ação simples. Um personagem só pode se beneficiar de um campo por vez, independentemente de quantos ele possua. Quando um personagem com um campo ativo é atacado, mas antes de realizar testes de Evasão, deve-se rolar 1d100. Se o resultado for menor ou igual ao índice de proteção do campo, o ataque é anulado e não tem efeito sobre o personagem protegido (embora ainda possa afetar o ambiente ou outros personagens próximos, como no caso de armas com a qualidade Explosão).",
     },
     {
         nome: "Campo de Força Pessoal",
@@ -250,6 +277,7 @@ export const CAMPOSFORCA: CampoDeForca[] = [
         taxaProtecao: 80,
         peso: "50kg",
         disponibilidade: "QU",
+        descricao: "Diferente da maioria dos dispositivos de campo, os campos de força são grandes e volumosos, impossíveis de disfarçar com facilidade. Versões pessoais precisam ser carregadas como pesados mochilões, enquanto unidades maiores são equipadas com mecanismos de locomoção devido ao seu tamanho e peso. Apesar disso, são extremamente eficazes, projetando uma barreira de força capaz de anular ataques recebidos — embora drenem energia rapidamente enquanto estão ativos. O campo de força faz o ar ao redor ondular visivelmente e estalar com descargas estáticas, impondo uma penalidade de –20 em todos os testes de Furtividade (Stealth). Além disso, ele não protege contra ataques à distância feitos a menos de 1 metro do usuário, nem contra ataques corpo a corpo. A menos que especificado de outra forma, campos de força oferecem proteção para o corpo inteiro. Ativar ou desativar um campo de força é uma ação simples. Um personagem só pode se beneficiar de um campo por vez, independentemente de quantos ele possua. Quando um personagem com um campo ativo é atacado, mas antes de realizar testes de Evasão, deve-se rolar 1d100. Se o resultado for menor ou igual ao índice de proteção do campo, o ataque é anulado e não tem efeito sobre o personagem protegido (embora ainda possa afetar o ambiente ou outros personagens próximos, como no caso de armas com a qualidade Explosão).",
     },
     {
         nome: "Campo de Força Veículo/Estrutura",
@@ -258,5 +286,6 @@ export const CAMPOSFORCA: CampoDeForca[] = [
         taxaProtecao: 80,
         peso: "500kg",
         disponibilidade: "MR",
+        descricao: "Diferente da maioria dos dispositivos de campo, os campos de força são grandes e volumosos, impossíveis de disfarçar com facilidade. Versões pessoais precisam ser carregadas como pesados mochilões, enquanto unidades maiores são equipadas com mecanismos de locomoção devido ao seu tamanho e peso. Apesar disso, são extremamente eficazes, projetando uma barreira de força capaz de anular ataques recebidos — embora drenem energia rapidamente enquanto estão ativos. O campo de força faz o ar ao redor ondular visivelmente e estalar com descargas estáticas, impondo uma penalidade de –20 em todos os testes de Furtividade (Stealth). Além disso, ele não protege contra ataques à distância feitos a menos de 1 metro do usuário, nem contra ataques corpo a corpo. A menos que especificado de outra forma, campos de força oferecem proteção para o corpo inteiro. Ativar ou desativar um campo de força é uma ação simples. Um personagem só pode se beneficiar de um campo por vez, independentemente de quantos ele possua. Quando um personagem com um campo ativo é atacado, mas antes de realizar testes de Evasão, deve-se rolar 1d100. Se o resultado for menor ou igual ao índice de proteção do campo, o ataque é anulado e não tem efeito sobre o personagem protegido (embora ainda possa afetar o ambiente ou outros personagens próximos, como no caso de armas com a qualidade Explosão).",
     },
 ];

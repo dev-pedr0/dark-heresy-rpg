@@ -1,4 +1,4 @@
-type Arma = {
+export type Arma = {
     nome: string;
     tipo: string;
     classe?: string;
@@ -12,6 +12,7 @@ type Arma = {
     tracosEspeciais: string[];
     peso: string;
     disponibilidade: string;
+    descricao?: string;
 };
 
 export const ARMAS: Arma[] = [
@@ -28,7 +29,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Dilacerante"],
         peso: "3.5kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Tanto um símbolo de status quanto uma arma poderosa, as pistolas bolter são raras em número, mas sempre temidas. Nas mãos de um Comissário da Astra Militarum, podem reverter uma retirada covarde; nas mãos de um Inquisidor, podem impedir um líder de culto de invocar um demônio profano. Tal é o seu poder, tanto simbólico quanto físico, que muitos sacrificam tudo com entusiasmo para possuir uma.",
     },
     {
         nome: "Rifle Bolter",
@@ -43,7 +45,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Dilacerante"],
         peso: "7kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Rifles bolter, ou bolters, como são frequentemente chamados, são a arma principal dos Adeptus Astartes, que carregam versões tão enormes que poucos humanos conseguem sequer levantá-las, quanto mais dispará-las. Os modelos mais leves usados por outros servos do Imperador são apenas ligeiramente menos destrutivos, mas ainda assim poderosos o suficiente para destruir qualquer um que se oponha à Sua Vontade."
     },
     {
         nome: "Bolter Pesado",
@@ -58,7 +61,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Dilacerante"],
         peso: "40kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Essa arma enorme é raramente usada fora das forças militares, mas às vezes é tudo o que impede os terrores dos poderes ruinosos de destruírem a humanidade. Os projéteis maiores carregam propelente adicional e cargas explosivas mais potentes, tornando-os letais contra inimigos blindados a longas distâncias.",
     },
     {
         nome: "Bolter Tempestade",
@@ -73,7 +77,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Dilacerante", "Barragem"],
         peso: "40kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Bolters tempestade combinam o poder de fogo de dois bolters em uma única arma compacta. Disparam uma chuva imparável de metal capaz de despedaçar grupos de inimigos em uma única salva, e podem interromper um atropelamento furioso em questão de segundos.",
     },
     {
         nome: "Lança Chamas de Mão",
@@ -88,7 +93,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Chama", "Spray"],
         peso: "3.5kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Também conhecidas como pistolas de fogo, essas pequenas armas são ideais para combates a curta distância, onde seu alcance muito limitado e baixa precisão são menos importantes do que seu efeito devastador.",
     },
     {
         nome: "Lança Chamas",
@@ -103,7 +109,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Chama", "Spray"],
         peso: "6kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Uma arma comum em muitas gangues e cultos (que apreciam o cheiro de carne queimada), lança chamas são relativamente fáceis de construir e manter. Não dependem de pontaria especializada e são ideais para atacar inimigos em cobertura ou em espaços confinados com conflagrações indiscriminadas.",
     },
     {
         nome: "Lança Chamas Pesado",
@@ -118,7 +125,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Chama", "Spray"],
         peso: "45kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Grandes e aterrorizantes, os Lança Chamas Pesados usam dois canos para criar enormes rajadas de fogo que podem incinerar vastas áreas de inimigos com um único disparo. Apenas os mais fortes conseguem carregar a arma junto com a mochila maciça de combustível que ela exige, mas sua presença já virou o rumo de muitos ataques hereges.",
     },
     {
         nome: "Pistola Las",
@@ -133,7 +141,8 @@ export const ARMAS: Arma[] = [
         recarga: "Simples",
         tracosEspeciais: ["Confiável"],
         peso: "1.5kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Compactas e confiáveis, as pistolas las são a arma favorita tanto de oficiais imperiais quanto de líderes de gangues. Configuração Variável de Arma Las: A arma las padrão possui uma opção de configuração variável, permitindo disparos com potência aumentada. Ela pode ser ajustada para o modo sobrecarga: +1 de dano, 2 munições consumidas; ou superaquecimento: +2 de dano, +2 de penetração, 4 munições, perde confiável, ganha Instável.",
     },
     {
         nome: "Rifle Las",
@@ -148,7 +157,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Confiável"],
         peso: "4kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Rifles las são a arma básica dos soldados da guarda imperial e, como tal, são a arma mais comum que existe. Elas vêm em muitas variedades e padrões, e a sobrevivência contínua do Império deve muito à sua confiabilidade, simplicidade de design e facilidade de uso. Configuração Variável de Arma Las: A arma las padrão possui uma opção de configuração variável, permitindo disparos com potência aumentada. Ela pode ser ajustada para o modo sobrecarga: +1 de dano, 2 munições consumidas; ou superaquecimento: +2 de dano, +2 de penetração, 4 munições, perde confiável, ganha Instável.",
     },
     {
         nome: "Laslock",
@@ -163,7 +173,8 @@ export const ARMAS: Arma[] = [
         recarga: "Simples",
         tracosEspeciais: ["Instável"],
         peso: "4kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Em mundos onde o padrão de fontes de alimentação foi perdido, laslocks são comumente usados no lugar dos rifles las. Frequentemente encontrados nas mãos de insurgentes desesperados e mal equipados ou renegados, laslocks podem ser construídos improvisadamente ou modificações de rifles las antigos ou danificados, restaurados por oficinas de sucata e forjas hereges. As células improvisadas de um laslock são, na melhor das hipóteses, temperamentais, mas ainda assim potentes, disparando uma descarga mais poderosa do que o comum.",
     },
     {
         nome: "Las Sniper",
@@ -178,7 +189,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Confiável", "Precisa", "Sobrenatural (4)"],
         peso: "4.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "A sniper las é uma versão especializada do rifle básico, projetada para atiradores de elite. O cano mais longo e o colimador permitem tiros precisos a distâncias muito maiores, com pouco do característico barulho alto das outras armas las. No entanto, o comprimento do cano e a ausência de modo de disparo rápido tornam-na impraticável para operações de curta distância. Configuração Variável de Arma Las: A arma las padrão possui uma opção de configuração variável, permitindo disparos com potência aumentada. Ela pode ser ajustada para o modo sobrecarga: +1 de dano, 2 munições consumidas; ou superaquecimento: +2 de dano, +2 de penetração, 4 munições, perde confiável, ganha Instável.",
     },
     {
         nome: "Pistola Las Hot-Shot",
@@ -193,7 +205,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: [],
         peso: "4kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Variantes especializadas do design padrão da arma las, as armas hotshot utilizam fontes de alimentação mais potentes que fornecem energia extra para cada disparo. Oficiais militares de alta patente e forças de elite, como a Militarum Tempestus, as usam frequentemente, mas outras agências imperiais com recursos suficientes também favorecem o poder extra que elas proporcionam contra hereges e outras ameaças. As armas hotshot usam uma fonte de energia em uma mochila de 10 kg em vez do padrão plug-in. Mochilas maiores significam mais poder em cada disparo, mas tornam a recarga mais impraticável, um preço que a maioria está disposta a pagar. Armas hotshot também podem ser conectadas a mochilas maiores para munição adicional.",
     },
     {
         nome: "Rifle Las Hot-Shot",
@@ -208,7 +221,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: [],
         peso: "6kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Variantes especializadas do design padrão da arma las, as armas hotshot utilizam fontes de alimentação mais potentes que fornecem energia extra para cada disparo. Oficiais militares de alta patente e forças de elite, como a Militarum Tempestus, as usam frequentemente, mas outras agências imperiais com recursos suficientes também favorecem o poder extra que elas proporcionam contra hereges e outras ameaças. As armas hotshot usam uma fonte de energia em uma mochila de 10 kg em vez do padrão plug-in. Mochilas maiores significam mais poder em cada disparo, mas tornam a recarga mais impraticável, um preço que a maioria está disposta a pagar. Armas hotshot também podem ser conectadas a mochilas maiores para munição adicional.",
     },
     {
         nome: "Lança Granadas",
@@ -223,7 +237,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["*"],
         peso: "12kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Essa arma utiliza cargas de gás comprimido para disparar granadas, seja de forma direta ou em disparos indiretos contra inimigos fora da linha de visão, sendo uma arma de supressão comum em muitas batalhas. O lança granadas usa granadas como munição. Quando o personagem recarrega a arma, ele pode escolher seis granadas do mesmo tipo para carregar. Nos próximos ataques, antes de recarregar novamente, os valores de dano, penetração e características especiais do perfil do lança granadas usam os atributos do tipo de granada escolhido. Essa arma vem com 6 granadas de fragmentação ou krak quando adquirida."
     },
     {
         nome: "Lança Mísseis",
@@ -238,7 +253,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["*"],
         peso: "35kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Lança mísseis disparam projéteis pesados com grande poder explosivo, sendo ideais para perfurar armaduras inimigas ou dizimar cultistas em investida. A versão portátil é mais leve que o modelo militar padrão, sendo normalmente usada apoiada no ombro ou firmemente estabilizada contra uma parede ou estrutura. Muitos usuários contam com alguém por perto para ajudar a carregar os projéteis grandes e recarregar entre os disparos. Essa arma vem com um míssil de fragmentação ou krak quando adquirida.",
     },
     {
         nome: "Boleadeiras",
@@ -253,7 +269,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Imprecisa", "Armadilha (1)"],
         peso: "1.5kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Uma arma ancestral frequentemente vista com caçadores de recompensas das cidades colmeia e habitantes de mundos selvagens, as boleadeiras possuem pesos giratórios nas extremidades de cordas ou fios para enredar um alvo e, muitas vezes, derrubá-lo no chão. Uma vez imobilizado, o inimigo é facilmente eliminado ou amarrado adicionalmente para transporte e entrega.",
     },
     {
         nome: "Arco",
@@ -268,7 +285,8 @@ export const ARMAS: Arma[] = [
         recarga: "Simples",
         tracosEspeciais: ["Primitiva (6)", "Confiável"],
         peso: "2kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Embora arcos existam em uma infinidade de formas e sejam feitos de uma grande variedade de materiais, sua forma e função básicas mudaram pouco ao longo dos milênios. Mesmo onde os Adeptus Mechanicus possam estar em ascensão, uma flecha bem colocada e silenciosa pode ser tão eficaz quanto um venerado bolter. Um arco sempre requer ambas as mãos para ser utilizado.",
     },
     {
         nome: "Besta",
@@ -283,7 +301,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Primitiva (7)"],
         peso: "3kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Bestas são mais compactas do que arcos tradicionais, mas exigem mecanismos adicionais e geralmente possuem um alcance menor.",
     },
     {
         nome: "Pistola Inferno",
@@ -298,7 +317,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Melta"],
         peso: "3kg",
-        disponibilidade: "QU"
+        disponibilidade: "QU",
+        descricao: "Essas pistolas são praticamente impossíveis de fabricar atualmente, e quase todas as que existem são relíquias antigas de eras há muito passadas. Possuir uma pistola inferno é um sinal de status, e poucos além dos poderosos e influentes têm a honra de possuir um desses valiosos dispositivos."
     },
     {
         nome: "Rifle Melta",
@@ -313,7 +333,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Melta"],
         peso: "15kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Rifles melta são as armas favoritas dos especialistas em antitanques, que utilizam seu poder destrutivo de curto alcance para atravessar placas de blindagem e portas reforçadas com igual facilidade.",
     },
     {
         nome: "Pistola de Plasma",
@@ -328,7 +349,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox3",
         tracosEspeciais: ["Superaque.", "Maximização"],
         peso: "4kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Cada uma dessas pequenas armas contém a fúria de uma estrela em chamas. Um único acerto pode despedaçar até mesmo inimigos fortemente blindados em uma explosão incandescente, como se o próprio Imperador tivesse voltado Seu olhar contra os inimigos."
     },
     {
         nome: "Rifle de Plasma",
@@ -343,7 +365,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox5",
         tracosEspeciais: ["Superaque.", "Maximização"],
         peso: "18kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Muitos rifles de plasma datam de séculos ou até milênios atrás, e é comum que um soldado recupere uma delas em vez de resgatar seu aliado caído, caso não haja tempo para ambos. Apesar dos perigos que essa arma pode representar, aqueles que carregam uma sabem que é uma honra especial que poucos conseguem compreender.",
     },
     {
         nome: "Pistola Automática",
@@ -358,7 +381,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: [],
         peso: "1.5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "De disparo rápido e compacta, muitos soldados veteranos carregam uma pistola automática para complementar seu rifle las regulamentar ou outras armas menos confiáveis. Elas também são populares nas hierarquias de gangues e já resolveram muitas disputas de liderança no submundo em uma chuva de projéteis."
     },
     {
         nome: "Rifle Automático",
@@ -373,7 +397,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: [],
         peso: "5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Embora não sejam tão comuns quanto os rifles las nas formações militares, muitas forças locais dependem dessas armas robustas e econômicas para defender seu mundo natal de ameaças internas ou externas. Elas usam projéteis comuns de baixo calibre em carregadores padronizados e podem ser configuradas para disparar em modos único, semiautomático ou totalmente automático, tornando-as tão versáteis quanto simples de construir e abastecer.",
     },
     {
         nome: "Canhão Automático",
@@ -388,7 +413,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Confiável"],
         peso: "40kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Essas são armas pesadas e poderosas que podem devastar veículos leves e inimigos blindados com poder de fogo de longo alcance. São comumente montadas em tanques ou operadas por equipes de infantaria nos exércitos imperiais, mas também podem ser encontradas nas mãos impuras de insurrecionistas e forças heréticas."
     },
     {
         nome: "Canhão de Mão",
@@ -403,7 +429,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: [],
         peso: "3kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Essa variante da pistola prioriza o poder de parada acima de tudo. É uma arma enorme e brutal, um revolver gigante, e aqueles que a utilizam geralmente não se importam com o estado do alvo após o disparo. Essas armas tem um recuo imenso, a menos que sejam usadas com as duas mãos ou com um redutor de recuo, impõem uma penalidade de -10 em testes de Habilidade Balística."
     },
     {
         nome: "Metralhadora Pesada",
@@ -418,7 +445,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: [],
         peso: "30kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Metralhadoras pesadas são comuns tanto no campo de batalha quanto no submundo criminoso, já que muitas vezes há pouca diferença entre os dois ambientes. Relativamente simples de produzir e manter, utilizam munição padrão capaz de fornecer uma chuva de fogo de supressão contra infantaria e veículos leves. Poucos têm força suficiente para dispará-las, especialmente devido ao seu recuo intenso, por isso a maioria dos usuários depende de um bipé ou outro tipo de suporte. Essas armas utilizam diversos tipos de alimentação de munição, como longas fitas, clipes enormes ou tambores largos."
     },
     {
         nome: "Espingarda",
@@ -433,7 +461,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Dispersar"],
         peso: "5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Espingardas são relativamente fáceis de produzir, e sua ampla área de efeito as torna atraentes para aqueles sem habilidade em combate à distância. Seu alcance curto e baixa velocidade de disparo podem ser desvantagens em conflitos de grande escala, mas essas mesmas características as tornam armas perfeitas para combates a bordo de naves. A construção padronizada dos cartuchos também permite o uso de uma grande variedade de munições especializadas.",
     },
     {
         nome: "Escopeta",
@@ -448,7 +477,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Dispersar"],
         peso: "6.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Escopeta são relativamente fáceis de produzir, e sua ampla área de efeito as torna atraentes para aqueles sem habilidade em combate à distância. Seu alcance curto e baixa velocidade de disparo podem ser desvantagens em conflitos de grande escala, mas essas mesmas características as tornam armas perfeitas para combates a bordo de naves. A construção padronizada dos cartuchos também permite o uso de uma grande variedade de munições especializadas.",
     },
     {
         nome: "Rifle de Precisão",
@@ -463,7 +493,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Confiável", "Precisa"],
         peso: "5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Menos avançados do que os rifles de agulha usados por agentes de elites, os rifles de precisão ainda são muito eficazes contra a maioria dos inimigos levemente blindados. Quando combinados com um suporte de tripé e uma mira telescópica, um atirador habilidoso pode facilmente mudar o rumo de uma batalha com um único disparo.",
     },
     {
         nome: "Metralhadora Automática",
@@ -478,7 +509,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: [],
         peso: "1.5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Essa arma é uma metralhadora de punho que pode disparar em modo semiautomático rápido, além de tiros únicos. É uma arma fácil de produzir e manter, mas menos precisa em longas distâncias.",
     },
     {
         nome: "Revolver",
@@ -493,7 +525,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Confiável"],
         peso: "1.5kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Revolveres utilizam um tambor rotativo para disparar tiros únicos, com um pequeno carregador que deve ser recarregado manualmente. Seu design aberto facilita o carregamento de munições personalizadas para situações especiais, tornando-os armas secundárias úteis para muitos caçadores de recompensas e rastreadores.",
     },
     {
         nome: "Pistola Grav",
@@ -508,7 +541,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Concussiva (1)", "Graviton"],
         peso: "3kg",
-        disponibilidade: "QU"
+        disponibilidade: "QU",
+        descricao: "Essas relíquias extremamente raras da Era Sombria da Tecnologia são dispositivos sagrados zelosamente guardados pelo Adeptus Mechanicus, que muito raramente permitem que um deles saia de seus arsenais. Cada um dispara partículas que perturbam os campos gravimétricos ao redor do alvo, usando a própria massa blindada da vítima contra ela mesma. A força terrível e esmagadora dessas energias antinaturais reduz os alvos a cascos rompidos e formas blindadas amassadas.",
     },
     {
         nome: "Rifle Grav",
@@ -523,7 +557,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Concussiva (2)", "Graviton"],
         peso: "6kg",
-        disponibilidade: "ER"
+        disponibilidade: "ER",
+        descricao: "Essas relíquias extremamente raras da Era Sombria da Tecnologia são dispositivos sagrados zelosamente guardados pelo Adeptus Mechanicus, que muito raramente permitem que um deles saia de seus arsenais. Cada um dispara partículas que perturbam os campos gravimétricos ao redor do alvo, usando a própria massa blindada da vítima contra ela mesma. A força terrível e esmagadora dessas energias antinaturais reduz os alvos a cascos rompidos e formas blindadas amassadas.",
     },
     {
         nome: "Pistola Agulha",
@@ -538,7 +573,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Precisa", "Sobrenatural (1)", "Tóxica (5)"],
         peso: "1.5kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Armas agulha utilizam um fino feixe de laser para disparar fragmentos cristalinos revestidos com toxinas virulentas, cada disparo tão silencioso quanto letal. Elas são extremamente eficazes contra inimigos sem armadura, mas quase qualquer tipo de proteção pode atenuar os projéteis. Aqueles feridos muitas vezes caem mortos antes mesmo de perceberem que foram atingidos. Pistolas agulha são excelentes armas secundárias para espiões e ladrões infiltrados. Essa arma é considerada como sempre possuindo um silenciador.",
     },
     {
         nome: "Rifle Agulha",
@@ -553,7 +589,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrãox2",
         tracosEspeciais: ["Precisa", "Sobrenatural (1)", "Tóxica (5)"],
         peso: "2kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Armas agulha utilizam um fino feixe de laser para disparar fragmentos cristalinos revestidos com toxinas virulentas, cada disparo tão silencioso quanto letal. Elas são extremamente eficazes contra inimigos sem armadura, mas quase qualquer tipo de proteção pode atenuar os projéteis. Aqueles feridos muitas vezes caem mortos antes mesmo de perceberem que foram atingidos. Atiradores de elite valorizam os rifles agulha, que oferecem um alcance muito superior. Essa arma é considerada como sempre possuindo um silenciador.",
     },
     {
         nome: "Pistola de Teia",
@@ -568,7 +605,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Armadilha (0)"],
         peso: "3.5kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Uma arma de teia dispara massas de filamentos gelificados, que se expandem no ar para formar uma teia de material pegajoso e quase inquebrável. Um armamento preferido tanto pelos Adeptus Arbites quanto por caçadores de recompensas, ela pode facilmente subjugar multidões violentas que ousam violar a Lei do Imperador. Uma vez enredados, poucos conseguem escapar dos fios constritores. Os filamentos ficam frágeis e se dissolvem após 1d5 horas.",
     },
     {
         nome: "Lança Teia",
@@ -583,7 +621,8 @@ export const ARMAS: Arma[] = [
         recarga: "Padrão",
         tracosEspeciais: ["Explosiva (5)", "Armadilha (1)"],
         peso: "8kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Uma arma de teia dispara massas de filamentos gelificados, que se expandem no ar para formar uma teia de material pegajoso e quase inquebrável. Um armamento preferido tanto pelos Adeptus Arbites quanto por caçadores de recompensas, ela pode facilmente subjugar multidões violentas que ousam violar a Lei do Imperador. Uma vez enredados, poucos conseguem escapar dos fios constritores. Os filamentos ficam frágeis e se dissolvem após 1d5 horas.",
     },
     {
         nome: "Granada Cegante",
@@ -598,7 +637,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Fumaça (2)"],
         peso: "0.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Explosivos cegantes detonam com uma explosão de fumaça densa, bloqueadores radiação infravermelha e uma onda de espectro eletromagnético amplo, tudo projetado para impedir a detecção através da nuvem. Sensores e visões que normalmente penetrariam na fumaça não conseguem enxergar através da névoa criada.",
     },
     {
         nome: "Granada de Asfixia",
@@ -613,7 +653,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (3)"],
         peso: "0.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Projetada principalmente para combater motins, a granadas de asfixia libera gases fétidos que podem reduzir multidões violentas a grupos facilmente dispersos de miseráveis tossindo e chorando. Em cidades densas, os gases frequentemente se espalham pelas áreas habitacionais, um lembrete do preço por desobedecer às Leis do Imperador. Personagens dentro do raio do gás devem fazer um teste de Resistência a cada turno; falha causa um nível de Fadiga. Quatro ou mais graus de falha indicam dano sério, e o personagem sofre 1d10 de dano que ignora Resistência e Armadura. O gás dura por 2d5 rodadas, ou menos em condições climáticas adversas.",
     },
     {
         nome: "Granada de Fragmento",
@@ -628,7 +669,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (3)"],
         peso: "0.5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Granadas de fragmentação explodem em uma nuvem de fragmentos metálicos mortais, sendo excelentes armas antipessoal. Muitos especialistas em combate corpo a corpo carregam bandoleiras delas para arremessá-las em posições inimigas durante um ataque.",
     },
     {
         nome: "Granada Alucinógenica",
@@ -643,7 +685,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (6)", "Alucinógena (2)"],
         peso: "0.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Essas granadas utilizam drogas que alteram a mente ou até energias exóticas para induzir uma variedade de estados psicológicos e ilusões de curta duração. Elas são frequentemente usadas para controle de multidões ou em áreas onde resultados não letais são necessários.",
     },
     {
         nome: "Granada de Pulso Elétrico",
@@ -658,7 +701,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Pulso Elétrico (2)"],
         peso: "0.5kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Essas granadas ignoram a carne e, em vez disso, procuram ferir espíritos de máquinas e dispositivos tecnológicos através de uma chuva de radiação eletromagnética prejudicial. Máquinas que sofrem tais danos frequentemente ficam incapacitadas, deixando seus usuários indefesos contra inimigos atacantes.",
     },
     {
         nome: "Granada Krak",
@@ -673,7 +717,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Concussiva (0)"],
         peso: "0.5kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Projetadas mais para penetração de armaduras, essas armas concentram sua explosão em um efeito focalizado que pode perfurar a maioria dos tanques ou paredes de bunkers. Granadas Krak ganham a qualidade Vingativa (9) quando usadas contra veículos.",
     },
     {
         nome: "Granada de Flash de Fóton",
@@ -688,7 +733,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (6)"],
         peso: "0.5kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Essas granadas explodem com uma luz intensamente brilhante que sobrecarrega olhos desprotegidos, causando cegueira temporária, sendo excelentes armas não letais. Qualquer personagem dentro do raio de explosão de uma granada de flash de fóton ao detonar deve ser bem-sucedido em um teste de Agilidade Normal (+10) ou ficará cego por um número de rodadas igual aos graus de falha.",
     },
     {
         nome: "Granada de Fumaça",
@@ -703,7 +749,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Fumaça (4)"],
         peso: "0.5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Um dispositivo relativamente simples e fácil de construir, as granadas de fumaça liberam grandes jatos de nuvens espessas e negras que obscurecem a visão. Elas não bloqueiam sistemas de detecção que usam calor ou outras faixas espectrais fora da visão humana normal, mas são muito mais amplamente disponíveis e fáceis de fabricar.",
     },
     {
         nome: "Granada de Atordoamento",
@@ -718,7 +765,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (3)", "Concussiva (2)"],
         peso: "0.5kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Usando uma combinação de ruído alto e luz brilhante, essas granadas podem incapacitar alvos por tempo suficiente para que as forças de assalto apliquem restrições não letais ou para eliminar com facilidade os inimigos agora desabilitados.",
     },
     {
         nome: "Granada de Teia",
@@ -733,7 +781,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (3)", "Armadilha (2)"],
         peso: "0.5kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Granadas de teia usam o mesmo gel cheio de filamentos que prendem usado pelas armas de teia, e podem enredar grupos de alvos em instantes quando detonam. Os filamentos da teia ficam frágeis e se dissolvem após 1d5 horas.",
     },
     {
         nome: "Míssil de Fragmento",
@@ -743,7 +792,8 @@ export const ARMAS: Arma[] = [
         penetracao: 2,
         tracosEspeciais: ["Explosiva (5)"],
         peso: "1kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Mísseis de fragmentação explodem em uma nuvem de fragmentos metálicos mortais, sendo armas extremamente eficazes contra alvos pessoais e leves. Muitos especialistas em combate os utilizam para bombardear posições inimigas à distância, causando dano em área e desorganizando as forças adversárias.",
     },
     {
         nome: "Míssil Krak",
@@ -753,7 +803,8 @@ export const ARMAS: Arma[] = [
         penetracao: 8,
         tracosEspeciais: ["Concussiva (3)", "Efetiva (2)"],
         peso: "1kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Projetadas mais para penetração de armaduras, essas armas concentram sua explosão em um efeito focalizado que pode perfurar a maioria dos tanques ou paredes de bunkers. Misseis Krak ganham a qualidade Vingativa (9) quando usados contra veículos.",
     },
     {
         nome: "Bomba de Fogo",
@@ -768,7 +819,8 @@ export const ARMAS: Arma[] = [
         recarga: "-",
         tracosEspeciais: ["Explosiva (2)", "Chama"],
         peso: "0.5kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Um explosivo relativamente primitivo, a bomba de fogo é normalmente um recipiente quebrável contendo líquido inflamável com um pavio feito de tecido ou outro material que o líquido possa absorver. Uma vez que o pavio é aceso, a bomba é arremessada contra o inimigo; o recipiente se quebra ao impactar, liberando o líquido em chamas. elas levam uma ação simples para serem preparadas antes do uso e não podem ser carregadas em armas lançadoras.",
     },
     {
         nome: "Bomba Melta",
@@ -779,7 +831,8 @@ export const ARMAS: Arma[] = [
         municao: 1,
         tracosEspeciais: ["Explosiva (2)", "Chama", "Melta"],
         peso: "12kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Bombas melta são explosivos desajeitados, mas extremamente poderosos, capazes de rasgar até as mais espessas cascas de tanques ou paredes de bunkers. Ao contrário de outras granadas, elas aderem ao alvo e então detonam com uma carga moldada, produzindo um efeito semelhante ao de uma arma melta. Elas não podem ser usadas com armas lançadoras e não podem ser arremessadas.",
     },
     {
         nome: "Machado Corrente",
@@ -790,7 +843,8 @@ export const ARMAS: Arma[] = [
         penetracao: 2,
         tracosEspeciais: ["Dilacerante"],
         peso: "13kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Embora a espada corrente possa ser empunhada com habilidade, o machado corrente é uma arma mais simples e selvagem. O cabo longo oferece alavancagem adicional, permitindo que sua larga lâmina de corrente cause golpes mais pesados a cada ataque, porém com menos controle ou precisão. A maioria a empunha justamente por esses motivos, saboreando o terror e a destruição que causam. Esta é uma arma de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Faca Corrente",
@@ -801,7 +855,8 @@ export const ARMAS: Arma[] = [
         penetracao: 1,
         tracosEspeciais: ["Dilacerante"],
         peso: "2kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Essas são uma das menores armas de corrente, pouco mais do que uma faca com uma pequena corrente ao redor de sua lâmina. Seu tamanho é enganoso, pois o efeito de rasgo adicional proporcionado pela corrente a torna muito mais eficaz do que qualquer adaga comum.",
     },
     {
         nome: "Espada Corrente",
@@ -812,7 +867,8 @@ export const ARMAS: Arma[] = [
         penetracao: 2,
         tracosEspeciais: ["Dilacerante", "Balanceada"],
         peso: "6kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "O tipo mais comum de arma de corrente, essas espadas pesadas geralmente têm apenas a ponta e um lado da lâmina exposta com os dentes giratórios e letais da corrente. Apesar de sua natureza bárbara, muitas escolas de esgrima elaboradas, dedicadas à prática artística da espadas corrente, existem por todo o Imperium. Para muitos usuários, no entanto, qualquer golpe é suficiente para lidar com a maioria dos inimigos, deixando para trás apenas carne dilacerada e sangue.",
     },
     {
         nome: "Esvicerador",
@@ -823,7 +879,8 @@ export const ARMAS: Arma[] = [
         penetracao: 9,
         tracosEspeciais: ["Dilacerante", "Pesada", "Afiada"],
         peso: "15kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Uma das maiores armas de corrente, o eviscerador é uma espada corrente enorme, frequentemente com lâmina dupla, que requer as duas mãos para ser empunhada. Os sacerdotes do Adeptus Ministorum costumam brandi-la com fúria desenfreada contra hereges, pouco se importando se acabam se ferindo a cada golpe selvagem. Se um ataque feito com um eviscerador desencadear fúria justiceira, o portador adiciona +1 à rolagem resultante na Tabela de Efeitos Críticos de Rasgo apropriada. Esta é uma arma de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Espada de Força",
@@ -834,7 +891,8 @@ export const ARMAS: Arma[] = [
         penetracao: 2,
         tracosEspeciais: ["Balanceada", "Energia"],
         peso: "5kg",
-        disponibilidade: "QU"
+        disponibilidade: "QU",
+        descricao: "Uma espada de força é frequentemente confundida com uma lâmina altamente ornamentada, embora às vezes seja feita de metais incomuns ou materiais cristalinos. Uma vez infundida com as energias do Warp de um psíquico, ela pode cortar carne demoníaca e mortal com facilidade. Muitos psíquicos, que geralmente não são conhecidos por suas habilidades em combate, tornaram-se excelentes espadachins para tirar pleno proveito dessa arma.",
     },
     {
         nome: "Bastão de Força",
@@ -845,7 +903,8 @@ export const ARMAS: Arma[] = [
         penetracao: 2,
         tracosEspeciais: ["Energia"],
         peso: "2kg",
-        disponibilidade: "ER"
+        disponibilidade: "ER",
+        descricao: "Muitos psíquicos preferem esses cajados em vez de outras armas de força, já que a maioria se assemelha apenas a bastões elegantemente moldados de madeira ou metal exótico. Alguns cajados ostentam um imponente Aquila Imperial ou outros símbolos do Imperador, cuja força psíquica ilumina o Astronomican e toda a galáxia. São armas de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Arma Grande",
@@ -856,7 +915,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Desbalanceada"],
         peso: "7kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Armas grandes, como machados enormes e martelos gigantes, são armas superdimensionadas e desajeitadas, mas capazes de esmagar inimigos até transformá-los em polpa sangrenta a cada golpe. Altamente visíveis e ameaçadoras, a simples visão de uma dessas armas pode incitar a violência. Armas grandes são armas de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Lança Explosiva",
@@ -867,7 +927,8 @@ export const ARMAS: Arma[] = [
         penetracao: 7,
         tracosEspeciais: ["Concussiva (3)"],
         peso: "4kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Uma arma tradicional entre a cavalaria pesada da guarda imperial, as lanças explosivas possuem uma pequena, porém poderosa, carga explosiva na ponta de uma lança metálica. No impacto, a carga detona com força suficiente para despedaçar armaduras e barricadas, permitindo que os cavaleiros continuem seu avanço. Após um ataque bem-sucedido com essa arma, sua ponta é destruída e ela passa a ser tratada como um bastão.",
     },
     {
         nome: "Arma Improvisada",
@@ -878,7 +939,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Primitiva (7)", "Desbalanceada"],
         peso: "-",
-        disponibilidade: "-"
+        disponibilidade: "-",
+        descricao: "Quando armas apropriadas falham ou ficam sem energia, combatentes desesperados recorrem a qualquer coisa próxima que pareça útil: pernas de mesa quebradas, canos de ventilação, e até membros decepados ou coronhas de rifles. Nenhum desses objetos se compara nem mesmo à mais cega das espadas, mas ao enfrentar uma horda de cultistas, são melhores do que nada. Golpear alguém com a coronha de uma arma de longo alcance básica também conta como o uso de uma arma improvisada em combate.",
     },
     {
         nome: "Faca",
@@ -890,7 +952,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: [],
         peso: "1kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Tão comuns que praticamente todos no Império carregam uma, as facas podem variar de simples adagas de metal grosseiramente afiadas até lâminas elaboradamente inscritas feitas de cristal xenos. A maioria é cuidadosamente balanceada, tornando-as também úteis como armas de arremesso.",
     },
     {
         nome: "Escudo",
@@ -901,7 +964,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Defensiva"],
         peso: "3kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Escudos são dispositivos de proteção úteis, seja em conjunto com armaduras ou usados isoladamente. Seus tamanhos variam de pequenos broqueis a enormes placas de corpo inteiro. Como não são projetados para ataque, golpes realizados com escudos sofrem uma penalidade de –20, em vez da penalidade normal da qualidade defensiva.",
     },
     {
         nome: "Lança",
@@ -913,7 +977,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Primitiva (8)"],
         peso: "3kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Comum em mundos selvagens e feudais, uma lança pode ser encontrada nas mãos de caçadores e guerreiros por toda a galáxia. Esta é uma arma de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Bastão",
@@ -924,7 +989,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Primitiva (7)", "Balanceada"],
         peso: "3kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Bastões são longas hastes de madeira ou metal, frequentemente mais altos que um homem. Comumente usados como cajados por peregrinos que seguem os passos dos santos, também servem como armas práticas. Bastões são armas de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Espada",
@@ -935,7 +1001,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Balanceada"],
         peso: "3kg",
-        disponibilidade: "PD"
+        disponibilidade: "PD",
+        descricao: "Espadas usam lâminas afiadas para cortar e perfurar, podendo ser encontradas em todos os lugares — desde gangues do submundo até a nobreza das torres. Elas existem em estilos infinitos — de lâminas rígidas a alumínio flexível, com fio de um lado ou de ambos — cada um com milênios de técnicas de combate e escolas dedicadas à forma adequada de uso.",
     },
     {
         nome: "Cassetete",
@@ -946,7 +1013,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Primitiva (7)"],
         peso: "2kg",
-        disponibilidade: "FR"
+        disponibilidade: "FR",
+        descricao: "Pequenos e facilmente ocultáveis, esses bastões curtos e pesados de madeira densa ou metal são frequentemente usados por gangues para “recrutar” novas tripulações navais com um golpe rápido na parte de trás da cabeça.",
     },
     {
         nome: "Martelo de Guerra",
@@ -957,7 +1025,8 @@ export const ARMAS: Arma[] = [
         penetracao: 1,
         tracosEspeciais: ["Concussiva (1)", "Primitiva (8)"],
         peso: "4.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "Uma arma ideal para golpear inimigos blindados com impactos poderosos, o martelo de guerra possui uma cabeça compacta montada em um cabo longo. Leva mais tempo para ser manejado do que armas menores, mas cada golpe acerta com força concentrada, podendo derrubar inimigos ao chão, insensatos e indefesos. Muitos membros da Ordo Malleus da Inquisição preferem esses martelos, canalizando sua fúria em cada impacto. São armas de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Chicote",
@@ -969,7 +1038,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Primitiva (6)", "Flexível"],
         peso: "2kg",
-        disponibilidade: "CM"
+        disponibilidade: "CM",
+        descricao: "Chicotes existem desde os primórdios da história, usados tanto para punições horríveis quanto para “incentivar” a produtividade de trabalhadores. Fáceis de confeccionar, muitos usuários fabricam os seus próprios com materiais locais, como couros, cipós ou fios soltos.",
     },
     {
         nome: "Machado do Omnissian",
@@ -980,7 +1050,8 @@ export const ARMAS: Arma[] = [
         penetracao: 6,
         tracosEspeciais: ["Campo de Força", "Desbalanceada"],
         peso: "8kg",
-        disponibilidade: "ER"
+        disponibilidade: "ER",
+        descricao: "Concedido aos seguidores devidamente devotos do Omnissiah, esta arma possui um corpo longo semelhante a um cajado, encimado por metade do ícone circular da caveira e engrenagem do Adeptus Mechanicus. O símbolo forma uma lâmina envolta por um campo de energia. Coberto por circuitos inscritos que indicam sua natureza sagrada, muitos inimigos percebem tarde demais que aquilo que parecia um cajado religioso era, na verdade, uma arma letal. Um machado do Omnissiah também funciona como uma ferramenta combinada e é uma arma de combate corpo a corpo de duas mãos.",
     },
     {
         nome: "Punho de Energia",
@@ -991,7 +1062,8 @@ export const ARMAS: Arma[] = [
         penetracao: 9,
         tracosEspeciais: ["Campo de Força", "Pesada"],
         peso: "13kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Uma das armas de combate corpo a corpo mais devastadoras do milênio 41, o punho de energia envolve a mão do usuário com uma enorme luva mecânica equipada com dedos articulados. Todo o dispositivo é envolto por um campo de energia gerado a partir de uma fonte montada em uma mochila ou contido dentro de uma armadura pesada, permitindo que a arma esmague cascos de tanques e destrua barricadas com facilidade. Muitos desses punhos são relíquias que remontam a séculos, com os feitos e a linhagem de cada usuário cuidadosamente inscritos na superfície externa.",
     },
     {
         nome: "Espada de Energia",
@@ -1002,7 +1074,8 @@ export const ARMAS: Arma[] = [
         penetracao: 5,
         tracosEspeciais: ["Campo de Força", "Balanceada"],
         peso: "3kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Espadas de energia são símbolos de prestígio dentro do Império, e muitos oficiais sem qualquer habilidade chegam a usá-las em público apenas para demonstrar status. Algumas dessas armas são passadas como relíquias de família, levando o nome da linhagem através das gerações, de batalha em batalha. Elas existem em diversos estilos, permitindo uma ampla variedade de técnicas de combate, dependendo tanto da lâmina quanto de seu portador.",
     },
     {
         nome: "Machado de Energia",
@@ -1013,10 +1086,11 @@ export const ARMAS: Arma[] = [
         penetracao: 7,
         tracosEspeciais: ["Campo de Força", "Desbalanceada"],
         peso: "6kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Uma arma comum entre os devotos do Deus Máquina, o machado de energia combina o impacto bruto de um machado com um campo de energia. Embora menos refinado do que uma espada de energia, muitos preferem seu ataque devastador, que poucos conseguem resistir. Um machado de energia é uma arma corpo a corpo de duas mãos.",
     },
     {
-        nome: "Maça de Energia (Forte)",
+        nome: "Maça de Energia",
         tipo: "Energia",
         classe: "Corpo",
         dano: "1d10+5",
@@ -1024,7 +1098,8 @@ export const ARMAS: Arma[] = [
         penetracao: 4,
         tracosEspeciais: ["Campo de Força", "Chocante"],
         peso: "3.5kg",
-        disponibilidade: "MR"
+        disponibilidade: "MR",
+        descricao: "Marretas de energia são armas de elite em muitas formações de combate, onde sua forma semelhante a um porrete pode arrebentar portas reforçadas de habitações ou quebrar armaduras. Mesmo sem energia, esses dispositivos pesados podem deixar um herege inconsciente. Esta é uma arma corpo a corpo de uma mão, mas quando usada com as duas mãos ganha a qualidade Concussiva (0).",
     },
     {
         nome: "Maça de Choque",
@@ -1035,7 +1110,8 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Chocante"],
         peso: "2.5kg",
-        disponibilidade: "ES"
+        disponibilidade: "ES",
+        descricao: "A arma característica do Adeptus Arbites, as marretas de choque vêm em muitos designs, desde cassetetes elegantes até clavas pesadas e brutais que causariam danos mesmo sem a descarga elétrica. Elas são principalmente não letais, embora golpes suficientes possam matar um herege tão seguramente quanto uma espada corrente em batalha.",
     },
     {
         nome: "Chicote de Choque",
@@ -1047,6 +1123,7 @@ export const ARMAS: Arma[] = [
         penetracao: 0,
         tracosEspeciais: ["Chocante", "Flexível"],
         peso: "3kg",
-        disponibilidade: "RA"
+        disponibilidade: "RA",
+        descricao: "Esta arma é comum em locais onde há trabalhadores ou escravos que necessitam de estímulo adicional para melhorar seus esforços. Embora não seja projetada para combate, o alcance extra que oferece pode fazer a diferença para interromper um ritual obscuro ou uma incursão xenos.",
     },
 ];

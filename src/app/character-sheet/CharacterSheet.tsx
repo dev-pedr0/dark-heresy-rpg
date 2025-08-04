@@ -7,7 +7,9 @@ import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
 import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
+import WeaponSection from "@/components/character-data/WeaponSection";
 import XpFateSection from "@/components/character-data/XpFateSection";
+import { Arma, ARMAS } from "@/data/armas";
 import { montarPericiasComNiveis, PericiaComNivel } from "@/data/pericias";
 import { useEffect, useState } from "react";
 
@@ -76,6 +78,7 @@ type Ficha = {
             nivel?: number; 
             descricao: string 
         }[];
+        armas?: Arma[];
     };
 };
 
@@ -88,6 +91,18 @@ export default function FichaPage() {
             const f: Ficha = JSON.parse(raw);
             if (f.background?.pericias && !f.dadosFinais.pericias?.length) {
                 f.dadosFinais.pericias = montarPericiasComNiveis(f.background.pericias);
+            }
+             if (
+                f.background?.equipamentos?.length &&
+                (!f.dadosFinais.armas || !f.dadosFinais.armas.length)
+                ) {
+                const armasDoBackground = f.background.equipamentos
+                    .map((nomeEq) =>
+                    ARMAS.find((arma) => arma.nome.toLowerCase() === nomeEq.toLowerCase())
+                    )
+                    .filter((a): a is Arma => !!a);
+
+                f.dadosFinais.armas = armasDoBackground;
             }
             setFicha(f);
         }
@@ -182,6 +197,13 @@ export default function FichaPage() {
         setFicha(novaFicha);
     };
 
+    const handleArmasChange = (novasArmas: Arma[]) => {
+        if (!ficha) return;
+        const novaFicha = { ...ficha };
+        novaFicha.dadosFinais.armas = novasArmas;
+        setFicha(novaFicha);
+    };
+
     return (
         <main className="p-6 max-w-[90%] mx-auto space-y-4 border"
             style={{ color: "var(--color-text)", backgroundColor: "var(--color-darkblack)", borderColor: "var(--color-darkred)"}}
@@ -267,6 +289,11 @@ export default function FichaPage() {
                             novaFicha.dadosFinais.tracos = novosTracos;
                             setFicha(novaFicha);
                         }}
+                    />
+
+                    <WeaponSection
+                        armas={ficha.dadosFinais.armas || []}
+                        setArmas={handleArmasChange}
                     />
                 </div>
             </div>
