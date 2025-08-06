@@ -1,4 +1,4 @@
-type Armadura = {
+export type Armadura = {
     nome: string;
     tipo: string;
     locais: string[];

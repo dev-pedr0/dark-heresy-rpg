@@ -2,6 +2,7 @@
 
 import AllyEnemySection from "@/components/character-data/AllyEnemySection";
 import AptidoesSection from "@/components/character-data/AptitudesSection";
+import ArmorAndDefense from "@/components/character-data/ArmorAndDefense";
 import CharacteristicSection from "@/components/character-data/CharacteristicSection";
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
@@ -9,6 +10,7 @@ import PericiasSection from "@/components/character-data/PericiasSection";
 import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
 import WeaponSection from "@/components/character-data/WeaponSection";
 import XpFateSection from "@/components/character-data/XpFateSection";
+import { Armadura } from "@/data/armaduras";
 import { Arma, ARMAS } from "@/data/armas";
 import { montarPericiasComNiveis, PericiaComNivel } from "@/data/pericias";
 import { useEffect, useState } from "react";
@@ -79,6 +81,7 @@ type Ficha = {
             descricao: string 
         }[];
         armas?: Arma[];
+        armaduras?: Armadura[];
     };
 };
 
@@ -294,6 +297,10 @@ export default function FichaPage() {
                     <WeaponSection
                         armas={ficha.dadosFinais.armas || []}
                         setArmas={handleArmasChange}
+                    />
+
+                    <ArmorAndDefense
+                        ficha={ficha} setFicha={setFicha}
                     />
                 </div>
             </div>
