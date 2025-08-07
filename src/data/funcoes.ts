@@ -326,7 +326,7 @@ export const funcoes: Funcao[] = [
                     Exemplo de Caminho Modelo (2):
                     Guerreiro focado em inventividade e uso de tecnologia.
                     Recomendado aprimorar as seguintes características: Habilidade de Combate, Habilidade Balística, Inteligência.
-                    Recomendado aprimorar as seguintes perícias: Esquiva, Operação (Suoerfície), Uso Tecnológico, Negócio (Armas, Tecnologia).
+                    Recomendado aprimorar as seguintes perícias: Esquiva, Operação (Superfície), Uso Tecnológico, Negócio (Armas, Tecnologia).
                     Talentos Recomendados: Mestre de Armaduras, Trabalho em Equipe, Tiro Potente, Sem Ter Onde Se Esconder, Reação Rápida, Talento Técnico, Tecnólogo de Armas, Treinamento com Armas (Escolha Um).
                     `,
         talentosEscolhiveis: ["Mandíbula de Ferro", "Recarga Rápida"],

@@ -82,6 +82,14 @@ type Ficha = {
         }[];
         armas?: Arma[];
         armaduras?: Armadura[];
+        defesaPorLocal: {
+           "Cabeça": { resistencia: 0, defesa: 0 },
+            "Braço Esquerdo": { resistencia: 0, defesa: 0 },
+            "Braço Direito": { resistencia: 0, defesa: 0 },
+            "Corpo": { resistencia: 0, defesa: 0 },
+            "Perna Esquerda": { resistencia: 0, defesa: 0 },
+            "Perna Direita": { resistencia: 0, defesa: 0 }, 
+        }
     };
 };
 
