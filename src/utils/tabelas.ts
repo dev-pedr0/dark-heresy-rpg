@@ -167,7 +167,7 @@ export const TABELA_DIVINACOES = [
     },
     {
         roll: [100],
-        texto: "Não me pergunte proque eu sirvo. Apenas pergunte como.",
+        texto: "Não se pergunte por que servir. Apenas pergunte como.",
         efeito: "Aumenta o Limite de Pontos de Destino em +1.",
     },
 ];

@@ -4,6 +4,7 @@ import AllyEnemySection from "@/components/character-data/AllyEnemySection";
 import AptidoesSection from "@/components/character-data/AptitudesSection";
 import ArmorAndDefense from "@/components/character-data/ArmorAndDefense";
 import CharacteristicSection from "@/components/character-data/CharacteristicSection";
+import Gear from "@/components/character-data/Gear";
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
@@ -17,17 +18,17 @@ import { useEffect, useState } from "react";
 
 type Ficha = {
     origem: {
-        nome: string; //levar
+        nome: string;
         bonus: string;
         talentos: string[];
-        efeitoNaArma?: string; //levar
+        efeitoNaArma?: string;
         aptidoes: string;
-        vida: number; //levar
-        limiteDestino: number; //levar
+        vida: number;
+        limiteDestino: number;
     } | null;
     atributos: { [atributo: string]: number } | null;
     background: {
-        nome: string; //levar
+        nome: string;
         bonus: string;
         pericias: string[];
         talentos: string[];
@@ -35,13 +36,17 @@ type Ficha = {
         aptidoes: string[];
     } | null;
     funcao: {
-        nome: string; //levar
+        nome: string;
         bonus: string;
         talentos: string[];
         aptidoes: string[];
     } | null;
     dadosFinais: {
-        aptidoes: string[];
+        origemNome: string; //vem de origem.nome;
+        atributosPersonagem: { [atributo: string]: number } | null; //vem de atributos
+        backgroundNome?: string //vem de background.nome
+        funcaoNome?: string; //vem de funcao.nome
+        aptidoes: string[]; //vem de origem.aptidoes, background.aptidoes, funcao.aptidoes
         avancoElite?: string;
         nomePersonagem: string;
         nomeJogador: string;
@@ -57,8 +62,9 @@ type Ficha = {
         inimigos?: string[];
         xpDisponivel?: number;
         xpGasto?: number;
+        destinoTotal?: number; //vem de origem.limiteDestino
         destinoAtual?: number;
-        pericias: PericiaComNivel[];
+        pericias: PericiaComNivel[]; //background.pericias
         atributos: {
             [atributo: string]: {
                 valorFinal: number;
@@ -74,12 +80,13 @@ type Ficha = {
             nome: string;
             especializacao?: string;
             descricao: string;
-        }[];
+        }[]; //vem de origem.bonus, origem.talentos, background.bonus, background.talentos, funcao.bonus, função.talentos
         tracos?: { 
             nome: string; 
             nivel?: number; 
             descricao: string 
         }[];
+        equipamentos?: string[]; //vem de background.equipamentos
         armas?: Arma[];
         armaduras?: Armadura[];
         defesaPorLocal: {
@@ -89,7 +96,20 @@ type Ficha = {
             "Corpo": { resistencia: 0, defesa: 0 },
             "Perna Esquerda": { resistencia: 0, defesa: 0 },
             "Perna Direita": { resistencia: 0, defesa: 0 }, 
+        };
+        vidatotal?: number; //vem de origem.vida
+        vidaAtual?: number;
+        danoCritico?: number;
+        condicoes?: string;
+        movimento?: {
+            metade?: number;
+            completo?: number;
+            corrida?: number;
+            atropelar?: number;
         }
+        fadigaLimite?: number;
+        fadigaAtual?: number;
+        outrasHabilidades?: string;
     };
 };
 
@@ -308,6 +328,10 @@ export default function FichaPage() {
                     />
 
                     <ArmorAndDefense
+                        ficha={ficha} setFicha={setFicha}
+                    />
+
+                    <Gear
                         ficha={ficha} setFicha={setFicha}
                     />
                 </div>

@@ -173,7 +173,7 @@ export default function ArmorAndDefense({ficha, setFicha}: Props) {
             </div>
 
             {/* Defesa por local */}
-            <div className="mt-8">
+            <div className="mt-8 flex gap-4 items-start">
                 <div
                     className="relative grid grid-cols-3 gap-4 p-4 rounded"
                     style={{
@@ -217,6 +217,84 @@ export default function ArmorAndDefense({ficha, setFicha}: Props) {
                         </div>
                         ))
                     )}
+                </div>
+
+                {/* Coluna lateral com vida, crítico e condições */}
+                <div className="flex flex-col gap-4 bg-gray-800 p-4 rounded w-[260px] text-white" style={{ minHeight: "500px" }}>
+                    {/* Vida total */}
+                    <div>
+                        <label className="block font-semibold mb-1">Vida Total</label>
+                        <input
+                            type="number"
+                            className="w-full p-1 rounded bg-gray-700 text-white"
+                            value={ficha.dadosFinais.vidaTotal ?? ficha.origem?.vida ?? 0}
+                            onChange={(e) =>
+                            setFicha({
+                                ...ficha,
+                                dadosFinais: {
+                                ...ficha.dadosFinais,
+                                vidaTotal: parseInt(e.target.value) || 0,
+                                },
+                            })
+                            }
+                        />
+                    </div>
+
+                    {/* Vida atual */}
+                    <div>
+                        <label className="block font-semibold mb-1">Vida Atual</label>
+                        <input
+                            type="number"
+                            className="w-full p-1 rounded bg-gray-700 text-white"
+                            value={ficha.dadosFinais.vidaAtual ?? 0}
+                            onChange={(e) =>
+                            setFicha({
+                                ...ficha,
+                                dadosFinais: {
+                                ...ficha.dadosFinais,
+                                vidaAtual: parseInt(e.target.value) || 0,
+                                },
+                            })
+                            }
+                        />
+                    </div>
+
+                    {/* Dano Crítico */}
+                    <div>
+                        <label className="block font-semibold mb-1">Dano Crítico (Atual)</label>
+                        <input
+                            type="number"
+                            className="w-full p-1 rounded bg-gray-700 text-white"
+                            value={ficha.dadosFinais.danoCritico ?? 0}
+                            onChange={(e) =>
+                            setFicha({
+                                ...ficha,
+                                dadosFinais: {
+                                ...ficha.dadosFinais,
+                                danoCritico: parseInt(e.target.value) || 0,
+                                },
+                            })
+                            }
+                        />
+                    </div>
+
+                    {/* Condições */}
+                    <div className="flex flex-col flex-grow">
+                        <label className="block font-semibold mb-1">Condições</label>
+                        <textarea
+                            className="w-full p-1 rounded bg-gray-700 text-white flex-grow resize-none"
+                            value={ficha.dadosFinais.condicoes ?? ""}
+                            onChange={(e) =>
+                            setFicha({
+                                ...ficha,
+                                dadosFinais: {
+                                ...ficha.dadosFinais,
+                                condicoes: e.target.value,
+                                },
+                            })
+                            }
+                        />
+                    </div>
                 </div>
             </div>
         </div>
