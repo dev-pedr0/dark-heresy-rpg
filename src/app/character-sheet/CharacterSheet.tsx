@@ -7,6 +7,8 @@ import CharacteristicSection from "@/components/character-data/CharacteristicSec
 import Gear from "@/components/character-data/Gear";
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
+import MovementAndFatigeSection from "@/components/character-data/MovementAndFatigeSection";
+import MovementFadige from "@/components/character-data/MovementAndFatigeSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
 import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
 import WeaponSection from "@/components/character-data/WeaponSection";
@@ -102,10 +104,10 @@ type Ficha = {
         danoCritico?: number;
         condicoes?: string;
         movimento?: {
-            metade?: number;
-            completo?: number;
+            parcial?: number;
+            total?: number;
+            disparada?: number;
             corrida?: number;
-            atropelar?: number;
         }
         fadigaLimite?: number;
         fadigaAtual?: number;
@@ -332,6 +334,10 @@ export default function FichaPage() {
                     />
 
                     <Gear
+                        ficha={ficha} setFicha={setFicha}
+                    />
+
+                    <MovementAndFatigeSection
                         ficha={ficha} setFicha={setFicha}
                     />
                 </div>
