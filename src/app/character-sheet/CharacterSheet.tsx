@@ -4,12 +4,14 @@ import AllyEnemySection from "@/components/character-data/AllyEnemySection";
 import AptidoesSection from "@/components/character-data/AptitudesSection";
 import ArmorAndDefense from "@/components/character-data/ArmorAndDefense";
 import CharacteristicSection from "@/components/character-data/CharacteristicSection";
+import ExtraSection from "@/components/character-data/ExtraSection";
 import Gear from "@/components/character-data/Gear";
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
 import MovementAndFatigeSection from "@/components/character-data/MovementAndFatigeSection";
 import MovementFadige from "@/components/character-data/MovementAndFatigeSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
+import PsykerSection from "@/components/character-data/PsykerSection";
 import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
 import WeaponSection from "@/components/character-data/WeaponSection";
 import XpFateSection from "@/components/character-data/XpFateSection";
@@ -111,6 +113,8 @@ type Ficha = {
         }
         fadigaLimite?: number;
         fadigaAtual?: number;
+        psiNivel?: number;
+        poderesPsiquicos?: string;
         outrasHabilidades?: string;
     };
 };
@@ -289,10 +293,7 @@ export default function FichaPage() {
                         destinoLimite={ficha.origem?.limiteDestino ?? 0}
                         onChange={handleXpDestinoChange}
                     />
-                </div>
 
-                {/* Lado direito */}
-                <div className="w-full lg:w-1/2 lg:pl-4">
                     <InsanityCorruptionSection
                         insanidade={ficha.dadosFinais.insanidade ?? 0}
                         traumas={ficha.dadosFinais.traumas ?? ""}
@@ -313,8 +314,11 @@ export default function FichaPage() {
                             setFicha(novaFicha);
                         }} 
                     />
+                </div>
 
-                    <TalentosETracosSection
+                {/* Lado direito */}
+                <div className="w-full lg:w-1/2 lg:pl-4">
+                                        <TalentosETracosSection
                         ficha={ficha}
                         onChange={(novosTalentos, novosTracos) => {
                             const novaFicha = { ...ficha };
@@ -338,6 +342,14 @@ export default function FichaPage() {
                     />
 
                     <MovementAndFatigeSection
+                        ficha={ficha} setFicha={setFicha}
+                    />
+
+                    <PsykerSection
+                        ficha={ficha} setFicha={setFicha}
+                    />
+
+                    <ExtraSection
                         ficha={ficha} setFicha={setFicha}
                     />
                 </div>
