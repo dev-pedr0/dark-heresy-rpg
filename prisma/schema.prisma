@@ -24,6 +24,7 @@ model User {
 
   accounts       Account[]
   sessions       Session[]
+  characters     Character[]
 }
 
 model Account {
@@ -60,4 +61,54 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Character {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String     @db.ObjectId
+  user            User       @relation(fields: [userId], references: [id])
+  origemNome      String
+  atributosPersonagem Json?
+  backgroundNome   String?
+  funcaoNome      String?
+  aptidoes        String[]   @default([])
+  avancoElite     String?
+  nomePersonagem  String
+  nomeJogador     String
+  idade           Int?
+  aparencia       String
+  historia        String
+  genero          String
+  divinacao       Json?
+  aliados         String[]   @default([])
+  inimigos        String[]   @default([])
+  xpDisponivel    Int?
+  xpGasto         Int?
+  destinoTotal    Int?
+  destinoAtual    Int?
+  pericias        Json[]     @default([])
+  atributos       Json
+  insanidade      Int        @default(0)
+  traumas         String     @default("")
+  corrupcao       Int        @default(0)
+  malignancias    String     @default("")
+  mutacoes        String[]   @default([])
+  talentos        Json[]     @default([])
+  tracos          Json[]     @default([])
+  equipamentos    String[]   @default([])
+  armas           Json[]     @default([])
+  armaduras       Json[]     @default([])
+  defesaPorLocal  Json
+  vidatotal       Int?
+  vidaAtual       Int?
+  danoCritico     Int?
+  condicoes       String?
+  movimento        Json?
+  fadigaLimite    Int?
+  fadigaAtual     Int?
+  psiNivel        Int?
+  poderesPsiquicos String?
+  outrasHabilidades String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
 }
