@@ -9,7 +9,6 @@ import Gear from "@/components/character-data/Gear";
 import HeaderSection from "@/components/character-data/HeaderSection";
 import InsanityCorruptionSection from "@/components/character-data/InsanityCorruptionSection";
 import MovementAndFatigeSection from "@/components/character-data/MovementAndFatigeSection";
-import MovementFadige from "@/components/character-data/MovementAndFatigeSection";
 import PericiasSection from "@/components/character-data/PericiasSection";
 import PsykerSection from "@/components/character-data/PsykerSection";
 import TalentosETracosSection from "@/components/character-data/TalentoseTracosSection";
@@ -18,228 +17,196 @@ import XpFateSection from "@/components/character-data/XpFateSection";
 import { Armadura } from "@/data/armaduras";
 import { Arma, ARMAS } from "@/data/armas";
 import { montarPericiasComNiveis, PericiaComNivel } from "@/data/pericias";
+import prisma from "@/lib/prisma";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-type Ficha = {
-    origem: {
-        nome: string;
-        bonus: string;
-        talentos: string[];
-        efeitoNaArma?: string;
-        aptidoes: string;
-        vida: number;
-        limiteDestino: number;
-    } | null;
-    atributos: { [atributo: string]: number } | null;
-    background: {
-        nome: string;
-        bonus: string;
-        pericias: string[];
-        talentos: string[];
-        equipamentos: string[];
-        aptidoes: string[];
-    } | null;
-    funcao: {
-        nome: string;
-        bonus: string;
-        talentos: string[];
-        aptidoes: string[];
-    } | null;
-    dadosFinais: {
-        origemNome: string; //vem de origem.nome;
-        atributosPersonagem: { [atributo: string]: number } | null; //vem de atributos
-        backgroundNome?: string //vem de background.nome
-        funcaoNome?: string; //vem de funcao.nome
-        aptidoes: string[]; //vem de origem.aptidoes, background.aptidoes, funcao.aptidoes
-        avancoElite?: string;
-        nomePersonagem: string;
-        nomeJogador: string;
-        idade?: number;
-        aparencia: string;
-        historia: string;
-        genero: "masculino" | "feminino";
-        divinacao: {
-        texto: string;
-        efeito: string;
-        } | null;
-        aliados?: string[];
-        inimigos?: string[];
-        xpDisponivel?: number;
-        xpGasto?: number;
-        destinoTotal?: number; //vem de origem.limiteDestino
-        destinoAtual?: number;
-        pericias: PericiaComNivel[]; //background.pericias
-        atributos: {
-            [atributo: string]: {
-                valorFinal: number;
-                melhorias: number;
-            };
-        };
-        insanidade: number;
-        traumas: string;
-        corrupcao: number;
-        malignancias: string;
-        mutacoes: string[];
-        talentos: {
-            nome: string;
-            especializacao?: string;
-            descricao: string;
-        }[]; //vem de origem.bonus, origem.talentos, background.bonus, background.talentos, funcao.bonus, função.talentos
-        tracos?: { 
-            nome: string; 
-            nivel?: number; 
-            descricao: string 
-        }[];
-        equipamentos?: string[]; //vem de background.equipamentos
-        armas?: Arma[];
-        armaduras?: Armadura[];
-        defesaPorLocal: {
-           "Cabeça": { resistencia: 0, defesa: 0 },
-            "Braço Esquerdo": { resistencia: 0, defesa: 0 },
-            "Braço Direito": { resistencia: 0, defesa: 0 },
-            "Corpo": { resistencia: 0, defesa: 0 },
-            "Perna Esquerda": { resistencia: 0, defesa: 0 },
-            "Perna Direita": { resistencia: 0, defesa: 0 }, 
-        };
-        vidatotal?: number; //vem de origem.vida
-        vidaAtual?: number;
-        danoCritico?: number;
-        condicoes?: string;
-        movimento?: {
-            parcial?: number;
-            total?: number;
-            disparada?: number;
-            corrida?: number;
-        }
-        fadigaLimite?: number;
-        fadigaAtual?: number;
-        psiNivel?: number;
-        poderesPsiquicos?: string;
-        outrasHabilidades?: string;
-    };
+export type Ficha = {
+  id: string;
+  origemNome: string;
+  atributosPersonagem: { [atributo: string]: number } | null;
+  backgroundNome?: string;
+  funcaoNome?: string;
+  aptidoes: string[];
+  avancoElite?: string;
+  nomePersonagem: string;
+  nomeJogador: string;
+  idade?: number;
+  aparencia: string;
+  historia: string;
+  genero: "masculino" | "feminino";
+  divinacao: { texto: string; efeito: string } | null;
+  aliados: string[];
+  inimigos: string[];
+  xpDisponivel?: number;
+  xpGasto?: number;
+  destinoTotal?: number;
+  destinoAtual?: number;
+  pericias: PericiaComNivel[];
+  atributos: { [atributo: string]: { valorFinal: number; melhorias: number } };
+  insanidade: number;
+  traumas: string;
+  corrupcao: number;
+  malignancias: string;
+  mutacoes: string[];
+  talentos: { nome: string; especializacao?: string; descricao: string }[];
+  tracos: { nome: string; nivel?: number; descricao: string }[];
+  equipamentos: string[];
+  armas: Arma[];
+  armaduras: Armadura[];
+  defesaPorLocal: {
+    Cabeça: { resistencia: number; defesa: number };
+    "Braço Esquerdo": { resistencia: number; defesa: number };
+    "Braço Direito": { resistencia: number; defesa: number };
+    Corpo: { resistencia: number; defesa: number };
+    "Perna Esquerda": { resistencia: number; defesa: number };
+    "Perna Direita": { resistencia: number; defesa: number };
+  };
+  vidatotal?: number;
+  vidaAtual?: number;
+  danoCritico?: number;
+  condicoes?: string;
+  movimento?: { parcial?: number; total?: number; disparada?: number; corrida?: number };
+  fadigaLimite?: number;
+  fadigaAtual?: number;
+  psiNivel?: number;
+  poderesPsiquicos?: string;
+  outrasHabilidades?: string;
 };
 
 export default function FichaPage() {
     const [ficha, setFicha] = useState<Ficha | null>(null);
+    const { data: session } = useSession();
 
     useEffect(() => {
-        const raw = localStorage.getItem("ficha-personagem-temp");
-        if (raw) {
-            const f: Ficha = JSON.parse(raw);
-            if (f.background?.pericias && !f.dadosFinais.pericias?.length) {
-                f.dadosFinais.pericias = montarPericiasComNiveis(f.background.pericias);
-            }
-             if (
-                f.background?.equipamentos?.length &&
-                (!f.dadosFinais.armas || !f.dadosFinais.armas.length)
-                ) {
-                const armasDoBackground = f.background.equipamentos
-                    .map((nomeEq) =>
-                    ARMAS.find((arma) => arma.nome.toLowerCase() === nomeEq.toLowerCase())
-                    )
-                    .filter((a): a is Arma => !!a);
-
-                f.dadosFinais.armas = armasDoBackground;
-            }
-            setFicha(f);
+        const fetchFicha = async () => {
+        if (!session?.user?.id) {
+            setFicha(null);
+            return;
         }
-    }, []);
+
+        try {
+            const character = await prisma.character.findFirst({
+            where: { userId: session.user.id },
+            });
+
+            if (character) {
+            const fichaFormatada: Ficha = {
+                id: character.id,
+                origemNome: character.origemNome || "",
+                atributosPersonagem: (typeof character.atributosPersonagem === 'object' && character.atributosPersonagem !== null ? character.atributosPersonagem : {}) as { [atributo: string]: number } | null,
+                backgroundNome: character.backgroundNome || undefined,
+                funcaoNome: character.funcaoNome || undefined,
+                aptidoes: character.aptidoes || [],
+                avancoElite: character.avancoElite || undefined,
+                nomePersonagem: character.nomePersonagem || "",
+                nomeJogador: character.nomeJogador || "",
+                idade: character.idade || undefined,
+                aparencia: character.aparencia || "",
+                historia: character.historia || "",
+                genero: (character.genero as "masculino" | "feminino") || "masculino",
+                divinacao: (typeof character.divinacao === 'object' && character.divinacao !== null && 'texto' in character.divinacao && 'efeito' in character.divinacao ? character.divinacao : null) as { texto: string; efeito: string } | null,
+                aliados: character.aliados || [],
+                inimigos: character.inimigos || [],
+                xpDisponivel: character.xpDisponivel || 0,
+                xpGasto: character.xpGasto || 0,
+                destinoTotal: character.destinoTotal || 0,
+                destinoAtual: character.destinoAtual || 0,
+                pericias: (Array.isArray(character.pericias) && character.pericias.every(p => typeof p === 'object' && p !== null && 'nome' in p && 'nivel' in p) ? character.pericias : montarPericiasComNiveis([])) as PericiaComNivel[],
+                atributos: (character.atributos as { [atributo: string]: { valorFinal: number; melhorias: number } }) || {},
+                insanidade: character.insanidade || 0,
+                traumas: character.traumas || "",
+                corrupcao: character.corrupcao || 0,
+                malignancias: character.malignancias || "",
+                mutacoes: character.mutacoes || [],
+                talentos: (character.talentos as { nome: string; especializacao?: string; descricao: string }[]) || [],
+                tracos: (character.tracos as { nome: string; nivel?: number; descricao: string }[]) || [],
+                equipamentos: character.equipamentos || [],
+                armas: (character.armas as Arma[]) || character.equipamentos
+                    .map((nomeEq) => ARMAS.find((arma) => arma.nome.toLowerCase() === nomeEq.toLowerCase()))
+                    .filter((a): a is Arma => !!a),
+                armaduras: (character.armaduras as Armadura[]) || [],
+                defesaPorLocal: (character.defesaPorLocal as any) || {
+                Cabeça: { resistencia: 0, defesa: 0 },
+                "Braço Esquerdo": { resistencia: 0, defesa: 0 },
+                "Braço Direito": { resistencia: 0, defesa: 0 },
+                Corpo: { resistencia: 0, defesa: 0 },
+                "Perna Esquerda": { resistencia: 0, defesa: 0 },
+                "Perna Direita": { resistencia: 0, defesa: 0 },
+                },
+                vidatotal: character.vidatotal || 0,
+                vidaAtual: character.vidaAtual || 0,
+                danoCritico: character.danoCritico || 0,
+                condicoes: character.condicoes || "",
+                movimento: (character.movimento as any) || undefined,
+                fadigaLimite: character.fadigaLimite || undefined,
+                fadigaAtual: character.fadigaAtual || undefined,
+                psiNivel: character.psiNivel || undefined,
+                poderesPsiquicos: character.poderesPsiquicos || undefined,
+                outrasHabilidades: character.outrasHabilidades || undefined,
+            };
+
+            setFicha(fichaFormatada);
+            } else {
+            setFicha(null);
+            }
+        } catch (error) {
+            console.error("Erro ao buscar ficha:", error);
+            setFicha(null);
+        }
+        };
+
+    fetchFicha();
+    }, [session]);
 
     if (!ficha) {
         return <p className="text-center mt-10">Nenhuma ficha encontrada.</p>;
     }
 
-    const handleHeaderChange = (field: string, value: string) => {
-        if (!ficha) return;
+    const updateFicha = async (updates: Partial<Ficha>) => {
+        const novaFicha = { ...ficha, ...updates };
+        setFicha(novaFicha);
 
-        const novaFicha = { ...ficha };
+        const dataToUpdate: any = { ...updates };
 
-        switch (field) {
-        case "origem":
-            if (novaFicha.origem) novaFicha.origem.nome = value;
-            break;
-        case "background":
-            if (novaFicha.background) novaFicha.background.nome = value;
-            break;
-        case "funcao":
-            if (novaFicha.funcao) novaFicha.funcao.nome = value;
-            break;
-        case "avançoElite":
-            novaFicha.dadosFinais.avancoElite = value;
-            break;
-        case "profecia":
-            if (novaFicha.dadosFinais.divinacao)
-            novaFicha.dadosFinais.divinacao.texto = value;
-            break;
-        case "nomeJogador":
-            novaFicha.dadosFinais.nomeJogador = value;
-            break;
-        case "genero":
-            novaFicha.dadosFinais.genero = value as "masculino" | "feminino";
-            break;
-        case "idade":
-            novaFicha.dadosFinais.idade = Number(value);
-            break;
+        // Mapear campos Json para garantir compatibilidade com Prisma
+        if (updates.pericias) {
+            dataToUpdate.pericias = updates.pericias.map(p => ({ nome: p.nome, nivel: p.nivel }));
+        }
+        if (updates.atributosPersonagem) {
+            dataToUpdate.atributosPersonagem = { ...updates.atributosPersonagem };
+        }
+        if (updates.atributos) {
+            dataToUpdate.atributos = { ...updates.atributos };
+        }
+        if (updates.talentos) {
+            dataToUpdate.talentos = updates.talentos.map(t => ({ nome: t.nome, especializacao: t.especializacao, descricao: t.descricao }));
+        }
+        if (updates.tracos) {
+            dataToUpdate.tracos = updates.tracos.map(t => ({ nome: t.nome, nivel: t.nivel, descricao: t.descricao }));
+        }
+        if (updates.armas) {
+            dataToUpdate.armas = updates.armas; // Ajuste conforme tipo de Arma
+        }
+        if (updates.armaduras) {
+            dataToUpdate.armaduras = updates.armaduras; // Ajuste conforme tipo de Armadura
+        }
+        if (updates.defesaPorLocal) {
+            dataToUpdate.defesaPorLocal = { ...updates.defesaPorLocal };
+        }
+        if (updates.divinacao) {
+            dataToUpdate.divinacao = { ...updates.divinacao };
         }
 
-        setFicha(novaFicha);
-    };
-
-    const handleAllyEnemyChange = (field: "aliados" | "inimigos", value: string) => {
-        if (!ficha) return;
-
-        const novaFicha = { ...ficha };
-        novaFicha.dadosFinais[field] = value
-            .split("\n")
-            .map((item) => item.trim())
-            .filter((item) => item.length > 0);
-
-        setFicha(novaFicha);
-    };
-
-    const handlePericiasChange = (novasPericias: PericiaComNivel[]) => {
-        if (!ficha) return;
-        const novaFicha = { ...ficha };
-        novaFicha.dadosFinais.pericias = novasPericias;
-        setFicha(novaFicha);
-    };
-
-    const handleAptidoesChange = (novasAptidoes: string[]) => {
-        if (!ficha) return;
-
-        const novaFicha = { ...ficha };
-        novaFicha.dadosFinais.aptidoes = novasAptidoes;
-        setFicha(novaFicha);     
-    };
-
-    const handleXpDestinoChange = ({
-        xpDisponivel,
-        destinoLimite,
-        destinoAtual,
-    }: {
-        xpDisponivel: number;
-        destinoLimite: number;
-        destinoAtual: number;
-    }) => {
-        if (!ficha) return;
-        const novaFicha = { ...ficha };
-
-        novaFicha.dadosFinais.xpDisponivel = xpDisponivel;
-        novaFicha.dadosFinais.destinoAtual = destinoAtual;
-
-        if (novaFicha.origem) {
-            novaFicha.origem.limiteDestino = destinoLimite;
+        try {
+            await prisma.character.update({
+            where: { id: ficha.id },
+            data: dataToUpdate,
+            });
+        } catch (error) {
+            console.error("Erro ao atualizar ficha:", error);
         }
-
-        setFicha(novaFicha);
-    };
-
-    const handleArmasChange = (novasArmas: Arma[]) => {
-        if (!ficha) return;
-        const novaFicha = { ...ficha };
-        novaFicha.dadosFinais.armas = novasArmas;
-        setFicha(novaFicha);
-    };
+        };
 
     return (
         <main className="p-6 max-w-[90%] mx-auto space-y-4 border"
@@ -248,13 +215,13 @@ export default function FichaPage() {
             <h1 className="text-4xl font-bold text-center"
                 style={{ color: "var(--color-mustard)"}}
             >
-                {ficha.dadosFinais.nomePersonagem}
+                {ficha.nomePersonagem}
             </h1>
 
-            <HeaderSection ficha={ficha} onChange={handleHeaderChange}/>
-
+            <HeaderSection ficha={ficha} onChange={(updates: Partial<Ficha>) => updateFicha(updates)} />
+{/*             
             <div className="flex flex-col mt-6 pt-6 lg:flex-row">
-                {/* Lado esquerdo */}
+                { Lado esquerdo }
                 <div className="w-full lg:w-1/2 lg:pr-4 lg:border-r lg:border-white">
                     
                     <AllyEnemySection
@@ -316,7 +283,7 @@ export default function FichaPage() {
                     />
                 </div>
 
-                {/* Lado direito */}
+                { Lado direito }
                 <div className="w-full lg:w-1/2 lg:pl-4">
                                         <TalentosETracosSection
                         ficha={ficha}
@@ -353,7 +320,7 @@ export default function FichaPage() {
                         ficha={ficha} setFicha={setFicha}
                     />
                 </div>
-            </div>
+            </div> */}
         </main>
     );
 }
